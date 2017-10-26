@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import NavBar from './NavBar.js'
+import NavBar from './NavBar.js';
+import axios from 'axios';
 
 class SingleBarView extends Component {
 	constructor(props){
