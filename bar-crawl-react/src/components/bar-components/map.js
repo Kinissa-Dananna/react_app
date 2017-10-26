@@ -1,17 +1,20 @@
+import React, { Component } from "react";
 import { GoogleMap, Marker } from "react-google-maps"
 
 class map extends Component{
 	constructor(props){
 		super(props);
-		.currentStatus = this.currentStatus.bind(this);
 	}
 	render(){
+		const lat = this.props.lat,
+			  long = this.props.long;
+
 		return( 
 			<GoogleMap
 			    defaultZoom={8}
-			    defaultCenter={{ lat: {this.props.lat}, lng: {this.props.long} }}
+			    defaultCenter={{ lat: lat, lng: long }}
 			>
-			    {props.isMarkerShown && <Marker position={{ lat: {this.props.lat}, lng: {this.props.long} }} />}
+			    {this.props.isMarkerShown && <Marker position={{ lat: lat, lng: long }} />}
 			</GoogleMap>
 		)
 	}

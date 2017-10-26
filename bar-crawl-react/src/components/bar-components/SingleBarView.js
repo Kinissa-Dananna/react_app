@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './NavBar.js';
 import map from './map.js'
+import axios from 'axios'
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class SingleBarView extends Component {
@@ -39,7 +40,7 @@ class SingleBarView extends Component {
 
 		return(
 			<div className="single-bar">
-				<div><map lat={lat} long={long}/></div>
+				<div><map isMarkerShown={true} lat={lat} long={long}/></div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
 				{{isOpen} && 
