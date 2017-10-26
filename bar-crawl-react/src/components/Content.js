@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 // component that renders content
 // this will render when there is a valid user
 const Content = (props) => {
