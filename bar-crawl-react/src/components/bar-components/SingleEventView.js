@@ -4,6 +4,7 @@ import NavBar from './NavBar.js'
 import EventsBar from './EventsBar.js';
 import axios from 'axios';
 
+
 class SingleEventView extends Component {
 	constructor(props) {
     super(props);
