@@ -24,7 +24,7 @@ class SingleBarView extends Component {
 
 	// function that formats open status based on current time and hours
 	curentStatus(){
-			'FILL IN'
+		'FILL IN'
 	}
 
 	// Formatted information for a single bar
@@ -35,7 +35,7 @@ class SingleBarView extends Component {
 			<div className="single-bar">
 				<div>MAP 'FILL IN'</div>
 				<p>{name}</p>
-				<p>OPEN STATUS 'FILL IN'</p>
+				<p>{this.state.currentStatus}</p>
 				{this.state.currentStatus===open && 
 					<p>{hoursUntilClosed}</p>
 				}

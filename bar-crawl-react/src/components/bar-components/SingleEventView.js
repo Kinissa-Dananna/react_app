@@ -19,7 +19,7 @@ class SingleEventView extends Component {
 	    const eventId = this.props.match.params.id;
 		setTimeout(() => {
 		  	axios
-			  	.get(`http://localhost:8080/api/${eventId}`)
+			  	.get(`http://localhost:8080/${eventId}`)
 			    .then(response => {
 		        	this.setState({event: response.data, bars: response.data.bars, attendees: response.data.attendees})
 		        });
