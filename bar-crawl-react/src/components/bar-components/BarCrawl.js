@@ -27,11 +27,12 @@ class BarCrawl extends Component {
 		return (
 			<div className="bar-crawl">
 				<NavBar logout={this.props.logout} />
+				<EventsBar />
 				<Switch>
 				<Route
 					exact
 					path="/"
-					render={() => <Redirect to="/barcrawl" />}
+					render={() => <Redirect to="/events" />}
 				/>
 				<Route exact path="/events/new" render={props => (
 					<CreateEventForm />
@@ -46,7 +47,7 @@ class BarCrawl extends Component {
 					{...props}
 				 		/>
 					)} />
-				<Route path="/barsearch" render={props => (
+				<Route path="/events/:eventId/addBar" render={props => (
 					<BarSearch
 						{...props}
 					 	/>

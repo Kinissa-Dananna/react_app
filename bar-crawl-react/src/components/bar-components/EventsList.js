@@ -13,22 +13,18 @@ class EventsList extends Component {
 		}
 	}
 	componentDidMount() {
-		setTimeout(() => {
-		axios.get('http://localhost:8080/api/events')
+		axios.get('http://localhost:8080/events/owned')
 					.then(response => {
             console.log('response', response);
-						this.setState({events: response.data.events})
+						this.setState({events: response.data})
 					});
-		}, 1000)
-
 	}
 	eventsItem({ownerId, name, description, time, id}, i){
 		return(
 			<li className="events-item" key={i.toString()}>
-				<p> <Link to={`/events/${id}`}>{name}</Link></p>
-				<p></p>
-				<p></p>
-				<p></p>
+				<h4> <Link to={`/events/${id}`}>{name}</Link></h4>
+				<p>{description}</p>
+				<p>{time}</p>
 			</li>
 			);
 	}
@@ -40,7 +36,8 @@ class EventsList extends Component {
 		return(
 			 <div className='events-list'>
 			<ul>
-				{eventsItems}
+				{/* {eventsItems} */}
+				<EventCard eventsItems={eventsItems} />
 			</ul>
 			</div>
 			)

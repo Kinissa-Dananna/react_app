@@ -54,10 +54,10 @@ class EventForm extends Component {
 
 	render() {
 		if (this.state.submitted) {
-			return <Redirect to={`/home`} />
+			return <Redirect to={`/`} />
 		}
 		return (
-			<BrowserRouter>
+
 				<div>
 					<h3>New Event</h3>
 					<form onSubmit={this.onSubmit}>
@@ -100,7 +100,7 @@ class EventForm extends Component {
 						<input type='submit' value='Submit' />
 					</form>
 				</div>
-			</ BrowserRouter>
+
 		);
 	}
 
