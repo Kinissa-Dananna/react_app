@@ -183,7 +183,7 @@ button:hover{
   min-height: 100%;
   padding-top: 0;
   background-image: url('https://nyc-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/20140423_Es_bar-9571_ENF.tif.jpg');
-  background-size: cover;
+  /*background-size: cover;*/
 
 }
 .background-color {
@@ -265,23 +265,34 @@ button:hover{
   flex-direction: column;
 }
 .bar-crawl .sidebar {
-  flex-direction: column;
+  flex-direction: row;
   width: 30%;
   min-width: 300px;
+  min-height: 300px;
   order: 1;
-
+  justify-content: flex-start;
+  align-self: flex-start;
 }
 .bar-crawl .sidebar li {
   list-style: none;
   text-align: left;
 }
-
-/* ============================ EVENTS PAGE ============================ */
 .events-list {
   width: 60%;
   min-width: 600px;
-  flex-direction: column;
+  flex-direction: row;
+  order: 2;
 }
+.single-event {
+  width: 60%;
+  min-width: 600px;
+  flex-direction: row;
+  justify-content: flex-end;
+  order: 2;
+}
+
+/* ============================ EVENTS PAGE ============================ */
+
 .event-card {
   flex-direction: row;
   flex-wrap: wrap;

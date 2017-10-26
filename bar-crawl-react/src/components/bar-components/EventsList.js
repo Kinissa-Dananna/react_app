@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import NavBar from './NavBar.js'
+import { Link } from "react-router-dom";
 import EventCard from './EventCard';
-import EventsBar from './EventsBar';
+// import EventsBar from './EventsBar';
 import axios from 'axios';
 
 class EventsList extends Component {
