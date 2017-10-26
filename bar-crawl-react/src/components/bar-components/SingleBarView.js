@@ -8,7 +8,6 @@ class SingleBarView extends Component {
 		super(props);
 		this.state = {
 			barInfo: [],
-			currentStatus: 'open'
 		}
 
 		this.currentStatus = this.currentStatus.bind(this);
@@ -24,8 +23,12 @@ class SingleBarView extends Component {
 	}
 
 	// function that formats open status based on current time and hours
-	curentStatus(){
-		'FILL IN'
+	currentStatus(){
+		if(this.state.barInfo.isOpen){
+			return(<p>Open Now</p>)
+		}else{
+			return(<p>Closed Now</p>)
+		}
 	}
 
 	// Formatted information for a single bar
