@@ -6,12 +6,14 @@ class EventForm extends Component {
 	constructor(props) {
 		super(props);
 		// input values stored in state
-		this.state = {'FILL IN'}
+		this.state = {
+			events: []
+		}
 	}
 
 	// onChange functions to change state for each input
 
-	// function that creates onSubmit form 
+	// function that creates onSubmit form
 	// to save event information to the database
 
 	render() {

@@ -3,7 +3,7 @@ import '../css/App.css';
 import axios from 'axios';
 import Cookies from '../helpers/Cookies';
 import UserAuth from './UserAuth';
-import Content from './Content';
+import Homepage from './bar-components/Homepage';
 
 class App extends Component {
   constructor(){
@@ -89,7 +89,8 @@ class App extends Component {
       )
     } else if(this.state.mode === 'content') {
       return (
-        <Content logout={this.logout.bind(this)} user={this.state.user} />
+        //<Content logout={this.logout.bind(this)} user={this.state.user} />
+        <Homepage logout={this.logout.bind(this)} user={this.state.user}  />
       )
     }
   }
