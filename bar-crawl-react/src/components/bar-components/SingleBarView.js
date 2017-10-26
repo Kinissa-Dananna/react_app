@@ -4,6 +4,7 @@ import NavBar from './NavBar.js';
 import Iframe from 'react-iframe'
 import axios from 'axios'
 
+
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
@@ -49,7 +50,7 @@ class SingleBarView extends Component {
             	</div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
-				{{isOpen} && 
+				{{isOpen} &&
 					<p>{hoursUntilClosed}</p>
 				}
 				<p>Address:{address.street},{address.city}</p>
