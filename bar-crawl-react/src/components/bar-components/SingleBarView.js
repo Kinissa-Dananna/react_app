@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './NavBar.js';
-import map from './map.js'
+import Iframe from 'react-iframe'
 import axios from 'axios'
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class SingleBarView extends Component {
 	constructor(props){
@@ -36,11 +35,18 @@ class SingleBarView extends Component {
 	// Formatted information for a single bar
 	render(){
 		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long} = this.state.barInfo;
-		
+		const url = `http://www.google.com/maps/@${lat},${long},16z`
 
 		return(
 			<div className="single-bar">
-				<div><map isMarkerShown={true} lat={lat} long={long}/></div>
+				<div>
+					<Iframe url= {url}
+	            	position="absolute"
+	            	width="100%"
+	            	height="100%"
+	            	styles={{height: "25px"}}
+	            	allowFullScreen/>
+            	</div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
 				{{isOpen} && 
