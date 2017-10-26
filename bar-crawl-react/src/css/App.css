@@ -7,20 +7,23 @@ body, html{
 }
 .App {
   text-align: center;
-}
-
-/* ============================ HEADER  ============================ */
-
-header {
-  background-color: #840d00;
-  height: 315px;
-  color: black;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+/* ============================ HEADER  ============================ */
+
+header {
+  background-color: #840d00;
+  width: 100vw;
+  min-width: 100%;
+  height: 315px;
+  color: black;
+  flex-wrap: wrap;
   font-family: 'Marcellus', serif;
 }
 header img.logo {
@@ -108,12 +111,12 @@ header .border-bottom button#add-event {
   /*background-color: #FFF;*/
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-
+/*
 h2{
   font-weight: 300;
   font-size: 2em;
   margin: 10px 0;
-}
+}*/
 
 .auth-form form{
   display: -webkit-flex;
@@ -175,27 +178,41 @@ button:hover{
 }
 /* ============================ AUTH FORM ANNA ============================ */
 .login-page {
-  background-color: rgba(0, 0, 0, 0.5);
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   min-height: 100%;
-  padding-top: 10vh;
+  padding-top: 0;
+  background-image: url('https://nyc-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/20140423_Es_bar-9571_ENF.tif.jpg');
+  background-size: cover;
+
+}
+.background-color {
+  padding-top: 2vh;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.62);
 }
 
 .auth-form {
   width: 78%;
-  max-width: 500px;
-  border-radius: 10px;
+  max-width: 400px;
+  /*border-radius: 10px;*/
   background-color: #111111;
   color: white;
   font-family: 'Abel', sans-serif;
   text-transform: uppercase;
   text-align: center;
+  border-radius: 8px;
+}
+
+.auth-form h2{
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: 10px 0;
 }
 .auth-form .logo {
   margin: 0 auto;
   justify-content: center;
-  max-width: 250px;
+  max-width: 200px;
   height: auto;
   margin-left: 3em;
 }
@@ -223,7 +240,7 @@ button:hover{
   background-color: #252525;
   border: solid 2px #464646;
   color: #D11400;
-  font-size: 1.2em;
+  font-size: 1em;
   padding: 0.98em;
   margin: 0 auto;
   margin-top: 1em;
@@ -238,12 +255,32 @@ button:hover{
   border-bottom: 0px solid none;
 }
 
+/* ============================ SIDEBAR ============================ */
+.bar-crawl {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+.bar-crawl .sidebar {
+  flex-direction: column;
+  width: 30%;
+  min-width: 300px;
+  order: 1;
+
+}
+.bar-crawl .sidebar li {
+  list-style: none;
+  text-align: left;
+}
 
 /* ============================ EVENTS PAGE ============================ */
 .events-list {
-  display: flex;
-  display: -webkit-flex;
-  display: -ms-flex;
+  width: 60%;
+  min-width: 600px;
+  flex-direction: column;
 }
 .event-card {
   flex-direction: row;
@@ -260,10 +297,4 @@ button:hover{
 }
 .event-card li h4 {
   font-size: 20px;
-}
-
-/* ============================ SIDEBAR ============================ */
-
-.sidebar {
-
 }

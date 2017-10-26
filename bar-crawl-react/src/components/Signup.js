@@ -41,6 +41,7 @@ class SignUp extends Component {
   render(){
     return(
         <div className="login-page">
+            <div className="background-color">
       <div className="auth-form">
         <img className="logo" src={Logo}  alt="logo" />
         <h2>Sign Up</h2>
@@ -77,7 +78,7 @@ class SignUp extends Component {
           </div>
 
         </form>
-      </div></div>
+      </div></div></div>
     )
   }
 }

@@ -25,12 +25,11 @@ class SingleEventView extends Component {
 		        });
 			}, 1000)
 		}
-	}
 
 
 	// Formatted information for a single event
 	render(){
-		const {name, description, time} = this.state.event;
+		const { name, description, time } = this.state.event;
 		const bars = this.state.bars.map((bar)=>{<p>{bar.name}</p>})
 		const attendees = this.state.attendees.map((user)=>{<p>{user.name}</p>})
 		return(
