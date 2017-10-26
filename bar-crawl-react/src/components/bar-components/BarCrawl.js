@@ -27,7 +27,7 @@ class BarCrawl extends Component {
 		return (
 			<div className="bar-crawl">
 				<NavBar logout={this.props.logout} />
-				<EventsBar />
+				<EventsBar user={this.props.user}/>
 				<Switch>
 				<Route
 					exact

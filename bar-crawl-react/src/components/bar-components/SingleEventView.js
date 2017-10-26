@@ -20,7 +20,7 @@ class SingleEventView extends Component {
 			console.log(eventId);
 		setTimeout(() => {
 		  	axios
-			  	.get(`http://localhost:8080/events/${eventId}`)
+			  	.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			    .then(response => {
 						console.log(response.data.bars)
 		        	this.setState({
@@ -55,11 +55,11 @@ class SingleEventView extends Component {
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>
-					<p>{bars}</p>
+					<div>{bars}</div>
 				</div>
 				<div className="attendees-info">
 					<h4>Attending:</h4>
-					<p>{attendees}</p>
+					<div>{attendees}</div>
 				</div>
 			</div>
 		);

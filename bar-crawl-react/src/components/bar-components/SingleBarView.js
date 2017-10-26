@@ -25,7 +25,7 @@ class SingleBarView extends Component {
 		const id = this.props.match.params.id;
 		console.log(id);
 		 axios
-		    .get(`http://localhost:8080/bars/${eventId}/${id}`)
+		    .get(`http://localhost:8080/bars/${eventId}/${id}?auth_token=${this.props.user.token}`)
 		    .then(response => {
 					console.log('response', response)
 		      this.setState({

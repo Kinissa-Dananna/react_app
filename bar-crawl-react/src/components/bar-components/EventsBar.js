@@ -10,7 +10,7 @@ class EventBar extends Component {
 		}
 	}
 	componentDidMount() {
-		axios.get('http://localhost:8080/events/owned')
+		axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
 					.then(response => {
             console.log('response', response);
 						this.setState({events: response.data})
