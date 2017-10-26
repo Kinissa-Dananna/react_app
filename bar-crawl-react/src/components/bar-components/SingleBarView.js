@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './NavBar.js';
-import axios from 'axios';
+import map from './map.js'
+import axios from 'axios'
+import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+
 
 class SingleBarView extends Component {
 	constructor(props){
@@ -18,7 +21,7 @@ class SingleBarView extends Component {
 		 axios
 		    .get(`http://localhost:8080/bars/${this.props.match.params.id}`)
 		    .then(response => {
-		      this.setState({ barInfo: response.data/*.'FILL IN'*/});
+		      this.setState({ barInfo: response.data});
 	    });
 	}
 
@@ -33,11 +36,12 @@ class SingleBarView extends Component {
 
 	// Formatted information for a single bar
 	render(){
-		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description} = this.state.barInfo;
+		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long} = this.state.barInfo;
+		
 
 		return(
 			<div className="single-bar">
-				<div>MAP 'FILL IN'</div>
+				<div><map isMarkerShown={true} lat={lat} long={long}/></div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
 				{{isOpen} &&
