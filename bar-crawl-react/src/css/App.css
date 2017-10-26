@@ -239,4 +239,25 @@ button:hover{
 }
 
 
-/* ============================ HOMEPAGE ============================ */
+/* ============================ EVENTS PAGE ============================ */
+.events-list {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flex;
+}
+.event-card {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 25%;
+  min-width: 200px;
+  text-align: left;
+  padding: 1em;
+  border: 2px solid #464646;
+  border-radius: 4px;
+}
+.event-card li {
+  list-style: none;
+}
+.event-card li h4 {
+  font-size: 20px;
+}
