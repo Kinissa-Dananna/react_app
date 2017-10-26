@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import NavBar from './NavBar.js';
+import map from './map.js'
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
 class SingleBarView extends Component {
@@ -34,18 +35,11 @@ class SingleBarView extends Component {
 	// Formatted information for a single bar
 	render(){
 		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long} = this.state.barInfo;
-		const MyMapComponent = withGoogleMap((props) =>
-		  <GoogleMap
-		    defaultZoom={8}
-		    defaultCenter={{ lat: lat, lng: long}}
-		  >
-		    <Marker position={{ lat: lat, lng: long } />
-		  </GoogleMap>
-		)
+		
 
 		return(
 			<div className="single-bar">
-				<div>{MyMapComponent}</div>
+				<div><map lat={lat} long={long}/></div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
 				{{isOpen} && 
