@@ -1,16 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Marcellus400');
+@import url('https://fonts.googleapis.com/css?family=Abel');
+
 body, html{
-  background-color: #FAFAFA;
+  background-color: #787878;
+  margin: 0 auto;
 }
 .App {
   text-align: center;
 }
+
+/* ============================ HEADER  ============================ */
+
+header {
+  background-color: #840d00;
+  height: 315px;
+  color: black;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  font-family: 'Marcellus', serif;
+}
+header img.logo {
+  align-items: center;
+  min-width: 120px;
+  max-width: 350px;
+  max-height: 250px;
+  align-items: center;
+  justify-content: center;
+}
+header nav {
+    display: flex;
+  flex-direction: row;
+  width: 96%;
+  padding-right: 1.5em;
+  padding-left: 1.5em;
+}
+header nav li {
+  text-transform: uppercase;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 25%;
+  list-style: none;
+  font-size: 20px;
+  align-items: center;
+  text-align: center;
+  border-top: 3px solid;
+  border-bottom: 3px solid;
+  height: 40px;
+    padding-top: 17px;
+    margin-top: 96px;
+}
+header nav button{
+  font-family: 'Marcellus', serif;
+    text-transform: uppercase;
+  background-color: transparent;
+  color: black;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0.15em;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: all .5s ease;
+  outline: 0px solid transparent;
+  border: 0px solid transparent;
+
+}
+header nav button:hover{
+  color: #450700;
+}
+
+header .border-bottom {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  background-color: black;
+  justify-content: flex-end;
+  padding: 0.6em;
+}
+
+
+header .border-bottom button#add-event {
+  border-radius: 10px;
+  background-color: #252525;
+  align-content: flex-end;
+  box-sizing: content-box;
+  color: #FFF;
+  font-size: 14px;
+  border: 2px solid black;
+  padding: 0.5em;
+}
+
+
+/* ============================ AUTH FORM JACKIE ============================ */
+
 
 .auth-form, .content{
   width: 100vw;
   max-width: 600px;
   margin: 20px auto;
   padding: 30px;
-  background-color: #FFF;
+  /*background-color: #FFF;*/
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
@@ -76,11 +168,72 @@ button:hover{
   justify-content: center;
   -ms-align-items: center;
   align-items: center;
-  background-color: #FFF;
+  background-color: #111111;
+}
+/* ============================ AUTH FORM ANNA ============================ */
+.login-page {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100%;
+  min-height: 100%;
+  padding-top: 10vh;
+}
+
+.auth-form {
+  width: 78%;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: #111111;
+  color: white;
+  font-family: 'Abel', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+.auth-form .logo {
+  margin: 0 auto;
+  justify-content: center;
+  max-width: 250px;
+  height: auto;
+  margin-left: 3em;
+}
+.auth-form label {
+  text-align: center;
+}
+.auth-form input {
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  width: 80%;
+  border-radius: 4px;
+  padding: 12px 0;
+  border: 0px solid transparent;
+  margin-bottom: 1em;
+}
+.form-buttons {
+  margin: 0 auto;
+  text-align: center;
+  width: 80%;
+}
+.auth-form  button{
+  justify-content: center;
+  width: 100%;
+  background-color: #252525;
+  border: solid 2px #464646;
+  color: #D11400;
+  font-size: 1.2em;
+  padding: 0.98em;
+  margin: 0 auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  cursor: pointer;
+  transition: all .5s ease;
+  outline: 0px solid transparent;
+  border-radius: 6px;
+}
+
+.auth-form  button:hover{
+  border-bottom: 0px solid none;
 }
 
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
+/* ============================ HOMEPAGE ============================ */

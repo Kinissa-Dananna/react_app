@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Logo from '../images/Logo-V01-red.png';
 
 // component for sign up
 // this will render if the mode in user auth is signup
@@ -39,7 +40,9 @@ class SignUp extends Component {
 
   render(){
     return(
+        <div className="login-page">
       <div className="auth-form">
+        <img className="logo" src={Logo}  alt="logo" />
         <h2>Sign Up</h2>
         <form onSubmit={this.signUp.bind(this)}>
 
@@ -74,7 +77,7 @@ class SignUp extends Component {
           </div>
 
         </form>
-      </div>
+      </div></div>
     )
   }
 }
