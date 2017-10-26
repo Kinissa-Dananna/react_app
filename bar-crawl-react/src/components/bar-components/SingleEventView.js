@@ -8,35 +8,42 @@ class SingleEventView extends Component {
 	constructor(props) {
     super(props);
     this.state = {
-      bars: []
+      event: [],
+      bars:[],
+      attendees:[],
     }
   }
 
-  componentDidMount() {
-    const eventId = this.props.eventId;
-  setTimeout(() => {
-  axios.get(`http://localhost:8080/api/${eventId}`)
-        .then(response => {
-          this.setState({bars: response.data})
-        });
-  }, 1000)
-
-}
-
 	// function that gets information from the database for a single event
+  	componentDidMount() {
+	    const eventId = this.props.match.params.id;
+		setTimeout(() => {
+		  	axios
+			  	.get(`http://localhost:8080/${eventId}`)
+			    .then(response => {
+		        	this.setState({event: response.data, bars: response.data.bars, attendees: response.data.attendees})
+		        });
+			}, 1000)
+		}
+	}
 
-	// function that formats information for a single event
 
+	// Formatted information for a single event
 	render(){
-		const barData = this.state.barData;
+		const {name, description, time} = this.state.event;
+		const bars = this.state.bars.map((bar)=>{<p>{bar.name}</p>})
+		const attendees = this.state.attendees.map((user)=>{<p>{user.name}</p>})
 		return(
 			<div className="single-event">
-				<h2>Event.Name</h2>
-				<div className="event">
-					<div className="google-maps"></div>
-					<h4>Bar.Name</h4>
-					<p>Bar.</p>
-				</div>
+				<h2>{name}</h2>
+				<h4>Description:</h4>
+				<p>{description}</p>
+				<h4>Start Time:</h4>
+				<p>{time}</p>
+				<h4>Bars:</h4>
+				<p>{bars}</p>
+				<h4>Attending:</h4>
+				<p>{attendees}</p>
 			</div>
 		);
 	}
