@@ -7,7 +7,9 @@ class EventEdit extends Component {
 	constructor(props) {
 		super(props);
 		// input values stored in state
-		this.state = {'FILL IN'}
+		this.state = {
+			events: []
+		}
 	}
 
 	// onChange functions to change state for each input

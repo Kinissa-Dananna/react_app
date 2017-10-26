@@ -1,64 +1,63 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import EventForm from './EventForm';
+import { Switch, Route, Link, Redirect } from "react-router-dom";
+import CreateEventForm from './EventForm';
+import NavBar from './NavBar.js';
 import BarSearch from './BarSearch';
+import EventCard from './EventCard';
 import EventsBar from './EventsBar';
-import EventsList from './EventsList';
-import NavBar from './NavBar';
+import SingleBarView from './SingleBarView';
+import ShowEvents from './EventsList';
+import SingleEventView from './SingleEventView';
 
 class BarCrawl extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
-		
-		this.showHomePage = this.showHomePage.bind(this);
-		this.createEventForm = this.createEventForm.bind(this);
-		this.showEvents = this.showEvents.bind(this);
-		this.showSingleEvent = this.showSingleEvent.bind(this);
-		this.searchBars = this.searchBars.bind(this);
-		this.showSingleBar = this.showSingleBar.bind(this);
-
-
-	}
-
-	showHomePage(){
-
-	}
-
-	createEventForm(){
-
-	}
-
-	showEvents(){
-
-	}
-
-	showSingleEvent(){
-
-	}
-
-	searchBars(){
-
-	}
-
-	showSingleBar(){
+		//
+		// this.showHomePage = this.showHomePage.bind(this);
+		// this.createEventForm = this.createEventForm.bind(this);
+		// this.showEvents = this.showEvents.bind(this);
+		// this.showSingleEvent = this.showSingleEvent.bind(this);
+		// this.searchBars = this.searchBars.bind(this);
+		// this.showSingleBar = this.showSingleBar.bind(this);
 
 	}
 
 	render() {
 		return (
 			<div className="bar-crawl">
+				<NavBar logout={this.props.logout} />
+				<Switch>
 				<Route
 					exact
 					path="/"
 					render={() => <Redirect to="/barcrawl" />}
-				/>	
-				<Route exact path="/barcrawl" render={this.showHomePage} />
-				<Route exact path="/new" render={this.createEventForm} />
-				<Route path="/barcrawl/events" render={this.showEvents} />
-				<Route path="/barcrawl/events/:id" render={this.showSingleEvent} />
-				<Route path="/barcrawl/barsearch" render={this.searchBars} />
-				<Route path="/barcrawl/bar/:id" render={this.showSingleBar} />
+				/>
+				<Route exact path="/events/new" render={props => (
+					<CreateEventForm />
+					)} />
+				<Route path="/events" render={props => (
+					<ShowEvents
+					 	{...props}
+							/>
+						)} />
+				<Route path="/events/:id" render={props => (
+					<SingleEventView
+					{...props}
+				 		/>
+					)} />
+				<Route path="/barsearch" render={props => (
+					<BarSearch
+						{...props}
+					 	/>
+					)} />
+				<Route path="/event/:eventId/bars/:id" render={props => (
+					<SingleBarView
+						{...props}
+						/>
+						)}
+					/>
+			</Switch>
 			</div>
 		);
 	}

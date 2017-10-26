@@ -5,7 +5,9 @@ import NavBar from './NavBar.js'
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
-		this.state ={}
+		this.state ={
+			bar: []
+		}
 	}
 
 	// function that gets information from localhost for a single event
@@ -17,7 +19,7 @@ class SingleBarView extends Component {
 
 		return(
 			<div className="single-bar">
-						
+
 			</div>
 		);
 	}
