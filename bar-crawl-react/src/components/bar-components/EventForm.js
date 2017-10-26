@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
-import NavBar from './NavBar.js'
+import NavBar from './NavBar.js';
 
 class EventForm extends Component {
 	constructor(props) {

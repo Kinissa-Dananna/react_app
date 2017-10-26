@@ -5,6 +5,7 @@ import map from './map.js'
 import axios from 'axios'
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
+
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
@@ -43,7 +44,7 @@ class SingleBarView extends Component {
 				<div><map isMarkerShown={true} lat={lat} long={long}/></div>
 				<p>{name}</p>
 				<p>{this.currentStatus()}</p>
-				{{isOpen} && 
+				{{isOpen} &&
 					<p>{hoursUntilClosed}</p>
 				}
 				<p>Address:{address.street},{address.city}</p>
