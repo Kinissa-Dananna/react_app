@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter} from "react-router-dom";
-import axios from 'axios';
-import Events from './Events';
+import BarCrawl from './BarCrawl.js';
 
 class Homepage extends Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
   return (
+
     <BrowserRouter>
-      <Events logout={this.props.logout}/>
+      <BarCrawl logout={this.props.logout}  />
     </BrowserRouter>
   );
   }

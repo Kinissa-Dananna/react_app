@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Marcellus400');
+@import url('https://fonts.googleapis.com/css?family=Marcellus');
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
 body, html{
@@ -53,7 +53,8 @@ header nav li {
     padding-top: 17px;
     margin-top: 96px;
 }
-header nav button{
+header nav button,
+header nav li a {
   font-family: 'Marcellus', serif;
     text-transform: uppercase;
   background-color: transparent;
@@ -66,9 +67,11 @@ header nav button{
   transition: all .5s ease;
   outline: 0px solid transparent;
   border: 0px solid transparent;
+  text-decoration: none;
 
 }
-header nav button:hover{
+header nav button:hover,
+header nav li a:hover {
   color: #450700;
 }
 
@@ -152,7 +155,7 @@ button{
 }
 
 button:hover{
-  border-bottom: 2px solid teal;
+  /*border-bottom: 2px solid teal;*/
 }
 
 .loading{
