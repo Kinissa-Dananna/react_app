@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import NavBar from './NavBar.js';
-import axios from 'axios';
+import NavBar from './NavBar.js'
 
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
-		this.state = {
+		this.state ={
 			barInfo: [],
 		}
 
@@ -33,14 +32,14 @@ class SingleBarView extends Component {
 
 	// Formatted information for a single bar
 	render(){
-		const { name, address, price, rating, daysOpen, hoursOpen, hoursUntilClosed, description } = this.state.barInfo;
+		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description} = this.state.barInfo;
 
 		return(
 			<div className="single-bar">
 				<div>MAP 'FILL IN'</div>
 				<p>{name}</p>
-				<p>{this.state.currentStatus}</p>
-				{this.state.currentStatus === 'open' &&
+				<p>{this.currentStatus()}</p>
+				{{isOpen} &&
 					<p>{hoursUntilClosed}</p>
 				}
 				<p>Address:{address.street},{address.city}</p>
