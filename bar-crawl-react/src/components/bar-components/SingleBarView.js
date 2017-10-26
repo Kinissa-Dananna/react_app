@@ -1,25 +1,53 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import NavBar from './NavBar.js'
+import NavBar from './NavBar.js';
+import axios from 'axios';
 
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
 		this.state ={
-			bar: []
+			barInfo: [],
+		}
+
+		this.currentStatus = this.currentStatus.bind(this);
+	}
+
+	// function that gets information from localhost for a single bar
+	componentDidMount(){
+		 axios
+		    .get(`http://localhost:8080/bars/${this.props.match.params.id}`)
+		    .then(response => {
+		      this.setState({ barInfo: response.data/*.'FILL IN'*/});
+	    });
+	}
+
+	// function that formats open status based on current time and hours
+	currentStatus(){
+		if(this.state.barInfo.isOpen){
+			return(<p>Open Now</p>)
+		}else{
+			return(<p>Closed Now</p>)
 		}
 	}
 
-	// function that gets information from localhost for a single event
-
-	// function that formats information for a single bar
-
-
+	// Formatted information for a single bar
 	render(){
+		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description} = this.state.barInfo;
 
 		return(
 			<div className="single-bar">
-
+				<div>MAP 'FILL IN'</div>
+				<p>{name}</p>
+				<p>{this.currentStatus()}</p>
+				{{isOpen} &&
+					<p>{hoursUntilClosed}</p>
+				}
+				<p>Address:{address.street},{address.city}</p>
+				<p>Price Range: {price}</p>
+				<p>Rating: {rating}/10</p>
+				<p>Hours: {daysOpen} {hoursOpen}</p>
+				<p>Description: {description}</p>
 			</div>
 		);
 	}

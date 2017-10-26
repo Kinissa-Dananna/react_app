@@ -1,21 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
-import NavBar from './NavBar.js'
+import NavBar from './NavBar.js';
 
 class EventForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			nameOfEvent: '',
-			nameOfBar: '',
+			description: '',
 			address: '',
 			time: '',
 			submitted: false,
 			submittedId: null
 		};
 		this.changeNameOfEvent = this.changeNameOfEvent.bind(this);
-		this.changeNameOfBar = this.changeNameOfBar.bind(this);
+		this.changeDescription = this.changeDescription.bind(this);
 		this.changeAddress = this.changeAddress.bind(this);
 		this.changeTime = this.changeTime.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
@@ -26,9 +26,9 @@ class EventForm extends Component {
 		this.setState({ nameOfEvent: event.target.value });
 	};
 
-	changeNameOfBar(event) {
+	changeDescription(event) {
 		event.preventDefault();
-		this.setState({ nameOfBar: event.target.value });
+		this.setState({ description: event.target.value });
 	};
 
 	changeAddress(event) {
@@ -43,12 +43,12 @@ class EventForm extends Component {
 
 	onSubmit(event) {
 		event.preventDefault();
-		const { nameOfEvent, nameOfBar, address, time } = this.state;
-		axios.post('http://localhost:8080/api',
-			{ nameOfEvent, nameOfBar, address, time })
+		const { nameOfEvent, description, address, time } = this.state;
+		axios.post('http://localhost:8080/events',
+			{ nameOfEvent, description, address, time })
 			.then(response => {
 				const { id } = response.data;
-				this.props.history.push(`/api/${id}`); //probably need to change this.
+				this.props.history.push(`/events/${id}`); //probably need to change this.
 			})
 	};
 
@@ -62,7 +62,7 @@ class EventForm extends Component {
 					<h3>New Event</h3>
 					<form onSubmit={this.onSubmit}>
 						<label>
-							Name Of Event:
+							Name of Event:
           <input
 								type='text'
 								value={this.state.nameOfEvent}
@@ -71,11 +71,11 @@ class EventForm extends Component {
 						</label>
 						<br />
 						<label>
-							Name Of Bar:
+							Description:
           <input
 								type='text'
-								value={this.state.nameOfBar}
-								onChange={this.changeNameOfBar}
+								value={this.state.description}
+								onChange={this.changeDescription}
 							/>
 						</label>
 						<br />
