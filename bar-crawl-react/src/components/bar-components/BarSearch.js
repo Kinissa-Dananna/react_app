@@ -8,10 +8,12 @@ class BarSearch extends Component {
 		this.state ={}
 	}
 
-	// onChange function that sets input in the state
+	// onChange function that sets location input in the state
+
+	// onChange function that sets bar name input in the state
 
 	// function that gets autocomplete location options 
-	// from localhost based on the input
+	// from localhost based on the inputs
 
 	// onClick function that saves an location option from the drop down list
 
@@ -19,7 +21,7 @@ class BarSearch extends Component {
 	// from localHost based on the saved location
 
 	// onClick function that shows the single bar view option
-	 // for a selected bar from the drop down list
+	// for a selected bar from the drop down list
 
 
 	render(){
