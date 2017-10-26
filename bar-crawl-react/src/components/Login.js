@@ -39,6 +39,7 @@ class Login extends Component {
   render(){
     return(
       <div className="login-page">
+        <div className="background-color">
       <div className="auth-form">
       <img className="logo" src={Logo} alt="logo" />
        <h2>Log In</h2>
@@ -62,7 +63,7 @@ class Login extends Component {
           </div>
 
         </form>
-      </div></div>
+      </div></div></div>
     )
   }
 }

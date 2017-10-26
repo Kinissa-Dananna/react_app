@@ -17,20 +17,24 @@ class SingleEventView extends Component {
 	// function that gets information from the database for a single event
   	componentDidMount() {
 	    const eventId = this.props.match.params.id;
+			console.log(eventId);
 		setTimeout(() => {
 		  	axios
-			  	.get(`http://localhost:8080/${eventId}`)
+			  	.get(`http://localhost:8080/events/${eventId}`)
 			    .then(response => {
-		        	this.setState({event: response.data, bars: response.data.bars, attendees: response.data.attendees})
+		        	this.setState({
+								event: response.data,
+								bars: response.data.bars,
+								attendees: response.data.attendees
+							})
 		        });
 			}, 1000)
 		}
-	}
 
 
 	// Formatted information for a single event
 	render(){
-		const {name, description, time} = this.state.event;
+		const { name, description, time } = this.state.event;
 		const bars = this.state.bars.map((bar)=>{<p>{bar.name}</p>})
 		const attendees = this.state.attendees.map((user)=>{<p>{user.name}</p>})
 		return(
