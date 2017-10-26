@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 import axios from 'axios';
 import Logo from '../../images/Logo-V01.png';
 
@@ -21,11 +22,14 @@ class Events extends Component {
         <li> <button onClick={this.props.logout}>logout</button></li>
         </nav>
         <div className="border-bottom">
-          
+
         </div>
       </header>
       <main>
       <div className="container">
+        <Switch>
+          
+        </Switch>
 
       </div>
 
