@@ -9,16 +9,16 @@ class map extends Component{
 		const lat = this.props.lat,
 			  long = this.props.long;
 
-		return( 
+		return(
 			<GoogleMap
 			    defaultZoom={8}
 			    defaultCenter={{ lat: lat, lng: long }}
 			>
-			    {this.props.isMarkerShown && <Marker position={{ lat: lat, lng: long }} />}
+			    {/* {this.props.isMarkerShown && <Marker position={{ lat: lat, lng: long }} />} */}
 			</GoogleMap>
 		)
 	}
- 
+
 }
 
 

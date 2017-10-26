@@ -7,7 +7,7 @@ class Homepage extends Component {
   return (
 
     <BrowserRouter>
-      <BarCrawl logout={this.props.logout}  />
+      <BarCrawl logout={this.props.logout} user={this.props.user}  />
     </BrowserRouter>
   );
   }
