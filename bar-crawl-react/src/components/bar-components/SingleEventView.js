@@ -18,7 +18,6 @@ class SingleEventView extends Component {
 			//console.log(this.props.match);
 	    const eventId = this.props.match.params.id;
 			//console.log(eventId);
-		setTimeout(() => {
 		  	axios
 			  	.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			    .then(response => {
@@ -29,7 +28,6 @@ class SingleEventView extends Component {
 								attendees: response.data.attendees
 							})
 		        });
-			}, 1000)
 		}
 
 
