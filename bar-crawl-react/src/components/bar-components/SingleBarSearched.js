@@ -7,14 +7,14 @@ import axios from 'axios';
 import {Route, Redirect} from 'react-router-dom';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
-
+// single bar view, but for bars that have been searched for rather than saved in the db
 class SingleBarSearched extends Component {
 	constructor(props){
 		super(props);
 		this.state ={
 			barInfo: [],
 			haveData: false,
-      added: 'false',
+      added: 'false', // false, toEvent (adding to an event from the list), fromEvent (adding to an event that the user came from)
       ownedEvents: [],
       eventId: ''
 		}
@@ -48,6 +48,7 @@ class SingleBarSearched extends Component {
 		}
 	}
 
+  // get a list of events to add this bar to if the user didn't get here from an event page
   getEventsToAddTo() {
     axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
 					.then(response => {
@@ -56,6 +57,7 @@ class SingleBarSearched extends Component {
 					});
   }
 
+// add bar to the event the user came here from
   addBarToEvent(e) {
     e.preventDefault();
     const barId = this.props.match.params.barId;
@@ -73,6 +75,7 @@ class SingleBarSearched extends Component {
     .then(res => this.setState({added: 'fromEvent'}))
   }
 
+  // add bar to an event chosen from the event list
   addBarToChosenEvent(e) {
     e.preventDefault();
     const barId = this.props.match.params.barId;
@@ -127,7 +130,8 @@ class SingleBarSearched extends Component {
         )} />
       <Route exact path="/bars/search/:barId" render={props => (
           <div><button onClick={this.getEventsToAddTo}>Add this bar to an event</button>
-          <div>{this.state.ownedEvents.map((event, i) => <div><a href='/' data-id={event.id} key={i} onClick={this.addBarToChosenEvent}>{event.name}</a></div>)}</div></div>
+          <div>{this.state.ownedEvents.map((event, i) =>
+            <div><a href='/' data-id={event.id} key={i} onClick={this.addBarToChosenEvent}>{event.name}</a></div>)}</div></div>
           )} />
         {this.state.added === 'fromEvent' && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
         {this.state.added === 'toEvent' && <Redirect to={`/events/${this.state.eventId}`}/>}

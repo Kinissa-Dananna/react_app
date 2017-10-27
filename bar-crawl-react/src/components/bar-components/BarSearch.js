@@ -5,6 +5,7 @@ import SearchForm from './SearchForm';
 import Autocomplete from './Autocomplete';
 import axios from 'axios';
 
+// component for searching through bars, while not linked to a specific event
 class BarSearch extends Component {
 	constructor(props){
 		super(props);

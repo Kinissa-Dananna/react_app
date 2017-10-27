@@ -5,6 +5,7 @@ import SearchForm from './SearchForm';
 import Autocomplete from './Autocomplete';
 import axios from 'axios';
 
+// component for searching for bars after clicking 'add bar' on an event page
 class EventBarSearch extends Component {
   constructor(props){
 		super(props);
