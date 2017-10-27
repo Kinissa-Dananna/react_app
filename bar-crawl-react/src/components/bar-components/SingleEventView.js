@@ -1,12 +1,7 @@
-<<<<<<< HEAD
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserSearch from './UserSearch.js';
-=======
-import React, {Component} from "react";
-import {Link} from "react-router-dom";
 // import EventsBar from './EventsBar.js';
->>>>>>> 4ffb9b1e68c52d58cdb281d550493090d6cb6073
 import axios from 'axios';
 
 class SingleEventView extends Component {
