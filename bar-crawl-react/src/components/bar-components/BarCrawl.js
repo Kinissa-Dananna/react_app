@@ -51,11 +51,16 @@ class BarCrawl extends Component {
 					{...props} {...this.props}
 				 		/>
 					)} />
-				<Route exact path="/events/:eventId/addBar" render={props => (
+				<Route exact path="/events/:eventId/addBar/" render={props => (
 					<EventBarSearch
 						{...props} {...this.props}
 					 	/>
 					)} />
+					<Route exact path="/events/:eventId/addBar/:barId" render={props => (
+						<SingleBarSearched
+							{...props} {...this.props}
+							/>
+						)} />
 					<Route exact path="/bars/search" render={props => (
 						<BarSearch
 							{...props} {...this.props}
@@ -66,7 +71,7 @@ class BarCrawl extends Component {
 								{...props} {...this.props}
 							 	/>
 							)} />
-				<Route exact path="/event/:eventId/bars/:id" render={props => (
+				<Route exact path="/events/:eventId/bars/:id" render={props => (
 					<SingleBarView
 						{...props} {...this.props}
 						/>

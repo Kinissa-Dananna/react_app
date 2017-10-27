@@ -81,7 +81,8 @@ searchWithInput(bar) {
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby}
 					results={this.state.locationResults} barResults={this.state.barResults}
-				eventId={this.state.eventId} currentLocation={this.state.currentLocation}/>
+				eventId={this.state.eventId} currentLocation={this.state.currentLocation}
+				url={`/bars/search/`}/>
 
 			</div>
 		);

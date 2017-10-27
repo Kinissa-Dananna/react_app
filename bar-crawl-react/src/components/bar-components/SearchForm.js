@@ -22,9 +22,9 @@ class SearchForm extends Component {
       this.setState({
         locationValue: event.target.value
       }, () => {
-        if (this.state.locationValue.length > 2 || this.state.locationValue.length === 0) {
+
           this.props.getLocationResults(this.state.locationValue)
-        }
+        
       });
     }
 
@@ -56,7 +56,7 @@ class SearchForm extends Component {
             <form className='search-form' onSubmit={this.onSubmit}>
             <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange}/>
             </form>
-            {this.props.barResults.map((bar, i) => <Link to={`/bars/search/${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
+            {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
 
 
         </div>

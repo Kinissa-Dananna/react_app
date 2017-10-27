@@ -6,18 +6,23 @@ import Autocomplete from './Autocomplete';
 import axios from 'axios';
 
 class EventBarSearch extends Component {
-	constructor(props){
+  constructor(props){
 		super(props);
 		this.state ={
-      eventId: this.props.match.params.eventId,
+      eventId: null,
 			locationResults: [],
-			barResults: []
+			barResults: [],
+			currentLocation: ''
 		}
 
 		this.getLocationResults = this.getLocationResults.bind(this);
 		this.getBarResults = this.getBarResults.bind(this);
     this.searchNearby = this.searchNearby.bind(this);
     this.searchWithInput = this.searchWithInput.bind(this);
+	}
+
+  componentDidMount(){
+		this.setState({ eventId: this.props.match.params.eventId});
 	}
 
 	// populate autofilled search results
@@ -52,20 +57,22 @@ if (input.length === 0) {
 }
 
 // save a location by clicking on it
-searchNearby(placeId) {
+searchNearby(placeId, name) {
   console.log('searching');
+	this.setState({currentLocation: name});
 	axios.get(`http://localhost:8080/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`).then(response => {
 		this.setState({ barResults: response.data.results, locationResults: []}, () => console.log(this.state.barResults));
-	})
+	});
 }
 // search for an save a location by text entry
-searchWithInput(location, bar) {
-	axios.get(`http://localhost:8080/search/${location}/${bar}?auth_token=${this.props.user.token}`).then(response => {
+searchWithInput(bar) {
+	axios.get(`http://localhost:8080/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`).then(response => {
 		this.setState({
-			barResults: ''
-		}, () => console.log(this.state.results));
+			barResults: response.data.results, locationResults: []
+		}, () => console.log(this.state.barResults));
 	})
 }
+
 
 
 	render(){
@@ -75,7 +82,8 @@ searchWithInput(location, bar) {
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby}
           results={this.state.locationResults} barResults={this.state.barResults}
-        eventId={this.state.eventId}/>
+        eventId={this.state.eventId}
+      url={`/events/${this.state.eventId}/addBar/`}/>
 
 			</div>
 		);
