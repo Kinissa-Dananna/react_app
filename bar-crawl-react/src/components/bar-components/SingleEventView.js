@@ -50,9 +50,11 @@ class SingleEventView extends Component {
 				)
 			})
 		const attendees = this.state.attendees.map((user, i) => {
-			//console.log(user.name);
-				return <p key={i} >{user.name}</p>
+			console.log(user)
+			console.log(user.image);
+				return <img src={user.image} key={i} />
 			})
+			
 		return(
 			<div className="single-event">
 				<div className="event-info">
@@ -68,7 +70,7 @@ class SingleEventView extends Component {
 				</div>
 				<div className="attendees-info">
 					<h4>Attending:</h4>
-					<p>{attendees}</p>
+					<div className="attendees">{attendees}</div>
 					<Link to={`/events/${eventId}/user-search`} {...this.props} >Add Users </Link>
 				</div>
 
