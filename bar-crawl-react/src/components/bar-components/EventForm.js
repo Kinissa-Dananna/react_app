@@ -9,14 +9,12 @@ class EventForm extends Component {
 		this.state = {
 			nameOfEvent: '',
 			description: '',
-			address: '',
 			time: '',
 			submitted: false,
 			submittedId: null
 		};
 		this.changeNameOfEvent = this.changeNameOfEvent.bind(this);
 		this.changeDescription = this.changeDescription.bind(this);
-		this.changeAddress = this.changeAddress.bind(this);
 		this.changeTime = this.changeTime.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	};
@@ -31,22 +29,19 @@ class EventForm extends Component {
 		this.setState({ description: event.target.value });
 	};
 
-	changeAddress(event) {
-		event.preventDefault();
-		this.setState({ address: event.target.value });
-	};
-
 	changeTime(event) {
 		event.preventDefault();
 		this.setState({ time: event.target.value })
 	};
 
 	onSubmit(event) {
+		console.log('submit clicked');
 		event.preventDefault();
-		const { nameOfEvent, description, address, time } = this.state;
+		const { nameOfEvent, description, time } = this.state;
 		axios.post(`http://localhost:8080/events?auth_token=${this.props.user.token}`,
-			{ nameOfEvent, description, address, time })
+			{ nameOfEvent, description, time })
 			.then(response => {
+				console.log(response);
 				const { id } = response.data;
 				this.props.history.push(`/events/${id}`); //probably need to change this.
 			})
@@ -58,7 +53,7 @@ class EventForm extends Component {
 		}
 		return (
 
-				<div>
+				<div className="event-form">
 					<h3>New Event</h3>
 					<form onSubmit={this.onSubmit}>
 						<label>
@@ -76,15 +71,6 @@ class EventForm extends Component {
 								type='text'
 								value={this.state.description}
 								onChange={this.changeDescription}
-							/>
-						</label>
-						<br />
-						<label>
-							Address:
-            <input
-								type='text'
-								value={this.state.address}
-								onChange={this.changeAddress}
 							/>
 						</label>
 						<br />
