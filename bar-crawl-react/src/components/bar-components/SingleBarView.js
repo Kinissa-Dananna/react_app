@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 // import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 // import NavBar from './NavBar.js';
-import map from './map.js';
-import Iframe from 'react-iframe';
+// import map from './map.js';
+// import Iframe from 'react-iframe';
 import axios from 'axios';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 
@@ -27,7 +27,7 @@ class SingleBarView extends Component {
 		 axios
 		    .get(`http://localhost:8080/bars/${eventId}/${id}?auth_token=${this.props.user.token}`)
 		    .then(response => {
-					console.log('response', response)
+					//console.log('response', response)
 		      this.setState({
 						barInfo: response.data,
 						haveData: true
@@ -46,30 +46,37 @@ class SingleBarView extends Component {
 
 	// Formatted information for a single bar
 	render(){
-		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long } = this.state.barInfo;
-		 const url = `http://www.google.com/maps/@${lat},${long},16z&output=embed`;
+		console.log('in single bar view');
+		if(!this.state.haveData) {
+			return <h2>Waiting for Data to Load</h2>
+		}
+		else {
+		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long, map } = this.state.barInfo;
+		//const map = this.state.map;
+		console.log('map', map);
 		return(
 			<div className="single-bar">
 				<div className="map">
-					<Iframe url= {url}
-					position="absolute"
-					width="100%"
-					height="100%"
-					styles={{height: "25px"}}
-					allowFullScreen/>
+					<iframe
+							width="400"
+							height="500"
+							src={map} >
+						</iframe>
+					{/* <img src={map} alt="map" /> */}
 				</div>
+				<div className="bar-info">
 				<h2>{name}</h2>
-				<p>{this.currentStatus()}</p>
+				<p className="bar-status">{this.currentStatus()}</p>
 				{{isOpen} &&
-					<p>{hoursUntilClosed}</p>
+					<p className="align-left">{hoursUntilClosed}</p>
 				}
 				{/* <p>Address:{address.street},{address.city}</p> */}
-				<p>Price Range: {price}</p>
-				<p>Rating: {rating}/10</p>
-				<p>Hours: {daysOpen} {hoursOpen}</p>
-				<p>Description: {description}</p>
-			</div>
-		);
+				<p className="align-left">Price Range: {price}</p>
+				<p className="align-left">Rating: {rating}/10</p>
+				<p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
+				<p className="align-left">Description: {description}</p>
+			</div></div>
+		)}
 	}
 }
 

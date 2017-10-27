@@ -42,32 +42,39 @@ class SingleBarSearched extends Component {
 	}
 
 	// Formatted information for a single bar
-	render(){
-		const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long } = this.state.barInfo;
-		 const url = `http://www.google.com/maps/@${lat},${long},16z&output=embed`;
-		return(
-			<div className="single-bar">
-				<div className="map">
-					<Iframe url= {url}
-					position="absolute"
-					width="100%"
-					height="100%"
-					styles={{height: "25px"}}
-					allowFullScreen/>
-				</div>
-				<h2>{name}</h2>
-				<p>{this.currentStatus()}</p>
-				{{isOpen} &&
-					<p>{hoursUntilClosed}</p>
-				}
-				{/* <p>Address:{address.street},{address.city}</p> */}
-				<p>Price Range: {price}</p>
-				<p>Rating: {rating}/10</p>
-				<p>Hours: {daysOpen} {hoursOpen}</p>
-				<p>Description: {description}</p>
-			</div>
-		);
-	}
+  render(){
+    console.log('in single bar view');
+    if(!this.state.haveData) {
+      return <h2>Waiting for Data to Load</h2>
+    }
+    else {
+    const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long, map } = this.state.barInfo;
+    //const map = this.state.map;
+    console.log('map', map);
+    return(
+      <div className="single-bar">
+        <div className="map">
+          <iframe
+              width="400"
+              height="500"
+              src={map} >
+            </iframe>
+          {/* <img src={map} alt="map" /> */}
+        </div>
+        <div className="bar-info">
+        <h2>{name}</h2>
+        <p className="bar-status">{this.currentStatus()}</p>
+        {{isOpen} &&
+          <p className="align-left">{hoursUntilClosed}</p>
+        }
+        {/* <p>Address:{address.street},{address.city}</p> */}
+        <p className="align-left">Price Range: {price}</p>
+        <p className="align-left">Rating: {rating}/10</p>
+        <p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
+        <p className="align-left">Description: {description}</p>
+      </div></div>
+    )}
+  }
 }
 
 export default SingleBarSearched;

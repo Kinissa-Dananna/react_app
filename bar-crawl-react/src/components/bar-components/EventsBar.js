@@ -30,6 +30,7 @@ class EventBar extends Component {
 		const eventsItems = this.state.events.map(this.eventsItem);
 		return(
 			 <div className='sidebar'>
+			 <h4>Events</h4>
 			<ul>
 				 {eventsItems}
 

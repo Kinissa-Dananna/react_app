@@ -9,7 +9,7 @@ class EventCard extends Component {
 	render(){
 
 		return(
-			<div className="event-card">
+			<div className="events-card">
 				{this.props.eventsItems}
 			</div>
 		);
