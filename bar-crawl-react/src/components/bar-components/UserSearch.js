@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 class UserSearch extends Component {
@@ -9,7 +9,6 @@ class UserSearch extends Component {
             userOptions: [],
             userInput: '',
             dataLoaded: false,
-            submitted: false
         };
         this.changeUserInput = this.changeUserInput.bind(this);
         this.autocompleteUser = this.autocompleteUser.bind(this);
@@ -24,36 +23,32 @@ class UserSearch extends Component {
         this.setState({ userInput: event.target.value }, this.autocompleteUser);
     };
 
+    // function that will search db for 
+    // matching user as input changes
     autocompleteUser(event) {
-        //event.preventDefault();
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
             .then(response => {
-              console.log(response)
               this.state.userOptions.push(response.data);
               this.setState({
                 dataLoaded: true })
             })
     };
 
+    // onClick function that saves chosen 
+    // user from the list to an event
     onClickUser(user){
       const eventId = this.props.match.params.eventId;
       const userId = user.userId;
 
         axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
             { eventId, userId })
-            .then(response => {
-              // this.setState({
-              //   submitted: true })
-            return (this.props.history.push(`../events/${eventId}`))
-
-
-            })
 
     };
 
+    // Function that populates drop down list 
+    // with users from db search
     populateList() {
-        //let userMatch;
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
           return <button onClick={
@@ -66,17 +61,14 @@ class UserSearch extends Component {
     }
 
 
-
+    // form to search for users to save to an event 
+    // and link back to that event
     render() {
       const eventId = this.props.match.params.eventId;
-      console.log('submitted', this.state.submitted);
-        // if (this.state.submitted) {
-        //   console.log('this.state.submitted = true');
-        //  return  <Redirect to={`../events/${eventId}`} />
-
-        // }
-
+      const link = `/events/${eventId}`
+      
       return(
+
             <div>
                 <h3>Add Users</h3>
                 <form>
@@ -90,7 +82,9 @@ class UserSearch extends Component {
                     />
                     <br />
                     <div id="list">{this.populateList()}</div>
+
                 </form>
+                <Link to= {link} >Back to Event</Link>
             </div>
 
         );

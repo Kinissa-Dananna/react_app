@@ -47,7 +47,7 @@ class SingleEventView extends Component {
 		const attendees = this.state.attendees.map((user, key) => {
 				return <p key={key} >{user.name}</p>
 			})
-		const link = `/events/${eventId}/user-search/`
+		const link = `/events/${eventId}/user-search`
 		return(
 			<div className="single-event">
 				<div className="event-info">
