@@ -8,6 +8,7 @@ import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
 import EventsList from './EventsList';
 import SingleEventView from './SingleEventView';
+import UserSearch from './UserSearch';
 
 class BarCrawl extends Component {
 	constructor(props) {
@@ -37,13 +38,14 @@ class BarCrawl extends Component {
 				/>
 				<Route exact path="/events/new" render={props => (
 					<CreateEventForm
-						{...props} {...this.props} />
+						{...props} {...this.props} 
+						/>
 					)} />
 				<Route exact path="/events" render={props => (
 					<EventsList
 					 	{...props}  {...this.props}
-							/>
-						)} />
+						/>
+					)} />
 				<Route exact path="/events/:id" render={props => (
 					<SingleEventView
 					{...props} {...this.props}
@@ -53,13 +55,17 @@ class BarCrawl extends Component {
 					<SingleBarView
 						{...props} {...this.props}
 						/>
-						)}
-					/>
-					<Route exact path="/events/:eventId/addBar" render={props => (
-						<BarSearch
-							{...props} {...this.props}
-						 	/>
-						)} />
+					)}/>
+				<Route exact path="/events/:eventId/addBar" render={props => (
+					<BarSearch
+						{...props} {...this.props}
+					 	/>
+					)} />
+				<Route exact path="/events/:eventId/user-search" render={props => (
+					<UserSearch
+						{...props} {...this.props}
+					 	/>
+					)} />
 			</Switch>
 			</main>
 			</div>

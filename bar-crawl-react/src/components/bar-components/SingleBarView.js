@@ -3,6 +3,7 @@ import React, { Component } from "react";
 // import NavBar from './NavBar.js';
 // import map from './map.js';
 // import Iframe from 'react-iframe';
+import UserSearch from './UserSearch.js'
 import axios from 'axios';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 

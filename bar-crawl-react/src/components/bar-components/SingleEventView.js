@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 // import EventsBar from './EventsBar.js';
+import UserSearch from './UserSearch.js'
 import axios from 'axios';
 
 class SingleEventView extends Component {
@@ -40,13 +41,13 @@ class SingleEventView extends Component {
 		const bars = this.state.bars.map((bar) => {
 			//console.log(bar.name);
 				return (
-					<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
+					<Link to={`/events/${eventId}/bars/${bar.id}`} key={bar.id}>{bar.name}<br /></Link>
 				)
 			})
 		const attendees = this.state.attendees.map((user, key) => {
-			console.log(user.name);
-				return <p id={key} >{user.name}</p>
+				return <p key={key} >{user.name}</p>
 			})
+		const link = `/events/${eventId}/user-search/`
 		return(
 			<div className="single-event">
 				<div className="event-info">
@@ -58,12 +59,13 @@ class SingleEventView extends Component {
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>
-					<p>{bars}</p>
+					<div>{bars}</div>
 				</div>
 				<div className="attendees-info">
 					<h4>Attending:</h4>
-					<p>{attendees}</p>
+					<div>{attendees}</div>
 				</div>
+				<Link to= {link} >Add User</Link>
 			</div>
 		);
 	}
