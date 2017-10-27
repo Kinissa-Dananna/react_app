@@ -5,6 +5,7 @@ import Iframe from 'react-iframe'
 import axios from 'axios'
 
 
+
 class SingleBarView extends Component {
 	constructor(props){
 		super(props);
