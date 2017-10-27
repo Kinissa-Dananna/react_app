@@ -7,7 +7,7 @@ class EventForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nameOfEvent: '',
+			name: '',
 			description: '',
 			time: '',
 			submitted: false,
@@ -21,7 +21,7 @@ class EventForm extends Component {
 
 	changeNameOfEvent(event) {
 		event.preventDefault();
-		this.setState({ nameOfEvent: event.target.value });
+		this.setState({ name: event.target.value });
 	};
 
 	changeDescription(event) {
@@ -37,9 +37,9 @@ class EventForm extends Component {
 	onSubmit(event) {
 		console.log('submit clicked');
 		event.preventDefault();
-		const { nameOfEvent, description, time } = this.state;
+		const { name, description, time } = this.state;
 		axios.post(`http://localhost:8080/events?auth_token=${this.props.user.token}`,
-			{ nameOfEvent, description, time })
+			{ name, description, time })
 			.then(response => {
 				console.log(response);
 				const { id } = response.data;
@@ -60,7 +60,7 @@ class EventForm extends Component {
 							Name of Event:
           <input
 								type='text'
-								value={this.state.nameOfEvent}
+								value={this.state.name}
 								onChange={this.changeNameOfEvent}
 							/>
 						</label>
@@ -77,7 +77,7 @@ class EventForm extends Component {
 						<label>
 							Time:
             <input
-								type='text'
+								type='datetime-local'
 								value={this.state.time}
 								onChange={this.changeTime}
 							/>
