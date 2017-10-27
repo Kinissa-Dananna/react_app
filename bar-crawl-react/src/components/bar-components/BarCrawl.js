@@ -9,6 +9,7 @@ import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
 import SingleBarSearched from './SingleBarSearched'
 import SingleEventView from './SingleEventView';
+import UserSearch from './UserSearch.js';
 import EventsList from './EventsList';
 
 class BarCrawl extends Component {
@@ -82,6 +83,11 @@ class BarCrawl extends Component {
 							{...props} {...this.props}
 						 	/>
 						)} />
+						<Route exact path="/events/:eventId/user-search" render={props => (
+							<UserSearch
+								{...props} {...this.props}
+							 	/>
+							)} />
 			</Switch>
 			</main>
 			</div>

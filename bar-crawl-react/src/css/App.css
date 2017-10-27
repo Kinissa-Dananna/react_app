@@ -337,6 +337,11 @@ button:hover{
   justify-content: flex-end;
 }
 
+.single-event .attendees img {
+  min-height: 30px;
+  min-width: 30px;
+}
+
 .events-card {
   flex-direction: row;
   width: 25%%;
