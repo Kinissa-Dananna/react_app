@@ -105,6 +105,21 @@ header .border-bottom button#add-event {
   padding: 0.5em;
 }
 
+header .border-bottom a {
+  border-radius: 10px;
+  background-color: #252525;
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  color: #FFF;
+  font-size: 18px;
+  border: 1px solid black;
+  padding: 0.68em;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
 
 /* ============================ AUTH FORM JACKIE ============================ */
 
