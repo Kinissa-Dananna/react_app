@@ -6,7 +6,7 @@ import BarSearch from './BarSearch';
 import EventCard from './EventCard';
 import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
-import ShowEvents from './EventsList';
+import EventsList from './EventsList';
 import SingleEventView from './SingleEventView';
 
 class BarCrawl extends Component {
@@ -27,7 +27,8 @@ class BarCrawl extends Component {
 		return (
 			<div className="bar-crawl">
 				<NavBar logout={this.props.logout} />
-				<EventsBar />
+				<main>
+				<EventsBar {...this.props} />
 				<Switch>
 				<Route
 					exact
@@ -39,28 +40,28 @@ class BarCrawl extends Component {
 						{...props} {...this.props} />
 					)} />
 				<Route exact path="/events" render={props => (
-					<ShowEvents
+					<EventsList
 					 	{...props}  {...this.props}
 							/>
 						)} />
 				<Route exact path="/events/:id" render={props => (
 					<SingleEventView
 					{...props} {...this.props}
-
 				 		/>
 					)} />
-				<Route exact path="/events/:eventId/addBar" render={props => (
-					<BarSearch
-						{...props} {...this.props}
-					 	/>
-					)} />
-				<Route exact path="/event/:eventId/bars/:id" render={props => (
+				<Route exact path="/events/:eventId/bars/:id" render={props => (
 					<SingleBarView
 						{...props} {...this.props}
 						/>
 						)}
 					/>
+					<Route exact path="/events/:eventId/addBar" render={props => (
+						<BarSearch
+							{...props} {...this.props}
+						 	/>
+						)} />
 			</Switch>
+			</main>
 			</div>
 		);
 	}

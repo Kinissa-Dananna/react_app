@@ -14,7 +14,13 @@ body, html{
   -ms-flex-direction: column;
   flex-direction: column;
 }
-
+.align-left {
+  text-align: left;
+}
+.align-center {
+  margin: 0 auto;
+  text-align: center;
+}
 /* ============================ HEADER  ============================ */
 
 header {
@@ -263,58 +269,124 @@ button:hover{
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+  flex-wrap: nowrap;
+}
+.bar-crawl main {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction:row;
+  -ms-flex-direction:row;
+  flex-direction:row;
+  flex-wrap: nowrap;
 }
 .bar-crawl .sidebar {
+  margin-top: 4px;
+  padding-top: 2%;
+  margin-right: 2%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
-  width: 30%;
-  min-width: 300px;
+  width: 25%;
+  min-width: 250px;
   min-height: 300px;
-  order: 1;
+  height: 100%;
+  /*order: 1;*/
   justify-content: flex-start;
   align-self: flex-start;
+  background-color: #343434;
 }
 .bar-crawl .sidebar li {
   list-style: none;
   text-align: left;
 }
-.events-list {
-  width: 60%;
-  min-width: 600px;
-  flex-direction: row;
-  order: 2;
+.bar-crawl .sidebar li a {
+  color: #840d00;
+  font-size: 18px;
+  text-decoration: none;
+  text-shadow: 1px 1px black;
+}
+
+/* ============================ EVENTS PAGE ============================ */
+.events-list ul {
+  width: 70%;
+  min-width: 500px;
+
 }
 .single-event {
   width: 60%;
   min-width: 600px;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
   flex-direction: row;
   justify-content: flex-end;
-  order: 2;
 }
 
-/* ============================ EVENTS PAGE ============================ */
-
-.event-card {
+.events-card {
   flex-direction: row;
+  width: 25%%;
+  padding: 0.5em;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+}
+.events-card li.events-item {
+  flex-direction: row;
+  padding: 0.8em;
+  margin-right: 0.4em;
+  border: 4px solid #464646;
+  border-radius: 8px;
+  list-style: none;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 25%;
   min-width: 200px;
   text-align: left;
-  padding: 1em;
-  border: 2px solid #464646;
-  border-radius: 4px;
+  background-color: #450700;
+  color: white;
+
 }
-.event-card li {
-  list-style: none;
+.events-card li.events-item:hover {
+  background-color: #610a00;
 }
-.event-card li h4 {
+.events-card li h4 {
   font-size: 20px;
 }
-/* ============================ SINGLE BAR VIEW ============================ */
-/*.map {
-  min-width: 200px;
-  min-height: 200px;
+.events-card li h4 a {
+  color: #D11400;
+  text-decoration: none;
+  text-shadow: 1px 1px black;
 }
-.map map{
-  width: 200px;
-  height: 200px;
-}*/
+/* ============================ SINGLE BAR VIEW ============================ */
+.single-bar {
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+
+  width: 60%;
+  max-width: 900px;
+  margin-top: 3%;
+}
+.single-bar .bar-info {
+  width: 30%;
+  min-width: 300px;
+}
+.single-bar .bar-info .bar-status{
+  color: #D11400;
+  text-shadow: 1px 1px black;
+}
+.map {
+  margin-right: 4%;
+  width: 30%;
+  min-width: 400px;
+  min-height: 400px;
+  flex-direction: row;
+}
+.map img{
+}
