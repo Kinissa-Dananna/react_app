@@ -66,6 +66,8 @@ class SingleBarView extends Component {
 				</div>
 				<div className="bar-info">
 				<h2>{name}</h2>
+				<p>{address.street}</p>
+				<p>{address.city}</p>
 				<p className="bar-status">{this.currentStatus()}</p>
 				{{isOpen} &&
 					<p className="align-left">{hoursUntilClosed}</p>

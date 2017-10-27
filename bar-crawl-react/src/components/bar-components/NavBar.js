@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../../images/Logo-V01.png';
+import EventForm from './EventForm.js';
 
 
 class NavBar extends Component {
@@ -29,7 +30,9 @@ class NavBar extends Component {
             <button onClick={this.props.logout}>logout</button>
           </li>
         </nav>
-        <div className="border-bottom"></div>
+        <div className="border-bottom">
+          <Link to='/events/new'>Create Event</Link>
+        </div>
       </header>
 		);
 	}
