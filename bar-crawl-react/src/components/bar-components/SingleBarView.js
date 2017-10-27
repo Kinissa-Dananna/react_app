@@ -57,7 +57,12 @@ class SingleBarView extends Component {
 		return(
 			<div className="single-bar">
 				<div className="map">
-					<img src={map} alt="map" />
+					<iframe
+							width="400"
+							height="500"
+							src={map} >
+						</iframe>
+					{/* <img src={map} alt="map" /> */}
 				</div>
 				<div className="bar-info">
 				<h2>{name}</h2>
