@@ -1,16 +1,24 @@
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import UserSearch from './UserSearch.js';
+=======
+import React, {Component} from "react";
+import {Link} from "react-router-dom";
+// import EventsBar from './EventsBar.js';
+>>>>>>> 4ffb9b1e68c52d58cdb281d550493090d6cb6073
 import axios from 'axios';
 
 class SingleEventView extends Component {
-	constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
       event: [],
       bars:[],
       attendees:[],
 			deleted: false
+      bars: [],
+      attendees: []
     }
 		this.deleteEvent = this.deleteEvent.bind(this);
   }
@@ -54,7 +62,7 @@ class SingleEventView extends Component {
 			console.log(user.image);
 				return <img src={user.image} key={i} />
 			})
-			
+
 		return(
 			<div className="single-event">
 				<div className="event-info">
@@ -78,6 +86,7 @@ class SingleEventView extends Component {
 			</div>
 		);
 	}
+
 }
 
 export default SingleEventView;

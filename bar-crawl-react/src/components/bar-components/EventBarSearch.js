@@ -5,9 +5,9 @@ import SearchForm from './SearchForm';
 import Autocomplete from './Autocomplete';
 import axios from 'axios';
 
-// component for searching through bars, while not linked to a specific event
-class BarSearch extends Component {
-	constructor(props){
+// component for searching for bars after clicking 'add bar' on an event page
+class EventBarSearch extends Component {
+  constructor(props){
 		super(props);
 		this.state ={
       eventId: null,
@@ -20,7 +20,7 @@ class BarSearch extends Component {
 		this.getBarResults = this.getBarResults.bind(this);
     this.searchNearby = this.searchNearby.bind(this);
     this.searchWithInput = this.searchWithInput.bind(this);
-		this.searchLocations = this.searchLocations.bind(this);
+    this.searchLocations = this.searchLocations.bind(this);
 	}
 
   componentDidMount(){
@@ -55,8 +55,6 @@ searchLocations(input) {
 		})
 	}
 
-
-
 // populate autofilled search results
 getBarResults(input) {
 if (input.length === 0) {
@@ -90,19 +88,20 @@ searchWithInput(bar) {
 }
 
 
+
 	render(){
 
 		return(
 			<div className="bar-search">
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
-					results={this.state.locationResults} barResults={this.state.barResults}
-				eventId={this.state.eventId} currentLocation={this.state.currentLocation}
-				url={`/bars/search/`}/>
+          results={this.state.locationResults} barResults={this.state.barResults}
+        eventId={this.state.eventId}
+      url={`/events/${this.state.eventId}/addBar/`}/>
 
 			</div>
 		);
 	}
 }
 
-export default BarSearch;
+export default EventBarSearch;
