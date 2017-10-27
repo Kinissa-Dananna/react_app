@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import EventsBar from './EventsBar.js';
 import axios from 'axios';
 
@@ -15,14 +15,14 @@ class SingleEventView extends Component {
 
 	// function that gets information from the database for a single event
   	componentDidMount() {
-			console.log(this.props.match);
+			//console.log(this.props.match);
 	    const eventId = this.props.match.params.id;
-			console.log(eventId);
+			//console.log(eventId);
 		setTimeout(() => {
 		  	axios
-			  	.get(`http://localhost:8080/events/${eventId}`)
+			  	.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			    .then(response => {
-						console.log(response.data.bars)
+						//console.log(response.data.bars)
 		        	this.setState({
 								event: response.data,
 								bars: response.data.bars,
@@ -36,13 +36,16 @@ class SingleEventView extends Component {
 	// Formatted information for a single event
 	render(){
 		const { name, description, time } = this.state.event;
+		const eventId = this.props.match.params.id;
 		const bars = this.state.bars.map((bar) => {
-			console.log(bar.name);
-				return <p>{bar.name}</p>
+			//console.log(bar.name);
+				return (
+					<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
+				)
 			})
-		const attendees = this.state.attendees.map((user) => {
+		const attendees = this.state.attendees.map((user, key) => {
 			console.log(user.name);
-				return <p>{user.name}</p>
+				return <p id={key} >{user.name}</p>
 			})
 		return(
 			<div className="single-event">
