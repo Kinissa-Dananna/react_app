@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import Autocomplete from './Autocomplete'
 
 class SearchForm extends Component {
@@ -12,6 +13,7 @@ class SearchForm extends Component {
       this.handleLocationChange = this.handleLocationChange.bind(this);
       this.handleQueryChange = this.handleQueryChange.bind(this);
       this.onSubmit = this.onSubmit.bind(this);
+      this.updateInput = this.updateInput.bind(this);
 
     }
     // controlled input
@@ -26,6 +28,10 @@ class SearchForm extends Component {
       });
     }
 
+    updateInput(name) {
+      this.setState({locationValue: name});
+    }
+
     handleQueryChange(event) {
       event.preventDefault();
       this.setState({
@@ -34,23 +40,24 @@ class SearchForm extends Component {
     }
     // submitting instead of clicking a result
     onSubmit(event) {
+      console.log('searching');
       event.preventDefault();
-      console.log(this.state.locationValue);
-      this.props.searchWithInput(this.state.locationValue);
-      this.setState({locationValue: ''});
+      console.log(this.state.queryValue);
+      this.props.searchWithInput(this.state.queryValue);
     }
 
     render() {
       return (
         <div>
-          <form className='search-form' onSubmit={this.onSubmit}>
 
             <div className='location-search'><input className='location-bar' type='text' placeholder='search for a location'
               value={this.state.locationValue} onChange={this.handleLocationChange}/>
-            <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results}/></div>
+            <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results} updateInput={this.updateInput}/></div>
+            <form className='search-form' onSubmit={this.onSubmit}>
             <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange}/>
+            </form>
+            {this.props.barResults.map((bar, i) => <Link to={`/bars/search/${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
 
-          </form>
 
         </div>
       );

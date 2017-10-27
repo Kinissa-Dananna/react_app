@@ -12,7 +12,8 @@ class Autocomplete extends Component {
   onClick(event) {
     const placeId = event.target.dataset.placeid;
     const name = event.target.dataset.text;
-    this.props.saveLocation(placeId, name);
+    this.props.searchNearby(placeId, name);
+    this.props.updateInput(name);
   }
 
   render() {

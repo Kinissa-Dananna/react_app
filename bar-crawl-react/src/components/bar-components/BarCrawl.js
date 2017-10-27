@@ -3,9 +3,11 @@ import { Switch, Route, Link, Redirect } from "react-router-dom";
 import CreateEventForm from './EventForm';
 import NavBar from './NavBar.js';
 import BarSearch from './BarSearch';
+import EventBarSearch from './EventBarSearch';
 import EventCard from './EventCard';
 import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
+import SingleBarSearched from './SingleBarSearched'
 import ShowEvents from './EventsList';
 import SingleEventView from './SingleEventView';
 
@@ -50,10 +52,20 @@ class BarCrawl extends Component {
 				 		/>
 					)} />
 				<Route exact path="/events/:eventId/addBar" render={props => (
-					<BarSearch
+					<EventBarSearch
 						{...props} {...this.props}
 					 	/>
 					)} />
+					<Route exact path="/bars/search" render={props => (
+						<BarSearch
+							{...props} {...this.props}
+						 	/>
+						)} />
+						<Route exact path="/bars/search/:barId" render={props => (
+							<SingleBarSearched
+								{...props} {...this.props}
+							 	/>
+							)} />
 				<Route exact path="/event/:eventId/bars/:id" render={props => (
 					<SingleBarView
 						{...props} {...this.props}
