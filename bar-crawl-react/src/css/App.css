@@ -318,3 +318,16 @@ button:hover{
   width: 200px;
   height: 200px;
 }*/
+
+/* ============================ SEARCH BAR VIEW ============================ */
+
+.location-search {
+  height: 200px;
+}
+
+.location-result {
+  border: 1px solid black;
+  background-color: white;
+  margin: 0 25%;
+  height: 30px;
+}
