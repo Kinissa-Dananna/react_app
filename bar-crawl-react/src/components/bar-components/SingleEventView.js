@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import EventsBar from './EventsBar.js';
+import UserSearch from './UserSearch.js';
 import axios from 'axios';
 
 class SingleEventView extends Component {
@@ -61,6 +61,7 @@ class SingleEventView extends Component {
 				<div className="attendees-info">
 					<h4>Attending:</h4>
 					<p>{attendees}</p>
+					<Link to={`/events/${eventId}/user-search`} {...this.props} >Add Users </Link>
 				</div>
 			</div>
 		);

@@ -91,7 +91,7 @@ class EventForm extends Component {
 						<label>
 							Time:
             <input
-								type='text'
+								type="datetime-local"
 								value={this.state.time}
 								onChange={this.changeTime}
 							/>
