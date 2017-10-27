@@ -14,11 +14,15 @@ class SingleBarSearched extends Component {
 		this.state ={
 			barInfo: [],
 			haveData: false,
-      added: false
+      added: 'false',
+      ownedEvents: [],
+      eventId: ''
 		}
 
 		this.currentStatus = this.currentStatus.bind(this);
     this.addBarToEvent = this.addBarToEvent.bind(this);
+    this.getEventsToAddTo = this.getEventsToAddTo.bind(this);
+    this.addBarToChosenEvent = this.addBarToChosenEvent.bind(this);
 	}
 
 	// function that gets information from localhost for a single bar
@@ -44,7 +48,16 @@ class SingleBarSearched extends Component {
 		}
 	}
 
-  addBarToEvent() {
+  getEventsToAddTo() {
+    axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
+					.then(response => {
+            console.log('response', response);
+						this.setState({ownedEvents: response.data})
+					});
+  }
+
+  addBarToEvent(e) {
+    e.preventDefault();
     const barId = this.props.match.params.barId;
     console.log(barId);
     const { name, lat, long } = this.state.barInfo;
@@ -57,7 +70,24 @@ class SingleBarSearched extends Component {
       long: long
     }
     axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
-    .then(res => this.setState({added: true}))
+    .then(res => this.setState({added: 'fromEvent'}))
+  }
+
+  addBarToChosenEvent(e) {
+    e.preventDefault();
+    const barId = this.props.match.params.barId;
+    console.log(barId);
+    const { name, lat, long } = this.state.barInfo;
+    const eventId = e.target.dataset.id;
+    const newData = {
+      barId: barId,
+      eventId: eventId,
+      name: name,
+      lat: lat,
+      long: long
+    }
+    axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
+    .then(res => this.setState({added: 'toEvent', eventId: eventId}))
   }
 
 	// Formatted information for a single bar
@@ -95,7 +125,12 @@ class SingleBarSearched extends Component {
       <Route exact path="/events/:eventId/addBar/:barId" render={props => (
         <button onClick={this.addBarToEvent}>Add this bar</button>
         )} />
-        {this.state.added && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
+      <Route exact path="/bars/search/:barId" render={props => (
+          <div><button onClick={this.getEventsToAddTo}>Add this bar to an event</button>
+          <div>{this.state.ownedEvents.map((event, i) => <div><a href='/' data-id={event.id} key={i} onClick={this.addBarToChosenEvent}>{event.name}</a></div>)}</div></div>
+          )} />
+        {this.state.added === 'fromEvent' && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
+        {this.state.added === 'toEvent' && <Redirect to={`/events/${this.state.eventId}`}/>}
     </div>
     )}
   }

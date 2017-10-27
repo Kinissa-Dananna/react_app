@@ -19,6 +19,7 @@ class BarSearch extends Component {
 		this.getBarResults = this.getBarResults.bind(this);
     this.searchNearby = this.searchNearby.bind(this);
     this.searchWithInput = this.searchWithInput.bind(this);
+		this.searchLocations = this.searchLocations.bind(this);
 	}
 
   componentDidMount(){
@@ -40,6 +41,20 @@ getLocationResults(input) {
 		})
 	}
 }
+
+searchLocations(input) {
+	console.log(input.length);
+		axios.get(`http://localhost:8080/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
+			console.log(response.data.searchLocation.description);
+			this.setState({
+				currentLocation: response.data.searchLocation.description,
+				barResults: response.data.results,
+				locationResults: []
+			});
+		})
+	}
+
+
 
 // populate autofilled search results
 getBarResults(input) {
@@ -79,7 +94,7 @@ searchWithInput(bar) {
 		return(
 			<div className="bar-search">
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
-					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby}
+					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
 					results={this.state.locationResults} barResults={this.state.barResults}
 				eventId={this.state.eventId} currentLocation={this.state.currentLocation}
 				url={`/bars/search/`}/>
