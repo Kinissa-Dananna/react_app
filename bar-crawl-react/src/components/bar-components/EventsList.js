@@ -12,6 +12,7 @@ class EventsList extends Component {
 		}
 	}
 	componentDidMount() {
+		console.log(this.props.user.token);
 		axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
 					.then(response => {
             console.log('response', response);
