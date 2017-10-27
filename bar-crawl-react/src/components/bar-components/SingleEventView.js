@@ -53,7 +53,7 @@ class SingleEventView extends Component {
 					<p>{description}</p>
 					<h4>Start Time:</h4>
 					<p>{time}</p>
-					<Link to={`/events/${this.props.match.params.id}/addBar`}>Add another bar</Link>
+					{(this.state.event.ownerid === Number(this.props.user.id)) && <Link to={`/events/${this.props.match.params.id}/addBar`}>Add another bar</Link>}
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>
