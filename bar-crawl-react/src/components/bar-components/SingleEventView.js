@@ -10,7 +10,9 @@ class SingleEventView extends Component {
       event: [],
       bars:[],
       attendees:[],
+			deleted: false
     }
+		this.deleteEvent = this.deleteEvent.bind(this);
   }
 
 	// function that gets information from the database for a single event
@@ -29,7 +31,13 @@ class SingleEventView extends Component {
 							})
 		        });
 		}
-
+	deleteEvent(id){
+		//event.preventDefault();
+		//const eventId = Number(this.props.match.params.id);
+		console.log(id);
+		axios.delete(`/events/${id}?auth_token=${this.props.user.token}`);
+		this.setState({deleted: true});
+	}
 
 	// Formatted information for a single event
 	render(){
@@ -41,9 +49,9 @@ class SingleEventView extends Component {
 					<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
 				)
 			})
-		const attendees = this.state.attendees.map((user, key) => {
-			console.log(user.name);
-				return <p id={key} >{user.name}</p>
+		const attendees = this.state.attendees.map((user, i) => {
+			//console.log(user.name);
+				return <p key={i} >{user.name}</p>
 			})
 		return(
 			<div className="single-event">
@@ -63,6 +71,8 @@ class SingleEventView extends Component {
 					<p>{attendees}</p>
 					<Link to={`/events/${eventId}/user-search`} {...this.props} >Add Users </Link>
 				</div>
+
+				<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
 			</div>
 		);
 	}

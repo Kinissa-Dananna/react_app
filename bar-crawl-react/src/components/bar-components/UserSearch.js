@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 class UserSearch extends Component {
@@ -15,6 +15,7 @@ class UserSearch extends Component {
         this.autocompleteUser = this.autocompleteUser.bind(this);
         this.onClickUser = this.onClickUser.bind(this);
         this.populateList = this.populateList.bind(this);
+        this.redirectPage = this.redirectPage.bind(this);
 
     };
 
@@ -43,38 +44,34 @@ class UserSearch extends Component {
         axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
             { eventId, userId })
             .then(response => {
-              // this.setState({
-              //   submitted: true })
-            return (this.props.history.push(`../events/${eventId}`))
-
-
+              //return this.props.history.push(`../events/${eventId}`);
+              return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
             })
-
+      this.setState({ submitted: true })
     };
 
     populateList() {
         //let userMatch;
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <button onClick={
-              () => {this.onClickUser(user)}
-            } id={user.userId} key={i}>
-            {user.userName}
-            </button>;
+          return <button onClick={  () => {this.onClickUser(user)} }
+                    id={user.userId} key={i}>
+                    {user.userName}
+                  </button>;
 
         }) }
     }
-
-
+    redirectPage() {
+      const eventId = this.props.match.params.eventId;
+       if (this.state.submitted) {
+        console.log('this.state.submitted = true');
+       return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
+      }
+    }
 
     render() {
       const eventId = this.props.match.params.eventId;
       console.log('submitted', this.state.submitted);
-        // if (this.state.submitted) {
-        //   console.log('this.state.submitted = true');
-        //  return  <Redirect to={`../events/${eventId}`} />
-
-        // }
 
       return(
             <div>
@@ -91,6 +88,7 @@ class UserSearch extends Component {
                     <br />
                     <div id="list">{this.populateList()}</div>
                 </form>
+                {this.redirectPage()}
             </div>
 
         );

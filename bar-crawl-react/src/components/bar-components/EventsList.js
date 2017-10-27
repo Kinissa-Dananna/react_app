@@ -20,11 +20,12 @@ class EventsList extends Component {
 	}
 	eventsItem({ownerId, name, description, time, id}, i){
 		return(
+			<Link to={`/events/${id}`}>
 			<li className="events-item" key={i.toString()}>
-				<h4> <Link to={`/events/${id}`}>{name}</Link></h4>
+				<h4> {name}</h4>
 				<p>{description}</p>
 				<p>{time}</p>
-			</li>
+			</li></Link>
 			);
 	}
 
