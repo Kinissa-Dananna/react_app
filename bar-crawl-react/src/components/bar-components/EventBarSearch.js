@@ -4,6 +4,7 @@ import NavBar from './NavBar.js';
 import SearchForm from './SearchForm';
 import Autocomplete from './Autocomplete';
 import axios from 'axios';
+import EventsBar from './EventsBar';
 
 // component for searching for bars after clicking 'add bar' on an event page
 class EventBarSearch extends Component {
@@ -92,6 +93,8 @@ searchWithInput(bar) {
 	render(){
 
 		return(
+      <main>
+      <EventsBar {...this.props} />
 			<div className="bar-search">
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
@@ -100,6 +103,7 @@ searchWithInput(bar) {
       url={`/events/${this.state.eventId}/addBar/`}/>
 
 			</div>
+    </main>
 		);
 	}
 }

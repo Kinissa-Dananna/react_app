@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Autocomplete from './Autocomplete'
+import EventsBar from './EventsBar';
 
 class SearchForm extends Component {
   constructor(props) {

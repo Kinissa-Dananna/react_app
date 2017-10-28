@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import axios from 'axios';
+import EventsBar from './EventsBar';
 
 class UserSearch extends Component {
     constructor(props) {
@@ -82,6 +83,8 @@ class UserSearch extends Component {
       console.log('submitted', this.state.submitted);
 
       return(
+        <main>
+				<EventsBar {...this.props} />
             <div>
                 <h3>Add Users</h3>
                 <form>
@@ -98,6 +101,7 @@ class UserSearch extends Component {
                 </form>
                 {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
+          </main>
 
         );
     }
