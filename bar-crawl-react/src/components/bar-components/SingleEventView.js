@@ -53,7 +53,6 @@ class SingleEventView extends Component {
 	}
 
 
-	deleteEvent() {
   // function that deletes this event from the database
 	deleteEvent(eventId) {
 		console.log('delete click')
