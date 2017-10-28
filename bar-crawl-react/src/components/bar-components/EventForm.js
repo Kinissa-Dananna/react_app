@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import NavBar from './NavBar.js';
+import EventsBar from './EventsBar';
 
 class EventForm extends Component {
 	constructor(props) {
@@ -62,39 +63,43 @@ class EventForm extends Component {
 			return <Redirect to={`/`} />
 		}
 		return (
-			<div className="event-form">
-				<h3>New Event</h3>
-				<form onSubmit={this.onSubmit}>
-					<label>
-						Name of Event:
-        				<input
-							type='text'
-							value={this.state.name}
-							onChange={this.changeNameOfEvent}
-						/>
-					</label>
-					<br />
-					<label>
-						Description:
-          				<input
-							type='text'
-							value={this.state.description}
-							onChange={this.changeDescription}
-						/>
-					</label>
-					<br />
-					<label>
-						Time:
-			            <input
-							type='datetime-local'
-							value={this.state.time}
-							onChange={this.changeTime}
-						/>
-					</label>
-					<br />
-					<input type='submit' value='Submit' />
-				</form>
-			</div>
+			<main>
+			<EventsBar {...this.props} />
+
+				<div className="event-form">
+					<h3>New Event</h3>
+					<form onSubmit={this.onSubmit}>
+						<label>
+							Name of Event:
+          <input
+								type='text'
+								value={this.state.name}
+								onChange={this.changeNameOfEvent}
+							/>
+						</label>
+						<br />
+						<label>
+							Description:
+          <input
+								type='text'
+								value={this.state.description}
+								onChange={this.changeDescription}
+							/>
+						</label>
+						<br />
+						<label>
+							Time:
+            <input
+								type='datetime-local'
+								value={this.state.time}
+								onChange={this.changeTime}
+							/>
+						</label>
+						<br />
+						<input type='submit' value='Submit' />
+					</form>
+				</div>
+			</main>
 		);
 	}
 

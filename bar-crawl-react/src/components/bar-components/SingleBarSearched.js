@@ -6,6 +6,7 @@ import Iframe from 'react-iframe';
 import axios from 'axios';
 import {Route, Redirect} from 'react-router-dom';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import EventsBar from './EventsBar';
 
 // single bar view, but for bars that have been searched for rather than saved in the db
 class SingleBarSearched extends Component {
@@ -111,6 +112,8 @@ class SingleBarSearched extends Component {
     //const map = this.state.map;
     console.log('map', map);
     return(
+      <main>
+      <EventsBar {...this.props} />
       <div className="single-bar">
         <div className="map">
           <iframe
@@ -144,6 +147,7 @@ class SingleBarSearched extends Component {
         <p className='error'>{this.state.error}</p>
     </div>
     </div>
+  </main>
     )}
   }
 }

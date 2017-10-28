@@ -4,7 +4,8 @@ import NavBar from './NavBar.js';
 import SearchForm from './SearchForm';
 import Autocomplete from './Autocomplete';
 import axios from 'axios';
- 
+import EventsBar from './EventsBar';
+
 // component for searching through bars, while not linked to a specific event
 class BarSearch extends Component {
 	constructor(props){
@@ -105,6 +106,8 @@ class BarSearch extends Component {
 	render(){
 
 		return(
+			<main>
+			<EventsBar {...this.props} />
 			<div className="bar-search">
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
@@ -113,6 +116,7 @@ class BarSearch extends Component {
 					url={`/bars/search/`}
 				/>
 			</div>
+		</main>
 		);
 	}
 }

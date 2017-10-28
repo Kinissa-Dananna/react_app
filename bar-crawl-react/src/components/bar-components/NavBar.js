@@ -17,10 +17,10 @@ class NavBar extends Component {
 			<header>
         <nav>
           <li>
-            <Link to="/barcrawl" > home </Link>
+          <Link to='/events/new'> create event </Link>
           </li>
           <li>
-            <Link to="/events" > events </Link>
+            <Link to="/events" > all events </Link>
           </li>
           <img className="logo" src={Logo} alt="logo"/>
           <li>
@@ -31,7 +31,7 @@ class NavBar extends Component {
           </li>
         </nav>
         <div className="border-bottom">
-          <Link to='/events/new'>Create Event</Link>
+
         </div>
       </header>
 		);

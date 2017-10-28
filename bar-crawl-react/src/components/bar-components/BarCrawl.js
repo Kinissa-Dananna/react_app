@@ -24,8 +24,6 @@ class BarCrawl extends Component {
 		return (
 			<div className="bar-crawl">
 				<NavBar logout={this.props.logout} />
-				<main>
-				<EventsBar {...this.props} />
 				<Switch>
 				<Route
 					exact
@@ -88,7 +86,6 @@ class BarCrawl extends Component {
 						 	/>
 						)} />
 			</Switch>
-			</main>
 			</div>
 		);
 	}
