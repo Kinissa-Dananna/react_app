@@ -19,21 +19,29 @@ class EventForm extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	};
 
+	// onChange function that updates the input value 
+	// of the name of the event
 	changeNameOfEvent(event) {
 		event.preventDefault();
 		this.setState({ name: event.target.value });
 	};
 
+	// onChange function that updates the input value 
+	// of the description of the event
 	changeDescription(event) {
 		event.preventDefault();
 		this.setState({ description: event.target.value });
-	};
+	}; 
 
+	// onChange function that updates the input value 
+	// of the time of the event
 	changeTime(event) {
 		event.preventDefault();
 		this.setState({ time: event.target.value })
 	};
 
+	// onSubmit function that saves the input 
+	// values to the database as a new event
 	onSubmit(event) {
 		console.log('submit clicked');
 		event.preventDefault();
@@ -47,46 +55,46 @@ class EventForm extends Component {
 			})
 	};
 
+	// function that renders a form to create a new event and 
+	// redirect to all events when the new event is submitted
 	render() {
 		if (this.state.submitted) {
 			return <Redirect to={`/`} />
 		}
 		return (
-
-				<div className="event-form">
-					<h3>New Event</h3>
-					<form onSubmit={this.onSubmit}>
-						<label>
-							Name of Event:
-          <input
-								type='text'
-								value={this.state.name}
-								onChange={this.changeNameOfEvent}
-							/>
-						</label>
-						<br />
-						<label>
-							Description:
-          <input
-								type='text'
-								value={this.state.description}
-								onChange={this.changeDescription}
-							/>
-						</label>
-						<br />
-						<label>
-							Time:
-            <input
-								type='datetime-local'
-								value={this.state.time}
-								onChange={this.changeTime}
-							/>
-						</label>
-						<br />
-						<input type='submit' value='Submit' />
-					</form>
-				</div>
-
+			<div className="event-form">
+				<h3>New Event</h3>
+				<form onSubmit={this.onSubmit}>
+					<label>
+						Name of Event:
+        				<input
+							type='text'
+							value={this.state.name}
+							onChange={this.changeNameOfEvent}
+						/>
+					</label>
+					<br />
+					<label>
+						Description:
+          				<input
+							type='text'
+							value={this.state.description}
+							onChange={this.changeDescription}
+						/>
+					</label>
+					<br />
+					<label>
+						Time:
+			            <input
+							type='datetime-local'
+							value={this.state.time}
+							onChange={this.changeTime}
+						/>
+					</label>
+					<br />
+					<input type='submit' value='Submit' />
+				</form>
+			</div>
 		);
 	}
 

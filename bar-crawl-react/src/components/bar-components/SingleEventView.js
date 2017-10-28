@@ -31,6 +31,7 @@ class SingleEventView extends Component {
 			});
 	}
 
+	// function that updates information from the database for a single event
 	componentDidUpdate(prevProps, newProps) {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
@@ -46,6 +47,7 @@ class SingleEventView extends Component {
 		}
 	}
 
+	// function that deletes this event from the database
 	deleteEvent() {
 		console.log('delete click')
 		const id = this.state.event.id;
@@ -59,7 +61,9 @@ class SingleEventView extends Component {
 			})
 	}
 
-	// Formatted information for a single event
+	// Formatted information for a single event link to pages to add bars
+	// and users to this event and to delete users from this event
+	// sets redirect to all events page if this event is deleted
 	render() {
 		const { name, description, time } = this.state.event;
 		const eventId = this.props.match.params.id;

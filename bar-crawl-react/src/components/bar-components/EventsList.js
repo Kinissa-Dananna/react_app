@@ -11,6 +11,9 @@ class EventsList extends Component {
 			events: []
 		}
 	}
+
+	// function that gets all data about this 
+	// user's owned events from the database
 	componentDidMount() {
 		console.log(this.props.user.token);
 		axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
@@ -19,6 +22,9 @@ class EventsList extends Component {
 						this.setState({events: response.data})
 					});
 	}
+
+	// function that formats data of the event card for an individual event 
+	// owned by the user into a list item, and creates a link to that event
 	eventsItem({ownerId, name, description, time, id}, i){
 		return(
 			<Link to={`/events/${id}`}>
@@ -30,20 +36,19 @@ class EventsList extends Component {
 			);
 	}
 
-	//function that maps over event cards and renders them in the page
-
+	// function that maps over event cards and renders 
+	// them as a list on the page
 	render() {
 		const eventsItems = this.state.events.map(this.eventsItem);
 		return(
 			 <div className='events-list'>
 			<ul>
-				{/* {eventsItems} */}
 				<EventCard eventsItems={eventsItems} />
 			</ul>
 			</div>
-			)
+		)
 	}
-
+ 
 
 }
 

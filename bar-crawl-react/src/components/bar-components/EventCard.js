@@ -6,6 +6,7 @@ class EventCard extends Component {
 		super(props);
 	}
 
+
 	render(){
 
 		return(
@@ -14,6 +15,6 @@ class EventCard extends Component {
 			</div>
 		);
 	}
-}
+} 
 
 export default EventCard;

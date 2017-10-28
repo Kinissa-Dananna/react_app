@@ -26,6 +26,6 @@ class EventEdit extends Component {
 	    );
 	}
 
-}
+} 
 
 export default EventEdit;
