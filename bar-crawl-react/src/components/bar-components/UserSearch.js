@@ -15,7 +15,7 @@ class UserSearch extends Component {
         this.autocompleteUser = this.autocompleteUser.bind(this);
         this.onClickUser = this.onClickUser.bind(this);
         this.populateList = this.populateList.bind(this);
-        this.redirectPage = this.redirectPage.bind(this);
+      //  this.redirectPage = this.redirectPage.bind(this);
 
     };
 
@@ -26,15 +26,20 @@ class UserSearch extends Component {
     };
 
     autocompleteUser(event) {
-        //event.preventDefault();
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
             .then(response => {
               console.log(response)
-              this.state.userOptions.push(response.data);
               this.setState({
+                userOptions: [response.data],
                 dataLoaded: true })
             })
+            .catch(err => {
+              this.setState({
+                userOptions: [],
+                dataLoaded: true })
+            }
+            )
     };
 
     onClickUser(user){
@@ -45,29 +50,32 @@ class UserSearch extends Component {
             { eventId, userId })
             .then(response => {
               //return this.props.history.push(`../events/${eventId}`);
-              return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
+              this.setState({ submitted: true })
+              //return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
             })
-      this.setState({ submitted: true })
     };
 
     populateList() {
         //let userMatch;
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <button onClick={  () => {this.onClickUser(user)} }
+          return <div><button className='autocomplete' onClick={  (e) => {
+            e.preventDefault();
+            this.onClickUser(user)
+          } }
                     id={user.userId} key={i}>
                     {user.userName}
-                  </button>;
+                  </button></div>;
 
         }) }
     }
-    redirectPage() {
-      const eventId = this.props.match.params.eventId;
-       if (this.state.submitted) {
-        console.log('this.state.submitted = true');
-       return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
-      }
-    }
+    // redirectPage() {
+    //   const eventId = this.props.match.params.eventId;
+    //    if (this.state.submitted) {
+    //     console.log('this.state.submitted = true');
+    //    return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
+    //   }
+    // }
 
     render() {
       const eventId = this.props.match.params.eventId;
@@ -88,7 +96,7 @@ class UserSearch extends Component {
                     <br />
                     <div id="list">{this.populateList()}</div>
                 </form>
-                {this.redirectPage()}
+                {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
 
         );

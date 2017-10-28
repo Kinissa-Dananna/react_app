@@ -31,6 +31,21 @@ class SingleEventView extends Component {
 			});
 	}
 
+	componentDidUpdate(prevProps, newProps) {
+		const eventId = this.props.match.params.id;
+		if (eventId !== prevProps.match.params.id) {
+		axios
+			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
+			.then(response => {
+				this.setState({
+					event: response.data,
+					bars: response.data.bars,
+					attendees: response.data.attendees
+				})
+			});
+		}
+	}
+
 	deleteEvent() {
 		console.log('delete click')
 		const id = this.state.event.id;
@@ -76,11 +91,12 @@ class SingleEventView extends Component {
 				<div className="bar-info">
 					<h4>Bars:</h4>
 					<p>{bars}</p>
+					<Link to={`/events/${eventId}/addBar`} {...this.props} ><button>Add Bars</button> </Link>
 				</div>
 				<div className="attendees-info">
 					<h4>Attending:</h4>
 					<div className="attendees">{attendees}</div>
-					<Link to={`/events/${eventId}/user-search`} {...this.props} >Add Users </Link>
+					<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>
 				</div>
 
 				<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>

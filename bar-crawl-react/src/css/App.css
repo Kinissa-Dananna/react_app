@@ -416,14 +416,30 @@ button:hover{
 }*/
 
 /* ============================ SEARCH BAR VIEW ============================ */
+.search-form {
+
+}
 
 .location-search {
   height: 200px;
+  margin: 0;
 }
 
 .location-result {
   border: 1px solid black;
   background-color: white;
-  margin: 0 25%;
+  margin: 0;
   height: 30px;
+}
+
+.autocomplete {
+  border: 1px solid black;
+  background-color: white;
+  margin: 0;
+  height: 30px;
+}
+
+.error {
+  color: #D11400;
+  text-shadow: 1px 1px black;
 }
