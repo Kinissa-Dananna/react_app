@@ -60,7 +60,7 @@ class UserSearch extends Component {
         return this.state.attendees.map((user, i) => {
         	console.log(user);
         	console.log(user.id)
-          return <div><img src={user.image} key={i} /><p>{user.userId}</p><button className='userList' onClick={  (e) => {
+          return <div><img src={user.image} key={i} /><p>{user.name}</p><button className='userList' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
