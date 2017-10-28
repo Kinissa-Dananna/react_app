@@ -85,6 +85,7 @@ class SingleEventView extends Component {
 					<p>{description}</p>
 					<h4>Start Time:</h4>
 					<p>{time}</p>
+					<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>
@@ -96,8 +97,6 @@ class SingleEventView extends Component {
 					<div className="attendees">{attendees}</div>
 					<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>
 				</div>
-
-				<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
 			</div>
 		);
 	}
