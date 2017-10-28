@@ -7,33 +7,26 @@ class EventForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			nameOfEvent: '',
+			name: '',
 			description: '',
-			address: '',
 			time: '',
 			submitted: false,
 			submittedId: null
 		};
 		this.changeNameOfEvent = this.changeNameOfEvent.bind(this);
 		this.changeDescription = this.changeDescription.bind(this);
-		this.changeAddress = this.changeAddress.bind(this);
 		this.changeTime = this.changeTime.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 	};
 
 	changeNameOfEvent(event) {
 		event.preventDefault();
-		this.setState({ nameOfEvent: event.target.value });
+		this.setState({ name: event.target.value });
 	};
 
 	changeDescription(event) {
 		event.preventDefault();
 		this.setState({ description: event.target.value });
-	};
-
-	changeAddress(event) {
-		event.preventDefault();
-		this.setState({ address: event.target.value });
 	};
 
 	changeTime(event) {
@@ -42,11 +35,13 @@ class EventForm extends Component {
 	};
 
 	onSubmit(event) {
+		console.log('submit clicked');
 		event.preventDefault();
-		const { nameOfEvent, description, address, time } = this.state;
+		const { name, description, time } = this.state;
 		axios.post(`http://localhost:8080/events?auth_token=${this.props.user.token}`,
-			{ nameOfEvent, description, address, time })
+			{ name, description, time })
 			.then(response => {
+				console.log(response);
 				const { id } = response.data;
 				this.props.history.push(`/events/${id}`); //probably need to change this.
 			})
@@ -58,14 +53,14 @@ class EventForm extends Component {
 		}
 		return (
 
-				<div>
+				<div className="event-form">
 					<h3>New Event</h3>
 					<form onSubmit={this.onSubmit}>
 						<label>
 							Name of Event:
           <input
 								type='text'
-								value={this.state.nameOfEvent}
+								value={this.state.name}
 								onChange={this.changeNameOfEvent}
 							/>
 						</label>
@@ -80,18 +75,9 @@ class EventForm extends Component {
 						</label>
 						<br />
 						<label>
-							Address:
-            <input
-								type='text'
-								value={this.state.address}
-								onChange={this.changeAddress}
-							/>
-						</label>
-						<br />
-						<label>
 							Time:
             <input
-								type='text'
+								type='datetime-local'
 								value={this.state.time}
 								onChange={this.changeTime}
 							/>
