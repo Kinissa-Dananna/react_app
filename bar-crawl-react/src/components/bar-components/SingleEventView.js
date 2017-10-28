@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import UserSearch from './UserSearch.js';
 import axios from 'axios';
+import moment from 'moment';
 
 class SingleEventView extends Component {
 	constructor(props) {
@@ -84,7 +85,10 @@ class SingleEventView extends Component {
 					<h4>Description:</h4>
 					<p>{description}</p>
 					<h4>Start Time:</h4>
-					<p>{time}</p>
+					{/* <p>{time}</p> */}
+          <p><em>{moment(time).format('dddd, MMMM Do, YYYY')}</em></p>
+          <p><em>{moment(time).format('@ h:mm a')}</em></p>
+
 					<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
 				</div>
 				<div className="bar-info">
