@@ -5,6 +5,7 @@ import React, { Component } from "react";
 // import Iframe from 'react-iframe';
 import axios from 'axios';
 import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import EventsBar from './EventsBar';
 
 
 class SingleBarView extends Component {
@@ -42,7 +43,7 @@ class SingleBarView extends Component {
 	deleteBar() {
 		console.log('delete click')
 		// const id = this.state.event.id;
-		const eventId = this.props.match.params.eventId;		
+		const eventId = this.props.match.params.eventId;
 		const barId = this.props.match.params.id;
 		console.log('eventId', eventId);
 		console.log('barid',barId);
@@ -76,6 +77,8 @@ class SingleBarView extends Component {
 			//const map = this.state.map;
 			console.log('map', map);
 			return (
+				<main>
+				<EventsBar {...this.props} />
 				<div className="single-bar">
 					<div className="map">
 						<iframe
@@ -101,6 +104,7 @@ class SingleBarView extends Component {
 						<button onClick={() => this.deleteBar(barId)} > Delete This Bar</button>
 					</div>
 				</div>
+			</main>
 			)
 		}
 	}

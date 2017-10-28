@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 import NavBar from './NavBar.js';
+import EventsBar from './EventsBar';
 
 class EventForm extends Component {
 	constructor(props) {
@@ -52,6 +53,8 @@ class EventForm extends Component {
 			return <Redirect to={`/`} />
 		}
 		return (
+			<main>
+			<EventsBar {...this.props} />
 
 				<div className="event-form">
 					<h3>New Event</h3>
@@ -86,7 +89,7 @@ class EventForm extends Component {
 						<input type='submit' value='Submit' />
 					</form>
 				</div>
-
+			</main>
 		);
 	}
 

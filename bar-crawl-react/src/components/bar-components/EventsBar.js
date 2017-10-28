@@ -20,6 +20,7 @@ class EventBar extends Component {
       this.setState({allEvents: response.data})
     });
   }
+	
   eventsItem({
     ownerId,
     name,

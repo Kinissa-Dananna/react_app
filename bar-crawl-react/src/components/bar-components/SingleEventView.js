@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import UserSearch from './UserSearch.js';
 import axios from 'axios';
+import EventsBar from './EventsBar';
 
 class SingleEventView extends Component {
 	constructor(props) {
@@ -29,7 +30,7 @@ class SingleEventView extends Component {
 			});
 	}
 
-	componentDidUpdate(prevProps, newProps) {
+	componentDidUpdate(prevProps, prevState) {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
 		axios
@@ -44,12 +45,9 @@ class SingleEventView extends Component {
 		}
 	}
 
-	deleteEvent() {
+	deleteEvent(eventId) {
 		console.log('delete click')
-		const id = this.state.event.id;
-		console.log('id', id);
-		axios.delete(`http://localhost:8080/events/${id}?auth_token=${this.props.user.token}`,
-			{ id })
+		axios.delete(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(res => {
 				console.log(res);
 				this.setState({ deleted: true });
@@ -78,6 +76,8 @@ class SingleEventView extends Component {
 		}
 
 		return (
+			<main>
+			<EventsBar {...this.props} />
 			<div className="single-event">
 				<div className="event-info">
 					<h2>{name}</h2>
@@ -97,8 +97,12 @@ class SingleEventView extends Component {
 					<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>
 				</div>
 
-				<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
+				<button onClick={(e) => {
+					e.preventDefault();
+					this.deleteEvent(eventId)
+				}} > Delete This Event </button>
 			</div>
+		</main>
 		);
 	}
 
