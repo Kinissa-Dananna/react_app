@@ -21,13 +21,18 @@ body, html{
   margin: 0 auto;
   text-align: center;
 }
+a {
+  color: #840d00;
+  text-decoration: none;
+  font-size: 16px;
+}
 /* ============================ HEADER  ============================ */
 
 header {
   background-color: #840d00;
   width: 100vw;
   min-width: 100%;
-  height: 315px;
+  height: 243px;
   color: black;
   flex-wrap: wrap;
   font-family: 'Marcellus', serif;
@@ -87,10 +92,11 @@ header nav li a:hover {
 header .border-bottom {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 15px;
   background-color: black;
   justify-content: flex-end;
   padding: 0.6em;
+  margin-top: -30px;
 }
 
 
@@ -168,7 +174,7 @@ input{
 
 button{
   background-color: transparent;
-  color: teal;
+  color: #840d00;
   font-size: 1.2em;
   border: 2px solid transparent;
   padding: 6px 0;
@@ -284,7 +290,7 @@ button:hover{
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .bar-crawl main {
   display: -webkit-flex;
@@ -296,7 +302,7 @@ button:hover{
   flex-wrap: nowrap;
 }
 .bar-crawl .sidebar {
-  margin-top: 4px;
+  margin-top: 11px;
   padding-top: 2%;
   margin-right: 2%;
   -webkit-flex-direction: row;
@@ -331,15 +337,15 @@ button:hover{
 .single-event {
   width: 60%;
   min-width: 600px;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  justify-content: flex-end;
+  display: flex;
+  justify-content: space-around;
 }
 
 .single-event .attendees img {
   min-height: 30px;
+  max-height: 50px;
   min-width: 30px;
+  max-width: 50px;
 }
 
 .events-card {
@@ -349,7 +355,6 @@ button:hover{
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  flex-wrap: wrap;
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
@@ -414,33 +419,21 @@ button:hover{
 .map map{
   width: 200px;
   height: 200px;
-}*/
+}
 
 /* ============================ SEARCH BAR VIEW ============================ */
-.search-form {
-
+.bar-search{
+  margin-top: 20px;
 }
-
 .location-search {
   height: 200px;
-  margin: 0;
 }
+.location-search input {
 
+}
 .location-result {
   border: 1px solid black;
   background-color: white;
-  margin: 0;
+  margin: 0 25%;
   height: 30px;
-}
-
-.autocomplete {
-  border: 1px solid black;
-  background-color: white;
-  margin: 0;
-  height: 30px;
-}
-
-.error {
-  color: #D11400;
-  text-shadow: 1px 1px black;
 }
