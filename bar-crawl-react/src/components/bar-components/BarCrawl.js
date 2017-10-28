@@ -18,16 +18,9 @@ class BarCrawl extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {};
-		//
-		// this.showHomePage = this.showHomePage.bind(this);
-		// this.createEventForm = this.createEventForm.bind(this);
-		// this.showEvents = this.showEvents.bind(this);
-		// this.showSingleEvent = this.showSingleEvent.bind(this);
-		// this.searchBars = this.searchBars.bind(this);
-		// this.showSingleBar = this.showSingleBar.bind(this);
 
 	}
-
+	// creates routes to each page in the app using react router
 	render() {
 		return (
 			<div className="bar-crawl">

@@ -16,8 +16,6 @@ class UserSearch extends Component {
         this.autocompleteUser = this.autocompleteUser.bind(this);
         this.onClickUser = this.onClickUser.bind(this);
         this.populateList = this.populateList.bind(this);
-      //  this.redirectPage = this.redirectPage.bind(this);
-
     };
 
     // onChange function that sets state of userInput
@@ -26,6 +24,7 @@ class UserSearch extends Component {
         this.setState({ userInput: event.target.value }, this.autocompleteUser);
     };
 
+    // function that will get user data matching search input 
     autocompleteUser(event) {
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
@@ -39,10 +38,10 @@ class UserSearch extends Component {
               this.setState({
                 userOptions: [],
                 dataLoaded: true })
-            }
-            )
+            })
     };
 
+    // onClick function that adds user to this event
     onClickUser(user){
       const eventId = this.props.match.params.eventId;
       const userId = user.userId;
@@ -50,17 +49,16 @@ class UserSearch extends Component {
         axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
             { eventId, userId })
             .then(response => {
-              //return this.props.history.push(`../events/${eventId}`);
               this.setState({ submitted: true })
-              //return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
             })
     };
 
+    //  function that creates a list of all users attending this event with 
+    // their picture and their name as a button to add them
     populateList() {
-        //let userMatch;
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <div><button className='autocomplete' onClick={  (e) => {
+          return <div><img src={user.image} key={i} /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
@@ -70,14 +68,10 @@ class UserSearch extends Component {
 
         }) }
     }
-    // redirectPage() {
-    //   const eventId = this.props.match.params.eventId;
-    //    if (this.state.submitted) {
-    //     console.log('this.state.submitted = true');
-    //    return  <Redirect from={`/events/${eventId}/user-search`} exact to={`/events/${eventId}`} />
-    //   }
-    // }
 
+    // render form to search users based on text input 
+    // list of users and set redirect function to go  
+    // back to single event view when a user is added
     render() {
       const eventId = this.props.match.params.eventId;
       console.log('submitted', this.state.submitted);

@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
 import UserSearch from './UserSearch.js';
 import axios from 'axios';
+import moment from 'moment';
 import EventsBar from './EventsBar';
+
 
 class SingleEventView extends Component {
 	constructor(props) {
@@ -33,7 +35,9 @@ class SingleEventView extends Component {
 			});
 	}
 
-	componentDidUpdate(prevProps, prevState) {
+
+	// function that updates information from the database for a single event
+	componentDidUpdate(prevProps,  prevState) {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
 		axios
@@ -48,6 +52,9 @@ class SingleEventView extends Component {
 		}
 	}
 
+
+	deleteEvent() {
+  // function that deletes this event from the database
 	deleteEvent(eventId) {
 		console.log('delete click')
 		axios.delete(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
@@ -58,7 +65,9 @@ class SingleEventView extends Component {
 			})
 	}
 
-	// Formatted information for a single event
+	// Formatted information for a single event link to pages to add bars
+	// and users to this event and to delete users from this event
+	// sets redirect to all events page if this event is deleted
 	render() {
 		const { name, description, time} = this.state.event;
 		const eventId = this.props.match.params.id;
@@ -89,7 +98,9 @@ class SingleEventView extends Component {
 					<h4>Description:</h4>
 					<p>{description}</p>
 					<h4>Start Time:</h4>
-					<p>{time}</p>
+					{/* <p>{time}</p> */}
+          <p><em>{moment(time).format('dddd, MMMM Do, YYYY')}</em></p>
+          <p><em>{moment(time).format('@ h:mm a')}</em></p>
 					{Number(this.props.user.id) === this.state.ownerId && <button onClick={(e) => {
 						e.preventDefault();
 						this.deleteEvent(eventId);

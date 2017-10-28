@@ -27,20 +27,23 @@ class SearchForm extends Component {
 
       this.props.getLocationResults(this.state.locationValue)
 
+
     });
   }
 
+  // function to update the value of the location being searched for
   updateInput(name) {
     this.setState({ locationValue: name });
   }
 
+  // updates location value to be searched
   handleQueryChange(event) {
     event.preventDefault();
     this.setState({
       queryValue: event.target.value
     });
   }
-  // submitting instead of clicking a result
+  // function that searches by submitting instead of clicking a result
   onSubmit(event) {
     console.log('searching');
     event.preventDefault();
@@ -48,6 +51,7 @@ class SearchForm extends Component {
     this.props.searchWithInput(this.state.queryValue);
   }
 
+  // function that searches by clicking a result
   onLocationSubmit(event) {
     console.log('searching');
     event.preventDefault();
@@ -56,6 +60,7 @@ class SearchForm extends Component {
     this.setState({ locationValue: this.props.currentLocation });
   }
 
+  // render form and location search options as well as bar results from search
   render() {
     return (
       <div>

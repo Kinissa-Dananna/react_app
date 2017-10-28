@@ -39,7 +39,7 @@ class SingleBarSearched extends Component {
 						haveData: true
 					});
 	    });
-	}
+	} 
 
 	// function that formats open status based on current time and hours
 	currentStatus(){
