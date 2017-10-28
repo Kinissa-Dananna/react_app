@@ -10,9 +10,7 @@ class SingleEventView extends Component {
 			event: [],
 			bars: [],
 			attendees: [],
-			deleted: false,
-			bars: [],
-			attendees: []
+			deleted: false
 		}
 		this.deleteEvent = this.deleteEvent.bind(this);
 	}
