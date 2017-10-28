@@ -16,7 +16,7 @@ class UserSearch extends Component {
 
     };
 
-
+    // get all users attending this event
     componentDidMount() {
 		const eventId = this.props.match.params.eventId;
 		axios
@@ -28,7 +28,7 @@ class UserSearch extends Component {
 			});
 	}
 
-
+	// update all users attending this event
     componentDidUpdate(prevProps, newProps) {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
@@ -42,7 +42,7 @@ class UserSearch extends Component {
 		}
 	}
 
-
+	// onClick function that deletes a user from this event
     onClickUser(user){
       const eventId = this.props.match.params.eventId;
       const userId = user.id;
@@ -54,8 +54,9 @@ class UserSearch extends Component {
             })
     };
 
+    // creates a list of all users attending this event with 
+    // their picture, their name, and a button to remove them
     populateList() {
-        //let userMatch;
         if (this.state.attendees.length>0) {
         return this.state.attendees.map((user, i) => {
         	console.log(user);
@@ -65,14 +66,15 @@ class UserSearch extends Component {
             this.onClickUser(user)
           } }
                     id={user.id} key={i}>
-                    remove
+                    Remove 
                   </button></div>;
 
 
         }) }
     }
 
-
+    // render list of users and set redirect function to go  
+    // back to single event view when a user is deleted
     render() {
       const eventId = this.props.match.params.eventId;
       console.log('submitted', this.state.submitted);

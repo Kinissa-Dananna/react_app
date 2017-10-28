@@ -22,13 +22,15 @@ class SingleBarView extends Component {
 		this.deleteBar = this.deleteBar.bind(this);
 	}
 
-	// function that gets information from localhost for a single bar
+
+		// function that gets data from database for a single bar
 	componentDidMount() {
 		const eventId = this.props.match.params.eventId;
 		console.log(eventId);
 		const id = this.props.match.params.id;
 		console.log(id);
 		axios
+
 			.get(`http://localhost:8080/bars/${eventId}/${id}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				//console.log('response', response)
