@@ -96,6 +96,7 @@ class SingleEventView extends Component {
 					<h4>Attending:</h4>
 					<div className="attendees">{attendees}</div>
 					<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>
+					<Link to={`/events/${eventId}/user-delete`} {...this.props} ><button>Remove Users</button> </Link>
 				</div>
 			</div>
 		);
