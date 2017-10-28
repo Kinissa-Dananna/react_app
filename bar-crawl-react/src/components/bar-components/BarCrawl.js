@@ -12,6 +12,7 @@ import SingleEventView from './SingleEventView';
 import UserSearch from './UserSearch.js';
 import UserDelete from './UserDelete';
 import EventsList from './EventsList';
+import foursquare from '../../images/foursquare.png'
 
 class BarCrawl extends Component {
 	constructor(props) {
@@ -86,6 +87,7 @@ class BarCrawl extends Component {
 						 	/>
 						)} />
 			</Switch>
+			<img className='foursquare-logo' src={foursquare}/>
 			</div>
 		);
 	}

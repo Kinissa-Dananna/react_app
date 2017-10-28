@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 // import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 // import NavBar from './NavBar.js';
-import map from './map.js';
 import Iframe from 'react-iframe';
 import axios from 'axios';
 import {Route, Redirect} from 'react-router-dom';
@@ -39,7 +38,7 @@ class SingleBarSearched extends Component {
 						haveData: true
 					});
 	    });
-	} 
+	}
 
 	// function that formats open status based on current time and hours
 	currentStatus(){
