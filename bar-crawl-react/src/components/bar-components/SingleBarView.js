@@ -101,7 +101,7 @@ class SingleBarView extends Component {
 						<p className="align-left">Rating: {rating}/10</p>
 						<p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
 						<p className="align-left">Description: {description}</p>
-						<button onClick={() => this.deleteBar(barId)} > Delete This Bar</button>
+						<button onClick={() => this.deleteBar(barId)} > Remove This Bar From This Event</button>
 					</div>
 				</div>
 			</main>

@@ -54,7 +54,7 @@ class EventsList extends Component {
 
         <ul>
           {/* {eventsItems} */}
-					{eventsItems.length > 0 && <h1>Your Owned Events:</h1>}
+					{eventsItems.length > 0 && <h1>Events You Own:</h1>}
           <EventCard eventsItems={eventsItems}/>
 					{ allEventsItems.length > 0 &&<h1>Events You're Attending:</h1>}
 					<EventCard eventsItems={allEventsItems}/>
