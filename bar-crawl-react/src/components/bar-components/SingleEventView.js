@@ -12,14 +12,11 @@ class SingleEventView extends Component {
 			deleted: false
 		}
 		this.deleteEvent = this.deleteEvent.bind(this);
-		this.redirectPage = this.redirectPage.bind(this);
 	}
 
 	// function that gets information from the database for a single event
 	componentDidMount() {
-		//console.log(this.props.match);
 		const eventId = this.props.match.params.id;
-		//console.log(eventId);
 		axios
 			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
