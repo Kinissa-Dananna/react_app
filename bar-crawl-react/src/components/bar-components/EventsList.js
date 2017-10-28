@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import EventCard from './EventCard';
-// import EventsBar from './EventsBar';
+import EventsBar from './EventsBar';
 import axios from 'axios';
 
 class EventsList extends Component {
@@ -48,15 +48,19 @@ class EventsList extends Component {
     const eventsItems = this.state.ownedEvents.map(this.eventsItem);
 		const allEventsItems = this.state.allEvents.map(this.eventsItem);
     return (
+			<main>
+			<EventsBar {...this.props} />
       <div className='events-list'>
+
         <ul>
           {/* {eventsItems} */}
-					{eventsItems.length > 0 && <h1>Your Owned Events:</h1>}
+					{eventsItems.length > 0 && <h1>Events You Own:</h1>}
           <EventCard eventsItems={eventsItems}/>
 					{ allEventsItems.length > 0 &&<h1>Events You're Attending:</h1>}
 					<EventCard eventsItems={allEventsItems}/>
         </ul>
       </div>
+		</main>
     )
   }
 

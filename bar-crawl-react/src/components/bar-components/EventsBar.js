@@ -20,6 +20,7 @@ class EventBar extends Component {
       this.setState({allEvents: response.data})
     });
   }
+
   eventsItem({
     ownerId,
     name,
@@ -43,7 +44,7 @@ class EventBar extends Component {
 		const allEventsItems = this.state.allEvents.map(this.eventsItem);
     return (
       <div className='sidebar'>
-				{eventsItems.length > 0 && <h4>Your Owned Events:</h4>}
+				{eventsItems.length > 0 && <h4>Events You Own:</h4>}
         <ul>
           {eventsItems}
 				</ul>
