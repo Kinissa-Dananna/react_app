@@ -16,7 +16,8 @@ class SingleBarSearched extends Component {
 			haveData: false,
       added: 'false', // false, toEvent (adding to an event from the list), fromEvent (adding to an event that the user came from)
       ownedEvents: [],
-      eventId: ''
+      eventId: '',
+      error: ''
 		}
 
 		this.currentStatus = this.currentStatus.bind(this);
@@ -73,6 +74,9 @@ class SingleBarSearched extends Component {
     }
     axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'fromEvent'}))
+    .catch(err => {
+      this.setState({error: `You can't add a bar to an event you don't own!`})
+    })
   }
 
   // add bar to an event chosen from the event list
@@ -91,6 +95,9 @@ class SingleBarSearched extends Component {
     }
     axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'toEvent', eventId: eventId}))
+    .catch(err => {
+      this.setState({error: `You can't add a bar to an event you don't own!`})
+    })
   }
 
 	// Formatted information for a single bar
@@ -124,7 +131,6 @@ class SingleBarSearched extends Component {
         <p className="align-left">Rating: {rating}/10</p>
         <p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
         <p className="align-left">Description: {description}</p>
-      </div>
       <Route exact path="/events/:eventId/addBar/:barId" render={props => (
         <button onClick={this.addBarToEvent}>Add this bar</button>
         )} />
@@ -135,6 +141,8 @@ class SingleBarSearched extends Component {
           )} />
         {this.state.added === 'fromEvent' && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
         {this.state.added === 'toEvent' && <Redirect to={`/events/${this.state.eventId}`}/>}
+        <p className='error'>{this.state.error}</p>
+    </div>
     </div>
     )}
   }
