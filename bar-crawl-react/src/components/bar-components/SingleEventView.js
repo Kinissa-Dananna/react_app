@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-// import EventsBar from './EventsBar.js';
 import axios from 'axios';
 
 class SingleEventView extends Component {
@@ -32,17 +31,9 @@ class SingleEventView extends Component {
 				})
 			});
 	}
-	redirectPage() {
-		const id = this.state.event.id;
-		if (this.state.deleted) {
-			console.log('this.state.submitted = true');
-			return <Redirect from={`/events/${id}`} exact to={`/events/${id}`} />
-		}
-	}
 
 	deleteEvent() {
 		console.log('delete click')
-		//const eventId = Number(this.props.match.params.id);
 		const id = this.state.event.id;
 		console.log('id', id);
 		axios.delete(`http://localhost:8080/events/${id}?auth_token=${this.props.user.token}`,
