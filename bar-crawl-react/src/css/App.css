@@ -334,11 +334,11 @@ button:hover{
 .events-list ul {
   width: 70%;
   min-width: 500px;
-
 }
 
 .single-event {
   margin: 0 auto;
+  padding: 0 100px;
   width: 60%;
   min-width: 600px;
   display: flex;
@@ -351,6 +351,7 @@ button:hover{
   max-height: 50px;
   min-width: 30px;
   max-width: 50px;
+  border-radius: 50%;
 }
 
 .events-card {

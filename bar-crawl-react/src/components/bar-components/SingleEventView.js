@@ -81,9 +81,11 @@ class SingleEventView extends Component {
 		return (
 			<main>
 			<EventsBar {...this.props} />
+			<div className="single-event-container">
+			<h1>{name}</h1>
 			<div className="single-event">
 				<div className="event-info">
-					<h2>{name}</h2>
+
 					<h4>Description:</h4>
 					<p>{description}</p>
 					<h4>Start Time:</h4>
@@ -105,6 +107,7 @@ class SingleEventView extends Component {
 					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-delete`} {...this.props} ><button>Remove Users</button> </Link>}
 				</div>
 			</div>
+		</div>
 		</main>
 		);
 	}
