@@ -453,3 +453,10 @@ button:hover{
   height: 36px;
   width: 300px;
 }
+
+.foursquare-logo {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  width: 200px;
+}
