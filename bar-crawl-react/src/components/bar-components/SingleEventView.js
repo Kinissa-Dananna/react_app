@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
+import UserSearch from './UserSearch.js';
 import axios from 'axios';
 
 class SingleEventView extends Component {
@@ -9,7 +10,9 @@ class SingleEventView extends Component {
 			event: [],
 			bars: [],
 			attendees: [],
-			deleted: false
+			deleted: false,
+			bars: [],
+			attendees: []
 		}
 		this.deleteEvent = this.deleteEvent.bind(this);
 	}
@@ -20,7 +23,6 @@ class SingleEventView extends Component {
 		axios
 			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
-				//console.log(response.data.bars)
 				this.setState({
 					event: response.data,
 					bars: response.data.bars,
@@ -42,20 +44,20 @@ class SingleEventView extends Component {
 			})
 	}
 
-
 	// Formatted information for a single event
 	render() {
 		const { name, description, time } = this.state.event;
 		const eventId = this.props.match.params.id;
 		const bars = this.state.bars.map((bar) => {
-			//console.log(bar.name);
+
 			return (
 				<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
 			)
 		})
-		const attendees = this.state.attendees.map((user, key) => {
-			console.log(user.name);
-			return <p id={key} >{user.name}</p>
+		const attendees = this.state.attendees.map((user, i) => {
+			console.log(user)
+			console.log(user.image);
+			return <img src={user.image} key={i} />
 		})
 
 		if (this.state.deleted) {
@@ -77,13 +79,15 @@ class SingleEventView extends Component {
 				</div>
 				<div className="attendees-info">
 					<h4>Attending:</h4>
-					<p>{attendees}</p>
+					<div className="attendees">{attendees}</div>
+					<Link to={`/events/${eventId}/user-search`} {...this.props} >Add Users </Link>
 				</div>
 
 				<button onClick={() => this.deleteEvent(eventId)} > Delete This Event </button>
 			</div>
 		);
 	}
+
 }
 
 export default SingleEventView;

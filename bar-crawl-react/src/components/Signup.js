@@ -12,6 +12,7 @@ class SignUp extends Component {
       inputs: {
         name: '',
         email: '',
+        image: '',
         password: '',
         password_confirmation: ''
       }
@@ -57,6 +58,12 @@ class SignUp extends Component {
           <input value={this.state.inputs.email}
             id='email' name='email' type='email'
             onChange={e => this.changeInput(e, 'email')}
+          />
+
+          <label htmlFor='image'>Image</label>
+          <input value={this.state.inputs.image}
+            id='image' name='image' type='text'
+            onChange={e => this.changeInput(e, 'image')}
           />
 
           <label htmlFor='password'>Password</label>

@@ -337,6 +337,11 @@ button:hover{
   justify-content: flex-end;
 }
 
+.single-event .attendees img {
+  min-height: 30px;
+  min-width: 30px;
+}
+
 .events-card {
   flex-direction: row;
   width: 25%%;
@@ -404,4 +409,21 @@ button:hover{
   flex-direction: row;
 }
 .map img{
+}
+.map map{
+  width: 200px;
+  height: 200px;
+}*/
+
+/* ============================ SEARCH BAR VIEW ============================ */
+
+.location-search {
+  height: 200px;
+}
+
+.location-result {
+  border: 1px solid black;
+  background-color: white;
+  margin: 0 25%;
+  height: 30px;
 }

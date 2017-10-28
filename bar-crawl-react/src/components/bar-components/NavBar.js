@@ -24,7 +24,7 @@ class NavBar extends Component {
           </li>
           <img className="logo" src={Logo} alt="logo"/>
           <li>
-            <Link to="/bars/new"> bars  </Link>
+            <Link to="/bars/search"> bars  </Link>
           </li>
           <li>
             <button onClick={this.props.logout}>logout</button>

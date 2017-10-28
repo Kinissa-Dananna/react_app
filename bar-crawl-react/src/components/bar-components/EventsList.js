@@ -12,6 +12,7 @@ class EventsList extends Component {
 		}
 	}
 	componentDidMount() {
+		console.log(this.props.user.token);
 		axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
 					.then(response => {
             console.log('response', response);
@@ -20,11 +21,12 @@ class EventsList extends Component {
 	}
 	eventsItem({ownerId, name, description, time, id}, i){
 		return(
+			<Link to={`/events/${id}`}>
 			<li className="events-item" key={i.toString()}>
-				<h4> <Link to={`/events/${id}`}>{name}</Link></h4>
+				<h4> {name}</h4>
 				<p>{description}</p>
 				<p>{time}</p>
-			</li>
+			</li></Link>
 			);
 	}
 
