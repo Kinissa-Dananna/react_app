@@ -32,7 +32,7 @@ class EventForm extends Component {
 	changeDescription(event) {
 		event.preventDefault();
 		this.setState({ description: event.target.value });
-	}; 
+	};
 
 	// onChange function that updates the input value 
 	// of the time of the event
@@ -64,7 +64,7 @@ class EventForm extends Component {
 		}
 		return (
 			<main>
-			<EventsBar {...this.props} />
+				<EventsBar {...this.props} />
 
 				<div className="event-form">
 					<h3>New Event</h3>

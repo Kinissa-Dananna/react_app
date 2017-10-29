@@ -4,7 +4,7 @@ import Signup from './Signup';
 
 
 class UserAuth extends Component {
-  constructor(){
+  constructor() {
     super();
     // set up state
     this.state = {
@@ -12,7 +12,7 @@ class UserAuth extends Component {
     }
   }
 
-  toggleMode(e){ // toggle between the two modes
+  toggleMode(e) { // toggle between the two modes
     e.preventDefault();
     this.setState(prev => { // the mode is what it is not
       prev.mode = prev.mode === "login" ? 'signup' : 'login';
@@ -20,12 +20,12 @@ class UserAuth extends Component {
     })
   }
 
-  render(){
+  render() {
     return this.state.mode === "login" ? (
       <Login {...this.props} toggleMode={this.toggleMode.bind(this)} />
     ) : (
-      <Signup {...this.props} toggleMode={this.toggleMode.bind(this)} />
-    )
+        <Signup {...this.props} toggleMode={this.toggleMode.bind(this)} />
+      )
   }
 }
 export default UserAuth;

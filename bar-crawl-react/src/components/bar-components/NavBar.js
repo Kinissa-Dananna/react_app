@@ -5,24 +5,24 @@ import EventForm from './EventForm.js';
 
 
 class NavBar extends Component {
-	constructor(props){
-		super(props);
-	}
+  constructor(props) {
+    super(props);
+  }
 
-	// create buttons that link to Home, Events, Bars, and the log in page
+  // create buttons that link to Home, Events, Bars, and the log in page
 
-	render(){
+  render() {
 
-		return(
-			<header>
+    return (
+      <header>
         <nav>
           <li>
-          <Link to='/events/new'> create event </Link>
+            <Link to='/events/new'> create event </Link>
           </li>
           <li>
             <Link to="/events" > all events </Link>
           </li>
-          <img className="logo" src={Logo} alt="logo"/>
+          <img className="logo" src={Logo} alt="logo" />
           <li>
             <Link to="/bars/search"> bars  </Link>
           </li>
@@ -34,8 +34,8 @@ class NavBar extends Component {
 
         </div>
       </header>
-		);
-	}
+    );
+  }
 }
- 
+
 export default NavBar;

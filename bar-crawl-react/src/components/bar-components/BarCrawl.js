@@ -26,68 +26,68 @@ class BarCrawl extends Component {
 			<div className="bar-crawl">
 				<NavBar logout={this.props.logout} />
 				<Switch>
-				<Route
-					exact
-					path="/"
-					render={() => <Redirect to="/events" />}
-				/>
-				<Route exact path="/events/new" render={props => (
-					<CreateEventForm
-						{...props} {...this.props} />
+					<Route
+						exact
+						path="/"
+						render={() => <Redirect to="/events" />}
+					/>
+					<Route exact path="/events/new" render={props => (
+						<CreateEventForm
+							{...props} {...this.props} />
 					)} />
-				<Route exact path="/events" render={props => (
-					<EventsList
-					 	{...props}  {...this.props}
-							/>
-						)} />
-				<Route exact path="/events/:id" render={props => (
-					<SingleEventView
-					{...props} {...this.props}
-				 		/>
+					<Route exact path="/events" render={props => (
+						<EventsList
+							{...props}  {...this.props}
+						/>
 					)} />
-				<Route exact path="/events/:eventId/addBar/" render={props => (
-					<EventBarSearch
-						{...props} {...this.props}
-					 	/>
+					<Route exact path="/events/:id" render={props => (
+						<SingleEventView
+							{...props} {...this.props}
+						/>
+					)} />
+					<Route exact path="/events/:eventId/addBar/" render={props => (
+						<EventBarSearch
+							{...props} {...this.props}
+						/>
 					)} />
 					<Route exact path="/events/:eventId/addBar/:barId" render={props => (
 						<SingleBarSearched
 							{...props} {...this.props}
-							/>
-						)} />
+						/>
+					)} />
 					<Route exact path="/bars/search" render={props => (
 						<BarSearch
 							{...props} {...this.props}
-						 	/>
-						)} />
-						<Route exact path="/bars/search/:barId" render={props => (
-							<SingleBarSearched
-								{...props} {...this.props}
-							 	/>
-							)} />
-				<Route exact path="/events/:eventId/bars/:id" render={props => (
-					<SingleBarView
-						{...props} {...this.props}
 						/>
-						)}
+					)} />
+					<Route exact path="/bars/search/:barId" render={props => (
+						<SingleBarSearched
+							{...props} {...this.props}
+						/>
+					)} />
+					<Route exact path="/events/:eventId/bars/:id" render={props => (
+						<SingleBarView
+							{...props} {...this.props}
+						/>
+					)}
 					/>
 					<Route exact path="/events/:eventId/addBar" render={props => (
 						<BarSearch
 							{...props} {...this.props}
-						 	/>
-						)} />
+						/>
+					)} />
 					<Route exact path="/events/:eventId/user-search" render={props => (
 						<UserSearch
 							{...props} {...this.props}
-						 	/>
-						)} />
+						/>
+					)} />
 					<Route exact path="/events/:eventId/user-delete" render={props => (
 						<UserDelete
 							{...props} {...this.props}
-						 	/>
-						)} />
-			</Switch>
-			<img className='foursquare-logo' src={foursquare}/>
+						/>
+					)} />
+				</Switch>
+				<img className='foursquare-logo' src={foursquare} />
 			</div>
 		);
 	}

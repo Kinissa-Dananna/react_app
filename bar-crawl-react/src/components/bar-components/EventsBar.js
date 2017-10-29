@@ -1,5 +1,5 @@
-import React, {Component} from "react";
-import {BrowserRouter, Route, Link, Redirect} from "react-router-dom";
+import React, { Component } from "react";
+import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import axios from 'axios';
 
 class EventBar extends Component {
@@ -7,7 +7,7 @@ class EventBar extends Component {
     super(props);
     this.state = {
       events: [],
-			allEvents: []
+      allEvents: []
     }
   }
 
@@ -15,16 +15,16 @@ class EventBar extends Component {
   componentDidMount() {
     axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`).then(response => {
       //console.log('response', response);
-      this.setState({events: response.data})
+      this.setState({ events: response.data })
     });
     axios.get(`http://localhost:8080/events?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
-      this.setState({allEvents: response.data})
+      this.setState({ allEvents: response.data })
     });
   }
-  
-	// function that formats event information into 
-	// list items with links to that event
+
+  // function that formats event information into 
+  // list items with links to that event
   eventsItem({
     ownerId,
     name,
@@ -41,19 +41,19 @@ class EventBar extends Component {
     );
   }
   // function that maps over all the event list items 
-	// and renders them formated into a list on the page
+  // and renders them formated into a list on the page
   render() {
     const eventsItems = this.state.events.map(this.eventsItem);
-		const allEventsItems = this.state.allEvents.map(this.eventsItem);
+    const allEventsItems = this.state.allEvents.map(this.eventsItem);
     return (
       <div className='sidebar'>
-				{eventsItems.length > 0 && <h4>Events You Own:</h4>}
+        {eventsItems.length > 0 && <h4>Events You Own:</h4>}
         <ul>
           {eventsItems}
-				</ul>
-				{allEventsItems.length > 0 && <h4>Events You're Attending:</h4>}
-				<ul>
-					{allEventsItems}
+        </ul>
+        {allEventsItems.length > 0 && <h4>Events You're Attending:</h4>}
+        <ul>
+          {allEventsItems}
         </ul>
       </div>
     )

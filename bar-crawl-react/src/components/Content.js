@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Link, Redirect, Switch } from "react-router-dom";
 // component that renders content
 // this will render when there is a valid user
 const Content = (props) => {
-  return(
+  return (
     <div className="content">
       <h2>Welcome, {props.user.name}</h2>
       <p>Your email address is: {props.user.email}</p>
