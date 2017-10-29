@@ -8,10 +8,10 @@ import EventsBar from './EventsBar';
 
 // component for searching through bars, while not linked to a specific event
 class BarSearch extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.state ={
-      		eventId: null,
+		this.state = {
+			eventId: null,
 			locationResults: [],
 			barResults: [],
 			currentLocation: ''
@@ -19,14 +19,14 @@ class BarSearch extends Component {
 
 		this.getLocationResults = this.getLocationResults.bind(this);
 		this.getBarResults = this.getBarResults.bind(this);
-    	this.searchNearby = this.searchNearby.bind(this);
-    	this.searchWithInput = this.searchWithInput.bind(this);
+		this.searchNearby = this.searchNearby.bind(this);
+		this.searchWithInput = this.searchWithInput.bind(this);
 		this.searchLocations = this.searchLocations.bind(this);
 	}
 
 	// function that updates eventId based on params
-  	componentDidMount(){
-		this.setState({ eventId: this.props.match.params.eventId});
+	componentDidMount() {
+		this.setState({ eventId: this.props.match.params.eventId });
 	}
 
 	// populate autofilled search results for a location 
@@ -50,15 +50,15 @@ class BarSearch extends Component {
 	// from localhost based on chosen location
 	searchLocations(input) {
 		console.log(input.length);
-			axios
-				.get(`http://localhost:8080/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
+		axios
+			.get(`http://localhost:8080/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
 				console.log(response.data.searchLocation.description);
 				this.setState({
 					currentLocation: response.data.searchLocation.description,
 					barResults: response.data.results,
 					locationResults: []
 				});
-		})
+			})
 	}
 
 	// populate autofilled search results for bars 
@@ -81,12 +81,12 @@ class BarSearch extends Component {
 
 	// save a location by clicking on it
 	searchNearby(placeId, name) {
-	  	console.log('searching');
-		this.setState({currentLocation: name});
+		console.log('searching');
+		this.setState({ currentLocation: name });
 		axios
 			.get(`http://localhost:8080/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
 			.then(response => {
-				this.setState({ barResults: response.data.results, locationResults: []}, () => console.log(this.state.barResults));
+				this.setState({ barResults: response.data.results, locationResults: [] }, () => console.log(this.state.barResults));
 			});
 	}
 
@@ -96,27 +96,33 @@ class BarSearch extends Component {
 			.get(`http://localhost:8080/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
-					barResults: response.data.results, 
+					barResults: response.data.results,
 					locationResults: []
 				}, () => console.log(this.state.barResults));
 			})
 	}
 
 	// renders a form to search for bars based on location and name
-	render(){
+	render() {
 
-		return(
+		return (
 			<main>
-			<EventsBar {...this.props} />
-			<div className="bar-search">
-				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
-					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
-					results={this.state.locationResults} barResults={this.state.barResults}
-					eventId={this.state.eventId} currentLocation={this.state.currentLocation}
-					url={`/bars/search/`}
-				/>
-			</div>
-		</main>
+				<EventsBar {...this.props} />
+				<div className="bar-search">
+					<SearchForm
+						getLocationResults={this.getLocationResults}
+						getBarResults={this.getBarResults}
+						searchWithInput={this.searchWithInput}
+						searchNearby={this.searchNearby}
+						searchLocations={this.searchLocations}
+						results={this.state.locationResults}
+						barResults={this.state.barResults}
+						eventId={this.state.eventId}
+						currentLocation={this.state.currentLocation}
+						url={`/bars/search/`}
+					/>
+				</div>
+			</main>
 		);
 	}
 }

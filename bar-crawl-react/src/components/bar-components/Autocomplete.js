@@ -26,7 +26,7 @@ class Autocomplete extends Component {
             onClick={this.onClick}
             data-text={result.description}
             data-placeid={result.placeId}>
-            {result.description}<br/>
+            {result.description}<br />
           </div>
         )}
       </div>

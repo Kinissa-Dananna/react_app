@@ -24,10 +24,7 @@ class SearchForm extends Component {
     this.setState({
       locationValue: event.target.value
     }, () => {
-
       this.props.getLocationResults(this.state.locationValue)
-
-
     });
   }
 
@@ -65,14 +62,33 @@ class SearchForm extends Component {
     return (
       <div>
         <form className='search-form' onSubmit={this.onLocationSubmit}>
-          <div className='location-search'><input className='location-bar' type='text' placeholder='search for a location'
-            value={this.state.locationValue} onChange={this.handleLocationChange} />
-            <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results} updateInput={this.updateInput} /></div></form>
-        <form className='search-form' onSubmit={this.onSubmit}>
-          <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange} />
+          <div className='location-search'>
+            <input className='location-bar'
+              type='text'
+              placeholder='search for a location'
+              value={this.state.locationValue}
+              onChange={this.handleLocationChange} />
+            <Autocomplete
+              searchNearby={this.props.searchNearby}
+              results={this.props.results}
+              updateInput={this.updateInput} />
+          </div>
         </form>
-        {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
+        
+        <form className='search-form' onSubmit={this.onSubmit}>
+          <input className='bar-bar'
+            type='text'
+            placeholder='search for a bar'
+            value={this.state.queryValue}
+            onChange={this.handleQueryChange} />
+        </form>
 
+        {this.props.barResults.map((bar, i) =>
+          <Link to={`${this.props.url}${bar.barId}`} key={i}>
+            <div data-barid={bar.barId}>
+              {bar.name}
+            </div>
+          </Link>)}
 
       </div>
     );

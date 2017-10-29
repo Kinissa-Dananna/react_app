@@ -23,7 +23,7 @@ class SingleBarView extends Component {
 	}
 
 
-		// function that gets data from database for a single bar
+	// function that gets data from database for a single bar
 	componentDidMount() {
 		const eventId = this.props.match.params.eventId;
 		console.log(eventId);
@@ -48,7 +48,7 @@ class SingleBarView extends Component {
 		const eventId = this.props.match.params.eventId;
 		const barId = this.props.match.params.id;
 		console.log('eventId', eventId);
-		console.log('barid',barId);
+		console.log('barid', barId);
 		// console.log('id', id);
 		axios.delete(`http://localhost:8080/bars/${eventId}/${barId}?auth_token=${this.props.user.token}`,
 			{ eventId, barId })
@@ -80,33 +80,33 @@ class SingleBarView extends Component {
 			console.log('map', map);
 			return (
 				<main>
-				<EventsBar {...this.props} />
-				<div className="single-bar">
-					<div className="map">
-						<iframe
-							width="400"
-							height="500"
-							src={map} >
-						</iframe>
-						{/* <img src={map} alt="map" /> */}
+					<EventsBar {...this.props} />
+					<div className="single-bar">
+						<div className="map">
+							<iframe
+								width="400"
+								height="500"
+								src={map} >
+							</iframe>
+							{/* <img src={map} alt="map" /> */}
+						</div>
+						<div className="bar-info">
+							<h2>{name}</h2>
+							<p>{address.street}</p>
+							<p>{address.city}</p>
+							<p className="bar-status">{this.currentStatus()}</p>
+							{{ isOpen } &&
+								<p className="align-left">{hoursUntilClosed}</p>
+							}
+							{/* <p>Address:{address.street},{address.city}</p> */}
+							<p className="align-left">Price Range: {price}</p>
+							<p className="align-left">Rating: {rating}/10</p>
+							<p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
+							<p className="align-left">Description: {description}</p>
+							<button onClick={() => this.deleteBar(barId)} > Remove This Bar From This Event</button>
+						</div>
 					</div>
-					<div className="bar-info">
-						<h2>{name}</h2>
-						<p>{address.street}</p>
-						<p>{address.city}</p>
-						<p className="bar-status">{this.currentStatus()}</p>
-						{{ isOpen } &&
-							<p className="align-left">{hoursUntilClosed}</p>
-						}
-						{/* <p>Address:{address.street},{address.city}</p> */}
-						<p className="align-left">Price Range: {price}</p>
-						<p className="align-left">Rating: {rating}/10</p>
-						<p className="align-left">Hours: {daysOpen} {hoursOpen}</p>
-						<p className="align-left">Description: {description}</p>
-						<button onClick={() => this.deleteBar(barId)} > Remove This Bar From This Event</button>
-					</div>
-				</div>
-			</main>
+				</main>
 			)
 		}
 	}

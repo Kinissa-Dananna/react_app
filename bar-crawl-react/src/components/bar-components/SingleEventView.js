@@ -37,23 +37,23 @@ class SingleEventView extends Component {
 
 
 	// function that updates information from the database for a single event
-	componentDidUpdate(prevProps,  prevState) {
+	componentDidUpdate(prevProps, prevState) {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
-		axios
-			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
-			.then(response => {
-				this.setState({
-					event: response.data,
-					bars: response.data.bars,
-					attendees: response.data.attendees
-				})
-			});
+			axios
+				.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
+				.then(response => {
+					this.setState({
+						event: response.data,
+						bars: response.data.bars,
+						attendees: response.data.attendees
+					})
+				});
 		}
 	}
 
 
-  // function that deletes this event from the database
+	// function that deletes this event from the database
 	deleteEvent(eventId) {
 		console.log('delete click')
 		axios.delete(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
@@ -68,7 +68,7 @@ class SingleEventView extends Component {
 	// and users to this event and to delete users from this event
 	// sets redirect to all events page if this event is deleted
 	render() {
-		const { name, description, time} = this.state.event;
+		const { name, description, time } = this.state.event;
 		const eventId = this.props.match.params.id;
 		const bars = this.state.bars.map((bar) => {
 
@@ -88,37 +88,37 @@ class SingleEventView extends Component {
 
 		return (
 			<main>
-			<EventsBar {...this.props} />
-			<div className="single-event-container">
-			<h1>{name}</h1>
-			<div className="single-event">
-				<div className="event-info">
+				<EventsBar {...this.props} />
+				<div className="single-event-container">
+					<h1>{name}</h1>
+					<div className="single-event">
+						<div className="event-info">
 
-					<h4>Description:</h4>
-					<p>{description}</p>
-					<h4>Start Time:</h4>
-					{/* <p>{time}</p> */}
-          <p><em>{moment(time).format('dddd, MMMM Do, YYYY')}</em></p>
-          <p><em>{moment(time).format('@ h:mm a')}</em></p>
-					{Number(this.props.user.id) === this.state.ownerId && <button onClick={(e) => {
-						e.preventDefault();
-						this.deleteEvent(eventId);
-					}} > Delete This Event </button>}
+							<h4>Description:</h4>
+							<p>{description}</p>
+							<h4>Start Time:</h4>
+							{/* <p>{time}</p> */}
+							<p><em>{moment(time).format('dddd, MMMM Do, YYYY')}</em></p>
+							<p><em>{moment(time).format('@ h:mm a')}</em></p>
+							{Number(this.props.user.id) === this.state.ownerId && <button onClick={(e) => {
+								e.preventDefault();
+								this.deleteEvent(eventId);
+							}} > Delete This Event </button>}
+						</div>
+						<div className="bar-info">
+							<h4>Bars:</h4>
+							<p>{bars}</p>
+							{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/addBar`} {...this.props}><button>Add Bars</button> </Link>}
+						</div>
+						<div className="attendees-info">
+							<h4>Attending:</h4>
+							<div className="attendees">{attendees}</div>
+							{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>}
+							{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/user-delete`} {...this.props} ><button>Remove Users</button> </Link>}
+						</div>
+					</div>
 				</div>
-				<div className="bar-info">
-					<h4>Bars:</h4>
-					<p>{bars}</p>
-					{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/addBar`} {...this.props}><button>Add Bars</button> </Link>}
-				</div>
-				<div className="attendees-info">
-					<h4>Attending:</h4>
-					<div className="attendees">{attendees}</div>
-					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>}
-					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-delete`} {...this.props} ><button>Remove Users</button> </Link>}
-				</div>
-			</div>
-		</div>
-		</main>
+			</main>
 		);
 	}
 

@@ -2,19 +2,19 @@ import React, { Component } from "react";
 // import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 
 class EventCard extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 	}
 
 
-	render(){
+	render() {
 
-		return(
+		return (
 			<div className="events-card">
 				{this.props.eventsItems}
 			</div>
 		);
 	}
-} 
+}
 
 export default EventCard;
