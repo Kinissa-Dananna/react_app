@@ -83,7 +83,6 @@ class UserSearch extends Component {
 
       return(
         <main>
-        <EventsBar {...this.props} />
             <div>
                 <h3>Remove Users</h3>
 
@@ -91,6 +90,7 @@ class UserSearch extends Component {
 
                 {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
+            <EventsBar {...this.props} />
             </main>
         );
     }

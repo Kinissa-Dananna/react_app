@@ -19,16 +19,16 @@ class EventEdit extends Component {
 	render() {
 	    return (
 				<main>
-				<EventsBar {...this.props} />
 	      <div className='event-edit'>
 	      <form onSubmit= 'FILL IN'>
 	      'FILL IN'
 	      </form>
 	      </div>
+	    <EventsBar {...this.props} />
 			</main>
 	    );
 	}
 
-} 
+}
 
 export default EventEdit;

@@ -88,7 +88,6 @@ class SingleEventView extends Component {
 
 		return (
 			<main>
-			<EventsBar {...this.props} />
 			<div className="single-event-container">
 			<h1>{name}</h1>
 			<div className="single-event">
@@ -118,6 +117,7 @@ class SingleEventView extends Component {
 				</div>
 			</div>
 		</div>
+		<EventsBar {...this.props} />
 		</main>
 		);
 	}

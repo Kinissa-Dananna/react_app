@@ -80,7 +80,6 @@ class SingleBarView extends Component {
 			console.log('map', map);
 			return (
 				<main>
-				<EventsBar {...this.props} />
 				<div className="single-bar">
 					<div className="map">
 						<iframe
@@ -106,6 +105,7 @@ class SingleBarView extends Component {
 						<button onClick={() => this.deleteBar(barId)} > Remove This Bar From This Event</button>
 					</div>
 				</div>
+				<EventsBar {...this.props} />
 			</main>
 			)
 		}

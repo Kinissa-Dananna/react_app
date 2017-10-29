@@ -14,7 +14,7 @@ class EventsList extends Component {
     }
   }
 
-	// function that gets all data about this 
+	// function that gets all data about this
 	// user's owned events from the database
   componentDidMount() {
     console.log(this.props.user.token);
@@ -27,8 +27,8 @@ class EventsList extends Component {
       this.setState({ allEvents: response.data })
     });
   }
-  
-  // function that formats data of the event card for an individual event 
+
+  // function that formats data of the event card for an individual event
 	// owned by the user into a list item, and creates a link to that event
   eventsItem({
     ownerId,
@@ -44,21 +44,20 @@ class EventsList extends Component {
             {name}</h4>
           <p>{description}</p>
           {/* <p>{time}</p> */}
-          <p><em>{moment(time).format('dddd, MM/DD/YYYY')}</em></p>   
+          <p><em>{moment(time).format('dddd, MM/DD/YYYY')}</em></p>
           <p><em>{moment(time).format('@ h:mm a')}</em></p>
         </li>
       </Link>
     );
   }
 
- 	// function that maps over event cards and renders 
+ 	// function that maps over event cards and renders
 	// them as a list on the page
   render() {
     const eventsItems = this.state.ownedEvents.map(this.eventsItem);
     const allEventsItems = this.state.allEvents.map(this.eventsItem);
     return (
 			<main>
-			<EventsBar {...this.props} />
       <div className='events-list'>
 
         <ul>
@@ -71,6 +70,7 @@ class EventsList extends Component {
 
         </ul>
       </div>
+      <EventsBar {...this.props} />
 		</main>
     )
   }
