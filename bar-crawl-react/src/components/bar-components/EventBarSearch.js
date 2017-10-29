@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import NavBar from './NavBar.js';
 import SearchForm from './SearchForm';
-import Autocomplete from './Autocomplete';
+// import Autocomplete from './Autocomplete';
 import axios from 'axios';
 import EventsBar from './EventsBar';
 

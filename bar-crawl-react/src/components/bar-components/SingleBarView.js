@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import map from './map.js';
 // import Iframe from 'react-iframe';
 import axios from 'axios';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+// import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import EventsBar from './EventsBar';
 
 
