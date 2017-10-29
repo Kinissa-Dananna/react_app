@@ -29,16 +29,17 @@ class BarSearch extends Component {
 		this.setState({ eventId: this.props.match.params.eventId});
 	}
 
-	// populate autofilled search results for a location 
+	// populate autofilled search results for a location
 	// from localhost based on current input
 	getLocationResults(input) {
-		console.log(input.length);
+		//console.log(input.length);
 		if (input.length === 0) {
 			this.setState({
 				locationResults: []
 			});
 		} else {
 			axios.get(`http://localhost:8080/search/${input}?auth_token=${this.props.user.token}`).then(response => {
+				console.log(response)
 				this.setState({
 					locationResults: response.data.results
 				});
@@ -46,7 +47,7 @@ class BarSearch extends Component {
 		}
 	}
 
-	// populate autofilled search results for bars 
+	// populate autofilled search results for bars
 	// from localhost based on chosen location
 	searchLocations(input) {
 		console.log(input.length);
@@ -61,7 +62,7 @@ class BarSearch extends Component {
 		})
 	}
 
-	// populate autofilled search results for bars 
+	// populate autofilled search results for bars
 	// from localhost based on name input
 	getBarResults(input) {
 		if (input.length === 0) {
@@ -96,7 +97,7 @@ class BarSearch extends Component {
 			.get(`http://localhost:8080/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
-					barResults: response.data.results, 
+					barResults: response.data.results,
 					locationResults: []
 				}, () => console.log(this.state.barResults));
 			})

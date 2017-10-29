@@ -113,7 +113,7 @@ class SingleEventView extends Component {
 				<div className="attendees-info">
 					<h4>Attending:</h4>
 					<div className="attendees">{attendees}</div>
-					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>}
+					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-search`} {...this.props} ><button>Add Users</button> </Link>} <br />
 					{Number(this.props.user.id) === this.state.ownerId &&<Link to={`/events/${eventId}/user-delete`} {...this.props} ><button>Remove Users</button> </Link>}
 				</div>
 			</div>
