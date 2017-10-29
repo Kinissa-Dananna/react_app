@@ -30,12 +30,9 @@ class NavBar extends Component {
             <button onClick={this.props.logout}>logout</button>
           </li>
         </nav>
-        <div className="border-bottom">
-
-        </div>
       </header>
 		);
 	}
 }
- 
+
 export default NavBar;
