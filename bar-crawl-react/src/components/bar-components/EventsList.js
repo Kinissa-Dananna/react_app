@@ -66,10 +66,12 @@ class EventsList extends Component {
         <ul>
           {/* {eventsItems} */}
 
-					{eventsItems.length > 0 && <h1>Events You Own:</h1>}
+					<h1>Events You Own:</h1>
           <EventCard eventsItems={eventsItems}/>
+					{eventsItems.length === 0 && <p>You don't own any events!</p>}
 					{ allEventsItems.length > 0 &&<h1>Events You're Attending:</h1>}
 					<EventCard eventsItems={allEventsItems}/>
+					{allEventsItems.length === 0 && <p>Nobody has invited you to any events!</p>}
 
         </ul>
       </div>

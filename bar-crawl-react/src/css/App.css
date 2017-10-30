@@ -373,7 +373,7 @@ main div {
 
 .events-card {
   flex-direction: row;
-  width: 25%%;
+  width: 120%;
   padding: 0.5em;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -381,6 +381,7 @@ main div {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  flex-wrap: wrap;
 }
 .events-card li.events-item {
   /*display: flex;*/
@@ -478,6 +479,7 @@ main div {
   flex-direction: row;
   width: 50%;
   height: 250px;
+
 }
 .search-form,
 .location-search {
@@ -492,7 +494,7 @@ main div {
   text-align: left;
   width: 300px;
     flex-direction: column;
-    margin-top: 40px;
+
     margin-bottom: 10px;
 }
 .search-results {
