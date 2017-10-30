@@ -4,6 +4,7 @@ import EventCard from './EventCard';
 import EventsBar from './EventsBar';
 import axios from 'axios';
 import moment from 'moment';
+import beerMug from '../../images/beer-1.png';
 
 class EventsList extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class EventsList extends Component {
     return (
       <Link to={`/events/${id}`}>
         <li className="events-item" key={i.toString()}>
+          <img src={beerMug} alt="beer-mug" />
           <h4>
             {name}</h4>
           <p>{description}</p>
