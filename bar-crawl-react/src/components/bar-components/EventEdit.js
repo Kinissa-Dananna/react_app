@@ -66,8 +66,6 @@ class EventEdit extends Component {
 		}
 		return (
 			<main>
-			<EventsBar {...this.props} />
-
 				<div className="event-form">
 					<h3>Edit Event</h3>
 					<form onSubmit={this.onSubmit}>
@@ -101,6 +99,7 @@ class EventEdit extends Component {
 						<input type='submit' value='Submit' />
 					</form>
 				</div>
+				<EventsBar {...this.props} />
 			</main>
 		);
 	}

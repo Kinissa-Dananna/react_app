@@ -106,7 +106,7 @@ class BarSearch extends Component {
 
 		return(
 			<main>
-			<EventsBar {...this.props} />
+
 			<div className="bar-search">
 				<SearchForm getLocationResults={this.getLocationResults} getBarResults={this.getBarResults}
 					searchWithInput={this.searchWithInput} searchNearby={this.searchNearby} searchLocations={this.searchLocations}
@@ -115,6 +115,7 @@ class BarSearch extends Component {
 					url={`/bars/search/`}
 				/>
 			</div>
+			<EventsBar {...this.props} />
 		</main>
 		);
 	}

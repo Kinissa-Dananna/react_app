@@ -63,7 +63,6 @@ class EventForm extends Component {
 		}
 		return (
 			<main>
-			<EventsBar {...this.props} />
 
 				<div className="event-form">
 					<h3>New Event</h3>
@@ -98,6 +97,7 @@ class EventForm extends Component {
 						<input type='submit' value='Submit' />
 					</form>
 				</div>
+				<EventsBar {...this.props} />
 			</main>
 		);
 	}

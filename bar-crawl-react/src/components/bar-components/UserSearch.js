@@ -62,7 +62,7 @@ class UserSearch extends Component {
     populateList() {
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          console.log(user);
+          //console.log(user);
           return <div key={i}><img src={user.image} /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
@@ -83,7 +83,6 @@ class UserSearch extends Component {
 
       return(
         <main>
-				<EventsBar {...this.props} />
             <div>
                 <h3>Add Users</h3>
                 <form>
@@ -101,6 +100,7 @@ class UserSearch extends Component {
                 <p className="error">{this.state.error}</p>
                 {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
+            <EventsBar {...this.props} />
           </main>
 
         );
