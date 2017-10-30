@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from 'axios';
-import NavBar from './NavBar.js';
 import EventsBar from './EventsBar';
 
 class EventForm extends Component {
@@ -20,28 +19,28 @@ class EventForm extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the name of the event
 	changeNameOfEvent(event) {
 		event.preventDefault();
 		this.setState({ name: event.target.value });
 	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the description of the event
 	changeDescription(event) {
 		event.preventDefault();
 		this.setState({ description: event.target.value });
-	}; 
+	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the time of the event
 	changeTime(event) {
 		event.preventDefault();
 		this.setState({ time: event.target.value })
 	};
 
-	// onSubmit function that saves the input 
+	// onSubmit function that saves the input
 	// values to the database as a new event
 	onSubmit(event) {
 		console.log('submit clicked');
@@ -56,7 +55,7 @@ class EventForm extends Component {
 			})
 	};
 
-	// function that renders a form to create a new event and 
+	// function that renders a form to create a new event and
 	// redirect to all events when the new event is submitted
 	render() {
 		if (this.state.submitted) {
@@ -64,8 +63,6 @@ class EventForm extends Component {
 		}
 		return (
 			<main>
-			<EventsBar {...this.props} />
-
 				<div className="event-form">
 					<h3>New Event</h3>
 					<form onSubmit={this.onSubmit}>
@@ -99,6 +96,7 @@ class EventForm extends Component {
 						<input type='submit' value='Submit' />
 					</form>
 				</div>
+				<EventsBar {...this.props} />
 			</main>
 		);
 	}
