@@ -64,10 +64,12 @@ class SearchForm extends Component {
     return (
       <div>
         <form className='search-form' onSubmit={this.onLocationSubmit}>
+          <label>Search For A Location</label>
           <div className='location-search'><input className='location-bar' type='text' placeholder='search for a location'
             value={this.state.locationValue} onChange={this.handleLocationChange} />
             <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results} updateInput={this.updateInput} /></div></form>
         <form className='search-form' onSubmit={this.onSubmit}>
+          <label>Search For A Bar</label>
           <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange} />
             {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
         </form>
