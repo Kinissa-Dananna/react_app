@@ -1,17 +1,18 @@
 import React, { Component } from "react";
 import { Switch, Route, Link, Redirect } from "react-router-dom";
-import CreateEventForm from './EventForm';
+import CreateEventForm from './EventForm.js';
 import NavBar from './NavBar.js';
-import BarSearch from './BarSearch';
-import EventBarSearch from './EventBarSearch';
-import EventCard from './EventCard';
-import EventsBar from './EventsBar';
-import SingleBarView from './SingleBarView';
-import SingleBarSearched from './SingleBarSearched'
-import SingleEventView from './SingleEventView';
+import BarSearch from './BarSearch.js';
+import EventBarSearch from './EventBarSearch.js';
+import EventCard from './EventCard.js';
+import EventsBar from './EventsBar.js';
+import SingleBarView from './SingleBarView.js';
+import SingleBarSearched from './SingleBarSearched.js';
+import SingleEventView from './SingleEventView.js';
 import UserSearch from './UserSearch.js';
-import UserDelete from './UserDelete';
-import EventsList from './EventsList';
+import UserDelete from './UserDelete.js';
+import EventsList from './EventsList.js';
+import EventEdit from './EventEdit.js'
 import foursquare from '../../images/foursquare.png'
 
 class BarCrawl extends Component {
@@ -83,6 +84,11 @@ class BarCrawl extends Component {
 						)} />
 					<Route exact path="/events/:eventId/user-delete" render={props => (
 						<UserDelete
+							{...props} {...this.props}
+						 	/>
+						)} />
+					<Route exact path="/events/:id/edit" render={props => (
+						<EventEdit
 							{...props} {...this.props}
 						 	/>
 						)} />
