@@ -58,7 +58,7 @@ class UserSearch extends Component {
     populateList() {
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <div><img src={user.image} key={i} alt="user" /><button className='autocomplete' onClick={  (e) => {
+          return <div><img src={user.image} key={i} /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
