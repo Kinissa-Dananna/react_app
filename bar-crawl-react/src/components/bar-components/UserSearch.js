@@ -24,7 +24,7 @@ class UserSearch extends Component {
         this.setState({ userInput: event.target.value }, this.autocompleteUser);
     };
 
-    // function that will get user data matching search input 
+    // function that will get user data matching search input
     autocompleteUser(event) {
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
@@ -53,7 +53,7 @@ class UserSearch extends Component {
             })
     };
 
-    //  function that creates a list of all users attending this event with 
+    //  function that creates a list of all users attending this event with
     // their picture and their name as a button to add them
     populateList() {
         if (this.state.userOptions.length>0) {
@@ -69,8 +69,8 @@ class UserSearch extends Component {
         }) }
     }
 
-    // render form to search users based on text input 
-    // list of users and set redirect function to go  
+    // render form to search users based on text input
+    // list of users and set redirect function to go
     // back to single event view when a user is added
     render() {
       const eventId = this.props.match.params.eventId;
