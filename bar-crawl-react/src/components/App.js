@@ -17,7 +17,7 @@ class App extends Component {
       // url for the API we are using - uncomment the one you want to use
 
       // Express
-      url: 'http://localhost:8080',
+      url: 'http://barcrawlapi.herokuapp.com',
 
       // Rails
       // url: 'http://localhost:3000',
