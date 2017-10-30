@@ -70,8 +70,10 @@ class SearchForm extends Component {
             <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results} updateInput={this.updateInput} /></div></form>
         <form className='search-form' onSubmit={this.onSubmit}>
           <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange} />
+          <div className="bar-result">
+          {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
+          </div>
         </form>
-        {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
 
 
       </div>

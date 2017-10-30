@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Route, Redirect, Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from 'axios';
+import EventsBar from './EventsBar';
 
 class UserSearch extends Component {
     constructor(props) {
@@ -54,7 +55,7 @@ class UserSearch extends Component {
             })
     };
 
-    // creates a list of all users attending this event with 
+    // creates a list of all users attending this event with
     // their picture, their name, and a button to remove them
     populateList() {
         if (this.state.attendees.length>0) {
@@ -66,29 +67,31 @@ class UserSearch extends Component {
             this.onClickUser(user)
           } }
                     id={user.id} key={i}>
-                    Remove 
+                    Remove
                   </button></div>;
 
 
         }) }
     }
 
-    // render list of users and set redirect function to go  
+    // render list of users and set redirect function to go
     // back to single event view when a user is deleted
     render() {
       const eventId = this.props.match.params.eventId;
       console.log('submitted', this.state.submitted);
-      
+
 
       return(
+        <main>
             <div>
                 <h3>Remove Users</h3>
-                
+
                 <div id="list">{this.populateList()}</div>
-  
+
                 {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
-
+            <EventsBar {...this.props} />
+            </main>
         );
     }
 

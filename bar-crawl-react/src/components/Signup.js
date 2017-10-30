@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Logo from '../images/Logo-V01-red.png';
+import { Link } from "react-router-dom";
 
 // component for sign up
 // this will render if the mode in user auth is signup
@@ -81,7 +82,7 @@ class SignUp extends Component {
 
           <div className="form-buttons">
             <button type="submit" className="form-button">Sign Up</button>
-            <button onClick={this.props.toggleMode} className="form-button">Log In</button>
+            <Link to="/login"><button className="form-button">Log In</button></Link>
           </div>
 
         </form>
