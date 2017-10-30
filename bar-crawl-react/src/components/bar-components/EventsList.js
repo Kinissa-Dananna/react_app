@@ -47,7 +47,8 @@ class EventsList extends Component {
           <p>{description}</p>
           {/* <p>{time}</p> */}
           <p><em>{moment(time).format('dddd, MM/DD/YYYY')}</em></p>
-          <p><em>{moment(time).format('@ h:mm a')}</em></p>
+          {/* <p><em>{moment(time).format('@ h:mm a')}</em></p> */}
+          <p><em>{moment.parseZone(time).format('@ h:mm a ')}</em></p>
         </li>
       </Link>
     );
@@ -60,7 +61,6 @@ class EventsList extends Component {
     const allEventsItems = this.state.allEvents.map(this.eventsItem);
     return (
 			<main>
-			<EventsBar {...this.props} />
       <div className='events-list'>
 
         <ul>
@@ -73,6 +73,7 @@ class EventsList extends Component {
 
         </ul>
       </div>
+      <EventsBar {...this.props} />
 		</main>
     )
   }

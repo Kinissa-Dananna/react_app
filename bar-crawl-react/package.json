@@ -9,7 +9,8 @@
     "react-google-maps": "^9.2.0",
     "react-iframe": "^1.0.7",
     "react-router-dom": "^4.2.2",
-    "react-scripts": "1.0.14"
+    "react-scripts": "1.0.14",
+    "surge": "^0.19.0"
   },
   "scripts": {
     "start": "react-scripts start",

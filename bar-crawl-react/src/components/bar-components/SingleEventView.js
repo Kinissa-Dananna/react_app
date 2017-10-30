@@ -86,7 +86,7 @@ class SingleEventView extends Component {
 		const attendees = this.state.attendees.map((user, i) => {
 			console.log(user)
 			console.log(user.image);
-			return <img src={user.image} key={i} alt="user" title={user.name}/>
+			return <img src={user.image} key={i} title={user.name}/>
 		})
 
 		attendees.unshift(<img src={this.state.ownerImage} title={this.state.ownerName}/>)
@@ -97,7 +97,6 @@ class SingleEventView extends Component {
 
 		return (
 			<main>
-			<EventsBar {...this.props} />
 			<div className="single-event-container">
 			<h1>{name}</h1>
 			<div className="single-event">
@@ -108,7 +107,8 @@ class SingleEventView extends Component {
 					<h4>Start Time:</h4>
 					{/* <p>{time}</p> */}
           <p><em>{moment(time).format('dddd, MMMM Do, YYYY')}</em></p>
-          <p><em>{moment(time).format('@ h:mm a')}</em></p>
+          {/* <p><em>{moment(time).format('@ h:mm a')}</em></p> */}
+					<p><em>{moment.parseZone(time).format('@ h:mm a ')}</em></p>
 					{Number(this.props.user.id) === this.state.ownerId && <button onClick={(e) => {
 						e.preventDefault();
 						this.deleteEvent(eventId);
@@ -128,6 +128,7 @@ class SingleEventView extends Component {
 				</div>
 			</div>
 		</div>
+			<EventsBar {...this.props} />
 		</main>
 		);
 	}
