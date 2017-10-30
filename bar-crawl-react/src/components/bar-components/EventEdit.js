@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+EventEdit.jsimport React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import BarSearch from './BarSearch';
 import EventsBar from './EventsBar';
@@ -19,16 +19,16 @@ class EventEdit extends Component {
 	render() {
 	    return (
 				<main>
+				<EventsBar {...this.props} />
 	      <div className='event-edit'>
 	      <form onSubmit= 'FILL IN'>
 	      'FILL IN'
 	      </form>
 	      </div>
-	    <EventsBar {...this.props} />
 			</main>
 	    );
 	}
 
-}
+} 
 
 export default EventEdit;
