@@ -366,6 +366,7 @@ button:hover{
   display: flex;
 }
 .events-card li.events-item {
+  /*display: flex;*/
   flex-direction: row;
   padding: 0.8em;
   margin-right: 0.4em;
@@ -375,10 +376,29 @@ button:hover{
   justify-content: space-around;
   flex-wrap: wrap;
   width: 25%;
-  min-width: 200px;
+  min-width: 235px;
+  min-height: 200px;
   text-align: left;
   background-color: #450700;
   color: white;
+
+}
+.events-card li.events-item h4 {
+  /*float: right;*/
+  justify-content: flex-end;
+  padding-left: 55px;
+  padding-bottom: 1em;
+
+}
+.events-card li.events-item img {
+  max-width: 50px;
+  max-height: 50px;
+  height: auto;
+  padding-right: 2%;
+  padding-top: 1.05em;
+  float: left;
+  position: absolute;
+  margin-right: 50px;
 
 }
 .events-card li.events-item:hover {
@@ -422,9 +442,9 @@ button:hover{
 }
 .map img{
 }
-.map map{
-  width: 200px;
-  height: 200px;
+.map iframe {
+  width: 400px;
+  height: 500px;
 }
 
 /* ============================ SEARCH BAR VIEW ============================ */
@@ -443,7 +463,26 @@ button:hover{
 
 }
 .location-search input {
-
+  margin: 0 auto;
+  text-align: left;
+  width: 300px;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+.search-results {
+  height: 500px;
+  flex-direction: column;
+  height: 300px;
+  width: 300px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+.location-result,
+.bar-result {
+  margin: 0 auto;
+  width: 300px;
+  flex-direction: column;
 }
 .location-result {
   border: 1px solid black;
@@ -453,6 +492,10 @@ button:hover{
   height: 36px;
   width: 300px;
 }
+.bar-result {
+  padding-left: 10%;
+  padding-right: 7%;
+}
 
 .foursquare-logo {
   position: fixed;
@@ -461,6 +504,183 @@ button:hover{
   width: 200px;
 }
 
+
 .error {
   color:#840d00;
+}
+/* ============================ DELETE USER ============================ */
+#list {
+  margin: 0 auto;
+  text-align: center;
+}
+#list div img {
+  max-height: 80px;
+  max-width: 80px;
+  border-radius: 50%;
+}
+
+/* ============================ MEDIA SCREENS ============================ */
+
+@media screen and (max-width: 480px) {
+  h1, h2, h3, h4 {
+    font-size: 12px;
+  }
+  .bar-crawl .sidebar {
+    width: 100%;
+    flex-direction: column;
+    height: 100%;
+    min-height: 250px;
+    align-self: flex-end;
+    justify-content: flex-end;
+    bottom: 0;
+    order: 2;
+  }
+  header {
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 4px solid black;
+    min-height: 200px;
+    height: 26%;
+  }
+  header nav{
+    width: 100%;
+    flex-direction: column;
+  }
+  header nav .logo {
+    display: none;
+  }
+  header nav li {
+    width: 100%;
+    border-top: none;
+    /*border-bottom: 1px solid black;*/
+    border-bottom: none;
+    flex-direction: column;
+    margin-top: 0px;
+    padding-top: 0.5em;
+  }
+  .bar-crawl,
+  .bar-crawl main {
+    margin: 0 auto;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    flex-direction: column;
+  }
+  .events-list ul,
+  .events-card,
+  .single-event {
+    margin: 0 auto;
+    padding: 0px;
+    width: 100%;
+    flex-direction: column;
+    min-width: 150px;
+  }
+  .events-list ul h1 {
+    font-size: 1.5em;
+  }
+  .events-card li.events-item {
+    font-size: 12px;
+    width: 80%;
+    min-width: 100px;
+    min-height: 100px;
+  }
+  .map,
+  .map iframe{
+    min-width: 260px;
+    min-height: 260px;
+    width: 80%;
+    height: 40%;
+  }
+  .single-bar {
+    display: block;
+    font-size: 12px;
+    padding: 1em;
+  }
+}
+@media screen and (max-width: 800px) {
+  h1, h2, h3, h4 {
+    font-size: 12px;
+  }
+  .bar-crawl .sidebar {
+    width: 100%;
+    flex-direction: column;
+    height: 26%;
+    min-height: 250px;
+    align-self: flex-end;
+    justify-content: flex-end;
+    bottom: 0;
+    order: 2;
+  }
+  header {
+    margin: 0 auto;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    flex-direction: column;
+    border-bottom: 4px solid black;
+    min-height: 200px;
+    height: 26%;
+  }
+  header nav {
+    width: 100%;
+    flex-direction: column;
+  }
+  header nav .logo {
+    display: none;
+  }
+  header nav li {
+    width: 100%;
+    border-top: none;
+    /*border-bottom: 1px solid black;*/
+    border-bottom: none;
+    flex-direction: column;
+    margin-top: 0px;
+    padding-top: 0.5em;
+    font-size: 0.8em;
+  }
+  .bar-crawl,
+  .bar-crawl main {
+    margin: 0 auto;
+    padding: 0px;
+    display: block;
+    width: 100%;
+    flex-direction: column;
+  }
+  .events-list ul,
+  .events-card,
+  .single-event {
+    margin: 0 auto;
+    padding: 0px;
+    width: 100%;
+    flex-direction: column;
+    min-width: 150px;
+  }
+  .events-list ul h1 {
+    font-size: 1em;
+  }
+  .events-card li.events-item {
+    font-size: 12px;
+    width: 80%;
+    min-width: 100px;
+    min-height: 100px;
+  }
+  .events-card li.events-item  img {
+    width: 30px;
+    height: 30px;
+  }
+  .events-card li.events-item h4 {
+    font-size: 14px;
+  }
+  .map,
+  .map iframe{
+    min-width: 300px;
+    min-height: 300px;
+    width: 80%;
+    height: 40%;
+  }
+  .single-bar {
+    display: block;
+    font-size: 12px;
+    padding: 1em;
+  }
 }
