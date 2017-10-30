@@ -10,7 +10,8 @@ class UserSearch extends Component {
             userOptions: [],
             userInput: '',
             dataLoaded: false,
-            submitted: false
+            submitted: false,
+            error: ''
         };
         this.changeUserInput = this.changeUserInput.bind(this);
         this.autocompleteUser = this.autocompleteUser.bind(this);
@@ -21,7 +22,7 @@ class UserSearch extends Component {
     // onChange function that sets state of userInput
     changeUserInput(event) {
         event.preventDefault();
-        this.setState({ userInput: event.target.value }, this.autocompleteUser);
+        this.setState({ userInput: event.target.value, error: '' }, this.autocompleteUser);
     };
 
     // function that will get user data matching search input
@@ -29,9 +30,9 @@ class UserSearch extends Component {
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
             .then(response => {
-              console.log(response)
+              console.log(response.data)
               this.setState({
-                userOptions: [response.data],
+                userOptions: response.data,
                 dataLoaded: true })
             })
             .catch(err => {
@@ -45,12 +46,15 @@ class UserSearch extends Component {
     onClickUser(user){
       const eventId = this.props.match.params.eventId;
       const userId = user.userId;
+      console.log(userId);
 
         axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
             { eventId, userId })
             .then(response => {
               this.setState({ submitted: true })
             })
+            .catch(err => {console.log(err.response);
+            this.setState({error: err.response.data.message})})
     };
 
     //  function that creates a list of all users attending this event with
@@ -58,12 +62,13 @@ class UserSearch extends Component {
     populateList() {
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <div><img src={user.image} key={i} alt="user" /><button className='autocomplete' onClick={  (e) => {
+          console.log(user);
+          return <div key={i}><img src={user.image} /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
-                    id={user.userId} key={i}>
-                    {user.userName}
+                    id={user.id}>
+                    {user.name}
                   </button></div>;
 
         }) }
@@ -84,7 +89,7 @@ class UserSearch extends Component {
                 <form>
                     <label>
                         Search User by Name:
-                    </label>
+                    </label><br/>
                     <input
                         type='text'
                         value={this.state.userInput}
@@ -93,6 +98,7 @@ class UserSearch extends Component {
                     <br />
                     <div id="list">{this.populateList()}</div>
                 </form>
+                <p className="error">{this.state.error}</p>
                 {this.state.submitted === true && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
             </div>
           </main>

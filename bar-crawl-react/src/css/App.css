@@ -509,6 +509,11 @@ form a div {
   right: 5px;
   width: 200px;
 }
+
+
+.error {
+  color:#840d00;
+}
 /* ============================ DELETE USER ============================ */
 #list {
   margin: 0 auto;

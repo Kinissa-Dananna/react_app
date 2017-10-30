@@ -75,7 +75,7 @@ class SingleBarSearched extends Component {
     axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'fromEvent'}))
     .catch(err => {
-      this.setState({error: `You can't add a bar to an event you don't own!`})
+      this.setState({error: err.response.data.message})
     })
   }
 
@@ -96,7 +96,7 @@ class SingleBarSearched extends Component {
     axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'toEvent', eventId: eventId}))
     .catch(err => {
-      this.setState({error: `You can't add a bar to an event you don't own!`})
+      this.setState({error: err.response.data.message})
     })
   }
 
