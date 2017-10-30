@@ -46,7 +46,7 @@ class EventForm extends Component {
 		console.log('submit clicked');
 		event.preventDefault();
 		const { name, description, time } = this.state;
-		axios.post(`http://localhost:8080/events?auth_token=${this.props.user.token}`,
+		axios.post(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`,
 			{ name, description, time})
 			.then(response => {
 				console.log(response);

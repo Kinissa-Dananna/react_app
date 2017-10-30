@@ -28,7 +28,7 @@ class UserSearch extends Component {
     // function that will get user data matching search input
     autocompleteUser(event) {
         const { userInput } = this.state;
-        axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
+        axios.get(`http://barcrawlapi.herokuapp.com/user-search/${userInput}?auth_token=${this.props.user.token}`)
             .then(response => {
               console.log(response.data)
               this.setState({
@@ -48,7 +48,7 @@ class UserSearch extends Component {
       const userId = user.id;
       console.log(userId);
 
-        axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
+        axios.post(`http://barcrawlapi.herokuapp.com/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
             { eventId, userId })
             .then(response => {
               this.setState({ submitted: true })

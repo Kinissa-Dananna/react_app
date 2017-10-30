@@ -13,17 +13,17 @@ class EventBar extends Component {
 
   // function that gets event information from the database
   componentDidMount() {
-    axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://barcrawlapi.herokuapp.com/events/owned?auth_token=${this.props.user.token}`).then(response => {
       //console.log('response', response);
       this.setState({events: response.data})
     });
-    axios.get(`http://localhost:8080/events?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({allEvents: response.data})
     });
   }
-  
-	// function that formats event information into 
+
+	// function that formats event information into
 	// list items with links to that event
   eventsItem({
     ownerId,
@@ -40,7 +40,7 @@ class EventBar extends Component {
       </li>
     );
   }
-  // function that maps over all the event list items 
+  // function that maps over all the event list items
 	// and renders them formated into a list on the page
   render() {
     const eventsItems = this.state.events.map(this.eventsItem);

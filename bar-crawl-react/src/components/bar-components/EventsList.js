@@ -15,21 +15,21 @@ class EventsList extends Component {
     }
   }
 
-	// function that gets all data about this 
+	// function that gets all data about this
 	// user's owned events from the database
   componentDidMount() {
     console.log(this.props.user.token);
-    axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://barcrawlapi.herokuapp.com/events/owned?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({ ownedEvents: response.data })
     });
-    axios.get(`http://localhost:8080/events?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({ allEvents: response.data })
     });
   }
-  
-  // function that formats data of the event card for an individual event 
+
+  // function that formats data of the event card for an individual event
 	// owned by the user into a list item, and creates a link to that event
   eventsItem({
     ownerId,
@@ -46,14 +46,14 @@ class EventsList extends Component {
             {name}</h4>
           <p>{description}</p>
           {/* <p>{time}</p> */}
-          <p><em>{moment(time).format('dddd, MM/DD/YYYY')}</em></p>   
+          <p><em>{moment(time).format('dddd, MM/DD/YYYY')}</em></p>
           <p><em>{moment(time).format('@ h:mm a')}</em></p>
         </li>
       </Link>
     );
   }
 
- 	// function that maps over event cards and renders 
+ 	// function that maps over event cards and renders
 	// them as a list on the page
   render() {
     const eventsItems = this.state.ownedEvents.map(this.eventsItem);

@@ -31,7 +31,7 @@ class SingleBarView extends Component {
 		console.log(id);
 		axios
 
-			.get(`http://localhost:8080/bars/${eventId}/${id}?auth_token=${this.props.user.token}`)
+			.get(`http://barcrawlapi.herokuapp.com/bars/${eventId}/${id}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				//console.log('response', response)
 				this.setState({
@@ -50,7 +50,7 @@ class SingleBarView extends Component {
 		console.log('eventId', eventId);
 		console.log('barid',barId);
 		// console.log('id', id);
-		axios.delete(`http://localhost:8080/bars/${eventId}/${barId}?auth_token=${this.props.user.token}`,
+		axios.delete(`http://barcrawlapi.herokuapp.com/bars/${eventId}/${barId}?auth_token=${this.props.user.token}`,
 			{ eventId, barId })
 			.then(res => {
 				console.log(res);
