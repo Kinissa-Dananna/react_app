@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
-import NavBar from './NavBar.js';
+// import { Link } from "react-router-dom";
 import SearchForm from './SearchForm';
-import Autocomplete from './Autocomplete';
+// import Autocomplete from './Autocomplete';
 import axios from 'axios';
 import EventsBar from './EventsBar';
 
@@ -15,7 +14,7 @@ class EventBarSearch extends Component {
 			locationResults: [],
 			barResults: [],
 			currentLocation: ''
-		} 
+		}
 
 		this.getLocationResults = this.getLocationResults.bind(this);
 		this.getBarResults = this.getBarResults.bind(this);
@@ -29,7 +28,7 @@ class EventBarSearch extends Component {
 		this.setState({ eventId: this.props.match.params.eventId});
 	}
 
-	// populate autofilled search results for a location 
+	// populate autofilled search results for a location
 	// from localhost based on current input
 	getLocationResults(input) {
 		console.log(input.length);
@@ -48,7 +47,7 @@ class EventBarSearch extends Component {
 		}
 	}
 
-	// populate autofilled search results for bars 
+	// populate autofilled search results for bars
 	// from localhost based on chosen location
 	searchLocations(input) {
 		console.log(input.length);
@@ -62,7 +61,7 @@ class EventBarSearch extends Component {
 			})
 		}
 
-	// populate autofilled search results for bars 
+	// populate autofilled search results for bars
 	// from localhost based on name input
 	getBarResults(input) {
 		if (input.length === 0) {
@@ -87,8 +86,8 @@ class EventBarSearch extends Component {
 		axios
 		.get(`http://localhost:8080/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
 		.then(response => {
-			this.setState({ 
-				barResults: response.data.results, 
+			this.setState({
+				barResults: response.data.results,
 				locationResults: []
 			}, () => console.log(this.state.barResults));
 		});
@@ -99,7 +98,7 @@ class EventBarSearch extends Component {
 		.get(`http://localhost:8080/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
 		.then(response => {
 			this.setState({
-				barResults: response.data.results, 
+				barResults: response.data.results,
 				locationResults: []
 			}, () => console.log(this.state.barResults));
 		})

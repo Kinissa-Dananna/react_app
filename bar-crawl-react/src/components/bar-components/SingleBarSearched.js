@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 // import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 // import NavBar from './NavBar.js';
-import Iframe from 'react-iframe';
+//import Iframe from 'react-iframe';
 import axios from 'axios';
-import {Route, Redirect} from 'react-router-dom';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+import { Route, Redirect } from 'react-router-dom';
+// import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import EventsBar from './EventsBar';
 
 // single bar view, but for bars that have been searched for rather than saved in the db
@@ -107,7 +107,7 @@ class SingleBarSearched extends Component {
       return <h2>Waiting for Data to Load</h2>
     }
     else {
-    const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long, map } = this.state.barInfo;
+    const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, map } = this.state.barInfo;
     //const map = this.state.map;
     console.log('map', map);
     return(
@@ -116,8 +116,6 @@ class SingleBarSearched extends Component {
       <div className="single-bar">
         <div className="map">
           <iframe
-              width="400"
-              height="500"
               src={map} >
             </iframe>
           {/* <img src={map} alt="map" /> */}
