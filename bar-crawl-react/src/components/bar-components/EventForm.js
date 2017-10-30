@@ -37,6 +37,7 @@ class EventForm extends Component {
 	// of the time of the event
 	changeTime(event) {
 		event.preventDefault();
+		console.log('value', event.target.value)
 		this.setState({ time: event.target.value })
 	};
 
@@ -66,7 +67,7 @@ class EventForm extends Component {
 
 				<div className="event-form">
 					<h3>New Event</h3>
-					<form onSubmit={this.onSubmit}>
+					<form onSubmit={this.onSubmit} >
 						<label>
 							Name of Event:
           <input
