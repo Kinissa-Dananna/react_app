@@ -47,7 +47,7 @@ class EventForm extends Component {
 		event.preventDefault();
 		const { name, description, time } = this.state;
 		axios.post(`http://localhost:8080/events?auth_token=${this.props.user.token}`,
-			{ name, description, time })
+			{ name, description, time})
 			.then(response => {
 				console.log(response);
 				const { id } = response.data;
