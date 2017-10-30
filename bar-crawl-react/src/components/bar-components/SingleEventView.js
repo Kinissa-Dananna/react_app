@@ -104,6 +104,7 @@ class SingleEventView extends Component {
 						e.preventDefault();
 						this.deleteEvent(eventId);
 					}} > Delete This Event </button>}
+					{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/edit`} {...this.props}><button>Edit Event</button> </Link>}
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>
