@@ -14,7 +14,9 @@ class SingleEventView extends Component {
 			bars: [],
 			attendees: [],
 			deleted: false,
-			ownerId: null
+			ownerId: null,
+			ownerImage: '',
+			ownerName: '',
 		}
 		this.deleteEvent = this.deleteEvent.bind(this);
 	}
@@ -30,8 +32,10 @@ class SingleEventView extends Component {
 					event: response.data,
 					bars: response.data.bars,
 					attendees: response.data.attendees,
-					ownerId: response.data.ownerid
-				}, () => console.log(this.state.ownerId))
+					ownerId: response.data.ownerid,
+					ownerImage: response.data.owner.image,
+					ownerName: response.data.owner.name
+				}, () => console.log(this.state.event.owner.image))
 			});
 	}
 
@@ -46,7 +50,10 @@ class SingleEventView extends Component {
 				this.setState({
 					event: response.data,
 					bars: response.data.bars,
-					attendees: response.data.attendees
+					attendees: response.data.attendees,
+					ownerId: response.data.ownerid,
+					ownerImage: response.data.owner.image,
+					ownerName: response.data.owner.name
 				})
 			});
 		}
@@ -79,8 +86,10 @@ class SingleEventView extends Component {
 		const attendees = this.state.attendees.map((user, i) => {
 			console.log(user)
 			console.log(user.image);
-			return <img src={user.image} key={i} alt="user" />
+			return <img src={user.image} key={i} alt="user" title={user.name}/>
 		})
+
+		attendees.unshift(<img src={this.state.ownerImage} title={this.state.ownerName}/>)
 
 		if (this.state.deleted) {
 			return <Redirect to={'/events'} />

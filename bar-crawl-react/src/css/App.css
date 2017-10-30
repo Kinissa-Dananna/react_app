@@ -509,15 +509,40 @@ form a div {
   right: 5px;
   width: 200px;
 }
+
+
+.error {
+  color:#840d00;
+}
 /* ============================ DELETE USER ============================ */
 #list {
   margin: 0 auto;
   text-align: center;
+  align-content: center;
+  justify-content: center;
+}
+#list div {
+  max-height:100px;
+  padding: 0.5em;
+  align-content: center;
+  justify-content: center;
+  display: flex;
 }
 #list div img {
   max-height: 80px;
   max-width: 80px;
   border-radius: 50%;
+  margin-top: 5%;
+  align-content: center;
+  justify-content: center;
+}
+#list div button {
+  /*padding-bottom: 5%;
+  padding-top: 5%;
+  margin-top: -5%;*/
+  align-self: center;
+  justify-content: center;
+  align-content: center;
 }
 
 /* ============================ MEDIA SCREENS ============================ */
