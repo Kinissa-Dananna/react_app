@@ -345,7 +345,7 @@ main div {
   order: 2;
 }
 .events-list ul {
-  width: 70%;
+  width: 90%;
   min-width: 500px;
 }
 
@@ -373,7 +373,7 @@ main div {
 
 .events-card {
   flex-direction: row;
-  width: 25%%;
+  width: 120%;
   padding: 0.5em;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -381,6 +381,7 @@ main div {
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
+  flex-wrap: wrap;
 }
 .events-card li.events-item {
   /*display: flex;*/
@@ -473,6 +474,9 @@ main div {
   order: 2;
 
 }
+.bar-search {
+  margin-top: 20px;
+}
 .search-form {
     margin-right: 4%;
   flex-direction: row;
@@ -492,7 +496,7 @@ main div {
   text-align: left;
   width: 300px;
     flex-direction: column;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 .search-results {
@@ -726,6 +730,9 @@ form a div {
     width: 100%;
     flex-direction: column;
     min-width: 150px;
+  }
+  .events-card {
+    width: 80%;
   }
   .events-list ul h1 {
     font-size: 1em;
