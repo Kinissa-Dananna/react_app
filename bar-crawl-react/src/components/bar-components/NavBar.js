@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logo from '../../images/Logo-V01.png';
+import EventForm from './EventForm.js';
 
 
 class NavBar extends Component {
-	// constructor(props){
-	// 	super(props);
-	// }
+	constructor(props){
+		super(props);
+	}
 
 	// create buttons that link to Home, Events, Bars, and the log in page
 
@@ -26,12 +27,15 @@ class NavBar extends Component {
             <Link to="/bars/search"> bars  </Link>
           </li>
           <li>
-            <Link to="/login" ><button onClick={this.props.logout}>logout</button></Link>
+            <button onClick={this.props.logout}>logout</button>
           </li>
         </nav>
+        <div className="border-bottom">
+
+        </div>
       </header>
 		);
 	}
 }
-
+ 
 export default NavBar;

@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import '../css/App.css';
 import axios from 'axios';
 import Cookies from '../helpers/Cookies';
 import UserAuth from './UserAuth';
-// import Homepage from './bar-components/Homepage';
-import BarCrawl from './bar-components/BarCrawl';
-
+import Homepage from './bar-components/Homepage';
 
 class App extends Component {
   constructor(){
@@ -16,7 +13,7 @@ class App extends Component {
       user: false, // default user is no user
       // the app needs to do a request, so there will be a loading time
       // we want to display something else while it does that
-      // mode: 'loading',
+      mode: 'loading',
       // url for the API we are using - uncomment the one you want to use
 
       // Express
@@ -46,29 +43,24 @@ class App extends Component {
         .then(res => { // the response will be the user
           // set the user in the state, and change the mode to content
           this.setState({user: res.data, mode: 'content'});
-          return <Redirect to="/events" />
         })
         .catch(err => { // if there is an error
           Cookies.set('token', '') // take away the cookie
           // change the state so that there is no user and render the auth
           this.setState({user: false, mode: 'auth'});
-          return <Redirect to="/login" />
         })
     } else { // if there is no token
       // we should render the auth forms
       this.setState({mode: 'auth'});
-      return <Redirect to="/login" />
     }
   }
 
   // method to set a user
   setUser(user){
-    console.log('in set user');
     // set a cookie with the user's token
     Cookies.set('token', user.token);
     // set state to have the user and the mode to content
     this.setState({user: user, mode: 'content'});
-    return <Redirect to="/events" />
   }
 
   // method to log out
@@ -77,7 +69,6 @@ class App extends Component {
     Cookies.set('token', '');
     // remove the user and set the mode to auth
     this.setState({user: false, mode: 'auth'});
-    return ( <Redirect to="/login" /> );
   }
 
   // method that renders the view based on the mode in the state
@@ -99,7 +90,7 @@ class App extends Component {
     } else if(this.state.mode === 'content') {
       return (
         //<Content logout={this.logout.bind(this)} user={this.state.user} />
-        <BarCrawl logout={this.logout.bind(this)} user={this.state.user}  />
+        <Homepage logout={this.logout.bind(this)} user={this.state.user}  />
       )
     }
   }
@@ -107,10 +98,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-
-        <BrowserRouter>
-           { this.renderView() }
-      </BrowserRouter>
+        { this.renderView() }
       </div>
     );
   }
