@@ -25,7 +25,7 @@ class SingleEventView extends Component {
 	componentDidMount() {
 		const eventId = this.props.match.params.id;
 		axios
-			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
+			.get(`http://barcrawlapi.herokuapp.com/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				console.log(response.data);
 				this.setState({
@@ -45,7 +45,7 @@ class SingleEventView extends Component {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
 		axios
-			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
+			.get(`http://barcrawlapi.herokuapp.com/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
 					event: response.data,
@@ -63,7 +63,7 @@ class SingleEventView extends Component {
   // function that deletes this event from the database
 	deleteEvent(eventId) {
 		console.log('delete click')
-		axios.delete(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
+		axios.delete(`http://barcrawlapi.herokuapp.com/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(res => {
 				console.log(res);
 				this.setState({ deleted: true });

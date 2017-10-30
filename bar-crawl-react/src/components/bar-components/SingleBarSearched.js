@@ -30,7 +30,7 @@ class SingleBarSearched extends Component {
 	componentDidMount(){
 		const barId = this.props.match.params.barId;
 		 axios
-		    .get(`http://localhost:8080/search/bars/${barId}?auth_token=${this.props.user.token}`)
+		    .get(`http://barcrawlapi.herokuapp.com/search/bars/${barId}?auth_token=${this.props.user.token}`)
 		    .then(response => {
 					console.log('response', response)
 		      this.setState({
@@ -51,7 +51,7 @@ class SingleBarSearched extends Component {
 
   // get a list of events to add this bar to if the user didn't get here from an event page
   getEventsToAddTo() {
-    axios.get(`http://localhost:8080/events/owned?auth_token=${this.props.user.token}`)
+    axios.get(`http://barcrawlapi.herokuapp.com/events/owned?auth_token=${this.props.user.token}`)
 					.then(response => {
             console.log('response', response);
 						this.setState({ownedEvents: response.data})
@@ -72,7 +72,7 @@ class SingleBarSearched extends Component {
       lat: lat,
       long: long
     }
-    axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
+    axios.post(`http://barcrawlapi.herokuapp.com/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'fromEvent'}))
     .catch(err => {
       this.setState({error: err.response.data.message})
@@ -93,7 +93,7 @@ class SingleBarSearched extends Component {
       lat: lat,
       long: long
     }
-    axios.post(`http://localhost:8080/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
+    axios.post(`http://barcrawlapi.herokuapp.com/bars/${eventId}/new?auth_token=${this.props.user.token}`, newData)
     .then(res => this.setState({added: 'toEvent', eventId: eventId}))
     .catch(err => {
       this.setState({error: err.response.data.message})

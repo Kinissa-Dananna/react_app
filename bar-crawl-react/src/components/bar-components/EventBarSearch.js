@@ -38,7 +38,7 @@ class EventBarSearch extends Component {
 			});
 		} else {
 			axios
-			.get(`http://localhost:8080/search/${input}?auth_token=${this.props.user.token}`)
+			.get(`http://barcrawlapi.herokuapp.com/search/${input}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
 					locationResults: response.data.results
@@ -51,7 +51,7 @@ class EventBarSearch extends Component {
 	// from localhost based on chosen location
 	searchLocations(input) {
 		console.log(input.length);
-			axios.get(`http://localhost:8080/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
+			axios.get(`http://barcrawlapi.herokuapp.com/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
 				console.log(response.data.searchLocation.description);
 				this.setState({
 					currentLocation: response.data.searchLocation.description,
@@ -70,7 +70,7 @@ class EventBarSearch extends Component {
 			});
 		} else {
 			axios
-			.get(`http://localhost:8080/search/${input}?auth_token=${this.props.user.token}`)
+			.get(`http://barcrawlapi.herokuapp.com/search/${input}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
 					barResults: response.data.results
@@ -84,7 +84,7 @@ class EventBarSearch extends Component {
 	  	console.log('searching');
 		this.setState({currentLocation: name});
 		axios
-		.get(`http://localhost:8080/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
+		.get(`http://barcrawlapi.herokuapp.com/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
 		.then(response => {
 			this.setState({
 				barResults: response.data.results,
@@ -95,7 +95,7 @@ class EventBarSearch extends Component {
 	// search for an save a location by text entry
 	searchWithInput(bar) {
 		axios
-		.get(`http://localhost:8080/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
+		.get(`http://barcrawlapi.herokuapp.com/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
 		.then(response => {
 			this.setState({
 				barResults: response.data.results,

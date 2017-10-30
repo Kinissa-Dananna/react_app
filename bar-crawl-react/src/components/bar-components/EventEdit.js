@@ -20,28 +20,28 @@ class EventEdit extends Component {
 		this.onSubmit = this.onSubmit.bind(this);
 	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the name of the event
 	changeNameOfEvent(event) {
 		event.preventDefault();
 		this.setState({ name: event.target.value });
 	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the description of the event
 	changeDescription(event) {
 		event.preventDefault();
 		this.setState({ description: event.target.value });
-	}; 
+	};
 
-	// onChange function that updates the input value 
+	// onChange function that updates the input value
 	// of the time of the event
 	changeTime(event) {
 		event.preventDefault();
 		this.setState({ time: event.target.value })
 	};
 
-	// onSubmit function that saves the input 
+	// onSubmit function that saves the input
 	// values to the database to update the event
 	onSubmit(event) {
 		const id = this.props.match.params.id;
@@ -50,7 +50,7 @@ class EventEdit extends Component {
 		const { name, description, time } = this.state;
 		console.log({name, description, time, id})
 		axios
-			.put(`http://localhost:8080/events/${id}?auth_token=${this.props.user.token}`,
+			.put(`http://barcrawlapi.herokuapp.com/events/${id}?auth_token=${this.props.user.token}`,
 			{ name, description, time })
 			.then(response => {
 				console.log(response)
@@ -58,7 +58,7 @@ class EventEdit extends Component {
 			})
 	};
 
-	// function that renders a form toupdate this event and 
+	// function that renders a form toupdate this event and
 	// redirect to all events when the updated event is submitted
 	render() {
 		if (this.state.submitted) {
