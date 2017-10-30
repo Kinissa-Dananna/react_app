@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Abel');
 
 body, html{
-  background-color: rgb(173, 172, 172);
+  background-color: #787878;
   margin: 0 auto;
 }
 .App {
@@ -36,16 +36,14 @@ header {
   color: black;
   flex-wrap: wrap;
   font-family: 'Marcellus', serif;
-  border-bottom: 14px solid black;
 }
 header img.logo {
   align-items: center;
   min-width: 120px;
   max-width: 350px;
-  max-height: 200px;
+  max-height: 250px;
   align-items: center;
   justify-content: center;
-  margin: 25px;
 }
 header nav {
     display: flex;
@@ -167,9 +165,6 @@ input{
   border-bottom: 1px solid #333;
   font-size: 1em;
   outline: 0px solid transparent;
-  margin-left: 8px;
-  border-radius: 3px;
-
 }
 
 .form-buttons{
@@ -210,24 +205,20 @@ button:hover{
 }
 /* ============================ AUTH FORM ANNA ============================ */
 .login-page {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   min-height: 100%;
   padding-top: 0;
   background-image: url('https://nyc-wpengine.netdna-ssl.com/wp-content/uploads/2017/01/20140423_Es_bar-9571_ENF.tif.jpg');
-  /*background-size: cover;*/
+  background-size: auto;
   overflow: scroll;
   background-position: center;
-  background-size: auto;
-
 }
 .background-color {
   padding-top: 2vh;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.62);
   overflow: scroll;
-  background-position: center;
-  background-size: auto;
+  background-color: rgba(0, 0, 0, 0.62);
 }
 
 .auth-form {
@@ -301,7 +292,7 @@ button:hover{
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
 }
 .bar-crawl main {
   display: -webkit-flex;
@@ -312,11 +303,8 @@ button:hover{
   flex-direction:row;
   flex-wrap: nowrap;
 }
-.bar-crawl main div {
-  order: 2;
-}
 .bar-crawl .sidebar {
-  margin-top: 0px;
+  margin-top: 11px;
   padding-top: 2%;
   margin-right: 2%;
   -webkit-flex-direction: row;
@@ -325,11 +313,11 @@ button:hover{
   width: 25%;
   min-width: 250px;
   min-height: 300px;
-  height: 100vh;
-  order: 1;
+  height: 100%;
+  /*order: 1;*/
   justify-content: flex-start;
   align-self: flex-start;
-  background-color: rgb(107, 107, 107);
+  background-color: #343434;
 }
 .bar-crawl .sidebar li {
   list-style: none;
@@ -343,50 +331,32 @@ button:hover{
 }
 
 /* ============================ EVENTS PAGE ============================ */
-.events-list {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  order: 2;
-}
 .events-list ul {
   width: 70%;
   min-width: 500px;
-  flex-wrap: wrap;
 }
-.single-event-container {
-  width: 80%;
-  order: 2;
-}
+
 .single-event {
   margin: 0 auto;
+  padding: 0 100px;
   width: 60%;
   min-width: 600px;
   display: flex;
   justify-content: space-around;
   align-content: center;
-  order: 2;
 }
 
 .single-event .attendees img {
-  min-height: 40px;
-  max-height: 60px;
-  min-width: 40px;
-  max-width: 60px;
+  min-height: 30px;
+  max-height: 50px;
+  min-width: 30px;
+  max-width: 50px;
   border-radius: 50%;
-}
-.single-event .bar-info {
-  text-align: left;
-  padding-left: 10%;
-  padding-right: 8%;
-}
-.single-event .bar-info h4{
-  text-align: center;
 }
 
 .events-card {
   flex-direction: row;
-  width: 100%;
+  width: 25%%;
   padding: 0.5em;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
@@ -394,12 +364,11 @@ button:hover{
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  flex-wrap: wrap;
 }
 .events-card li.events-item {
   flex-direction: row;
   padding: 0.8em;
-   margin: 0.5em;
+  margin-right: 0.4em;
   border: 4px solid #464646;
   border-radius: 8px;
   list-style: none;
@@ -435,7 +404,6 @@ button:hover{
   width: 60%;
   max-width: 900px;
   margin-top: 3%;
-  order: 2;
 }
 .single-bar .bar-info {
   width: 30%;
@@ -459,190 +427,36 @@ button:hover{
   height: 200px;
 }
 
-/* ============================ CREATE EVENT FORM ============================ */
-.event-form {
-  width: 80%;
-  order: 2;
-}
-.event-form form input{
-  margin: 3%;
-  border-radius: 3px;
-}
-.event-form input[type="submit"] {
-  padding: 1em 2em 1em 2em;
-  background-color: #D11400;
-}
 /* ============================ SEARCH BAR VIEW ============================ */
-.bar-search,
-.bar-search div {
-  display: flex;
-  width: 100%;
-  order: 2;
 
+.bar-search{
+  margin-top: 40px;
+  display: flex;
 }
 .search-form {
-    margin-right: 4%;
   flex-direction: row;
   width: 50%;
-  height: 300px;
 }
-.search-form,
 .location-search {
-      /*margin-top: 40px;*/
   height: 50px;
-  flex-direction: column;
-  height: 300px;
-}
-.search-form input,
-.location-search input {
-  margin: 0 auto;
-  text-align: left;
-  width: 300px;
-    flex-direction: column;
-    margin-top: 40px;
-    margin-bottom: 10px;
-}
-.search-results {
-  height: 500px;
-  flex-direction: column;
-  height: 300px;
-  width: 300px;
-  padding-top: 10px;
-  padding-bottom: 5px;
-}
-.location-result,
-.bar-result {
+  flex-direction: row;
 
-  flex-direction: column;
 }
-.location-result,
-.bar-result a{
-  flex-direction: column;
+.location-search input {
+
+}
+.location-result {
   border: 1px solid black;
   background-color: white;
-  margin: 0;
+  margin: 0 25%;
+  height: 30px;
   height: 36px;
   width: 300px;
-  padding-top: 10px;
-  padding-bottom: 5px;
 }
-
 
 .foursquare-logo {
   position: fixed;
   bottom: 5px;
   right: 5px;
   width: 200px;
-}
-/* ============================ DELETE USER ============================ */
-#list {
-  margin: 0 auto;
-  text-align: center;
-}
-#list div img {
-  max-height: 80px;
-  max-width: 80px;
-  border-radius: 50%;
-}
-
-/* ============================ MEDIA SCREENS ============================ */
-
-@media screen and (max-width: 480px) {
-  header {
-    width: 100%;
-    flex-direction: column;
-    border-bottom: 4px solid black;
-    min-height: 200px;
-    height: 20%;
-  }
-  header nav{
-    width: 100%;
-    flex-direction: column;
-  }
-  header nav .logo {
-    display: none;
-  }
-  header nav li {
-    width: 100%;
-    border-top: none;
-    /*border-bottom: 1px solid black;*/
-    border-bottom: none;
-    flex-direction: column;
-    margin-top: 0px;
-    padding-top: 0.5em;
-  }
-  .bar-crawl main {
-    flex-direction: column;
-  }
-  .bar-crawl .sidebar {
-    flex-direction: column;
-    width: 100%;
-  }
-  .events-list {
-    flex-direction: column;
-    width: 100%;
-  }
-  .events-list ul {
-    flex-direction: column;
-    width: 100%;
-  }
-}
-@media screen and (max-width: 800px) {
-  .bar-crawl .sidebar {
-    width: 100%;
-    flex-direction: column;
-    height: 20%;
-    min-height: 200px;
-    align-self: flex-end;
-    justify-content: flex-end;
-    bottom: 0;
-    order: 2;
-  }
-  header {
-    margin: 0 auto;
-    padding: 0px;
-    display: block;
-    width: 100%;
-    flex-direction: column;
-    border-bottom: 4px solid black;
-    min-height: 200px;
-    height: 32%;
-  }
-  header nav {
-    width: 100%;
-    flex-direction: column;
-  }
-  header nav .logo {
-    display: none;
-  }
-  header nav li {
-    width: 100%;
-    border-top: none;
-    /*border-bottom: 1px solid black;*/
-    border-bottom: none;
-    flex-direction: column;
-    margin-top: 0px;
-    padding-top: 0.5em;
-    font-size: 0.8em;
-  }
-  .bar-crawl,
-  .bar-crawl main {
-    margin: 0 auto;
-    padding: 0px;
-    display: block;
-    width: 100%;
-    flex-direction: column;
-  }
-  .events-list ul,
-  .events-card,
-  .single-event {
-    margin: 0 auto;
-    padding: 0px;
-    width: 100%;
-    flex-direction: column;
-    min-width: 150px;
-  }
-  .events-list ul h1 {
-    font-size: 1.5em;
-  }
 }

@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 import CreateEventForm from './EventForm';
 import NavBar from './NavBar.js';
 import BarSearch from './BarSearch';
 import EventBarSearch from './EventBarSearch';
-// import EventCard from './EventCard';
-// import EventsBar from './EventsBar';
+import EventCard from './EventCard';
+import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
-import SingleBarSearched from './SingleBarSearched';
+import SingleBarSearched from './SingleBarSearched'
 import SingleEventView from './SingleEventView';
 import UserSearch from './UserSearch.js';
 import UserDelete from './UserDelete';
@@ -29,11 +29,6 @@ class BarCrawl extends Component {
 				<Route
 					exact
 					path="/"
-					render={() => <Redirect to="/events" />}
-				/>
-				<Route
-					exact
-					path="/login"
 					render={() => <Redirect to="/events" />}
 				/>
 				<Route exact path="/events/new" render={props => (
