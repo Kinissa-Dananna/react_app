@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
-import NavBar from './NavBar.js';
+// import { Redirect } from "react-router-dom";
 import SearchForm from './SearchForm';
 // import Autocomplete from './Autocomplete';
 import axios from 'axios';

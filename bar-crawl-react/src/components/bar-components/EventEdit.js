@@ -1,4 +1,4 @@
-EventEdit.jsimport React, { Component } from "react";
+import React, { Component } from "react";
 import { BrowserRouter, Route, Link, Redirect } from "react-router-dom";
 import BarSearch from './BarSearch';
 import EventsBar from './EventsBar';
