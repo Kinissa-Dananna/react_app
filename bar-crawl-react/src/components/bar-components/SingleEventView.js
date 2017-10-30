@@ -35,7 +35,7 @@ class SingleEventView extends Component {
 					ownerId: response.data.ownerid,
 					ownerImage: response.data.owner.image,
 					ownerName: response.data.owner.name
-				}, () => console.log(this.state.event.owner.image))
+				}, () => console.log(response.data))
 			});
 	}
 
@@ -54,7 +54,7 @@ class SingleEventView extends Component {
 					ownerId: response.data.ownerid,
 					ownerImage: response.data.owner.image,
 					ownerName: response.data.owner.name
-				})
+				}, () => console.log(response.data))
 			});
 		}
 	}

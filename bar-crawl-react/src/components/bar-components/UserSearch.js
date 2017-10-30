@@ -45,7 +45,7 @@ class UserSearch extends Component {
     // onClick function that adds user to this event
     onClickUser(user){
       const eventId = this.props.match.params.eventId;
-      const userId = user.userId;
+      const userId = user.id;
       console.log(userId);
 
         axios.post(`http://localhost:8080/events/${eventId}/newuser?auth_token=${this.props.user.token}`,
@@ -67,7 +67,7 @@ class UserSearch extends Component {
             e.preventDefault();
             this.onClickUser(user)
           } }
-                    id={user.id}>
+                    data-id={user.id}>
                     {user.name}
                   </button></div>;
 

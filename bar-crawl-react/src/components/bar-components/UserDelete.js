@@ -22,6 +22,7 @@ class UserSearch extends Component {
 		axios
 			.get(`http://localhost:8080/events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
+        console.log(response.data);
 				this.setState({
 					attendees: response.data.attendees
 				})
