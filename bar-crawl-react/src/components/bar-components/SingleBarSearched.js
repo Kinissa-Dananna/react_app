@@ -136,8 +136,9 @@ class SingleBarSearched extends Component {
         )} />
       <Route exact path="/bars/search/:barId" render={props => (
           <div><button onClick={this.getEventsToAddTo}>Add this bar to an event</button>
-          <div>{this.state.ownedEvents.map((event, i) =>
-            <div><a href='/' data-id={event.id} key={i} onClick={this.addBarToChosenEvent}>{event.name}</a></div>)}</div></div>
+          {this.state.ownedEvents.length > 0 && <div>{this.state.ownedEvents.map((event, i) =>
+            <div><a href='/' data-id={event.id} key={i} onClick={this.addBarToChosenEvent}>{event.name}</a></div>)}</div>}
+            {this.state.ownedEvents.length === 0 && <p className='error'>You don't own any events!</p>}</div>
           )} />
         {this.state.added === 'fromEvent' && <Redirect to={`/events/${this.props.match.params.eventId}`}/>}
         {this.state.added === 'toEvent' && <Redirect to={`/events/${this.state.eventId}`}/>}
