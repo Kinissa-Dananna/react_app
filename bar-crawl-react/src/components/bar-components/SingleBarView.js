@@ -4,7 +4,7 @@ import React, { Component } from "react";
 // import map from './map.js';
 // import Iframe from 'react-iframe';
 import axios from 'axios';
-import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
+// import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 import EventsBar from './EventsBar';
 
 
@@ -75,7 +75,7 @@ class SingleBarView extends Component {
 			return <h2>Waiting for Data to Load</h2>
 		}
 		else {
-			const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, lat, long, map, barId } = this.state.barInfo;
+			const { name, address, price, rating, isOpen, daysOpen, hoursOpen, hoursUntilClosed, description, map, barId } = this.state.barInfo;
 			//const map = this.state.map;
 			console.log('map', map);
 			return (

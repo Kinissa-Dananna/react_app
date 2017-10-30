@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import CreateEventForm from './EventForm.js';
 import NavBar from './NavBar.js';
 import BarSearch from './BarSearch.js';
 import EventBarSearch from './EventBarSearch.js';
-import EventCard from './EventCard.js';
-import EventsBar from './EventsBar.js';
+// import EventCard from './EventCard.js';
+// import EventsBar from './EventsBar.js';
 import SingleBarView from './SingleBarView.js';
 import SingleBarSearched from './SingleBarSearched.js';
 import SingleEventView from './SingleEventView.js';
@@ -93,7 +93,7 @@ class BarCrawl extends Component {
 						 	/>
 						)} />
 			</Switch>
-			<img className='foursquare-logo' src={foursquare}/>
+			<img className='foursquare-logo' src={foursquare} alt="foursquare"/>
 			</div>
 		);
 	}
