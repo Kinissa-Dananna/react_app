@@ -7,9 +7,7 @@
 <a href='https://trello.com/b/jCzgRiAz/agile-sprint'> Trello Board </a>
 <br />
 <a href='https://github.com/Kinissa-Dananna'> GitHub </a>
-
 <br />
-
 <h3> Techonologies </h3>
 <ul>
   <li> Javascript </li>
@@ -20,9 +18,7 @@
   <li> HTML </li>
   <li> CSS </li>
 </ul>
-
 <br />
-
 <h3> Installation Instructions </h3>
 <br />
 <p> Once you have cloned the files, please use, 'npm install' to install all the dependencies. </p>
@@ -42,7 +38,6 @@
 <h3> General Approach </h3>
 <br />
 <p>Once we figured out what we wanted to build, we mapped out what we needed to be done first before tackling the features we want to add.  We first built the express servers and databases that we needed. Once the back-end server and our API keys were working as intended, we started on the front-end using React. We mapped out every component we may need for the MVP.</p>
-<br />
 <p>After hitting the MVP, We came up with other features that may be useful to the user.</p>
 
 <br />
