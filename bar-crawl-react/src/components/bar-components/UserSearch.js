@@ -30,9 +30,9 @@ class UserSearch extends Component {
         const { userInput } = this.state;
         axios.get(`http://localhost:8080/user-search/${userInput}?auth_token=${this.props.user.token}`)
             .then(response => {
-              console.log(response)
+              console.log(response.data)
               this.setState({
-                userOptions: [response.data],
+                userOptions: response.data,
                 dataLoaded: true })
             })
             .catch(err => {
@@ -62,12 +62,13 @@ class UserSearch extends Component {
     populateList() {
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <div><img src={user.image} key={i} alt="user" /><button className='autocomplete' onClick={  (e) => {
+          console.log(user);
+          return <div key={i}><img src={user.image} /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
-                    id={user.userId} key={i}>
-                    {user.userName}
+                    id={user.id}>
+                    {user.name}
                   </button></div>;
 
         }) }
