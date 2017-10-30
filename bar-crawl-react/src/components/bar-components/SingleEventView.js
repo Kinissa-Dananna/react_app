@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import UserSearch from './UserSearch.js';
+// import UserSearch from './UserSearch.js';
 import axios from 'axios';
 import moment from 'moment';
 import EventsBar from './EventsBar';
@@ -80,13 +80,13 @@ class SingleEventView extends Component {
 		const bars = this.state.bars.map((bar) => {
 
 			return (
-				<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
+				<Link to={`/events/${eventId}/bars/${bar.id}`} key={bar.id} >{bar.name}<br /></Link>
 			)
 		})
 		const attendees = this.state.attendees.map((user, i) => {
 			console.log(user)
 			console.log(user.image);
-			return <img src={user.image} key={i} title={user.name}/>
+			return <img src={user.image} key={i} alt="user" title={user.name}/>
 		})
 
 		attendees.unshift(<img src={this.state.ownerImage} title={this.state.ownerName}/>)
@@ -113,6 +113,7 @@ class SingleEventView extends Component {
 						e.preventDefault();
 						this.deleteEvent(eventId);
 					}} > Delete This Event </button>}
+					{Number(this.props.user.id) === this.state.ownerId && <Link to={`/events/${eventId}/edit`} {...this.props}><button>Edit Event</button> </Link>}
 				</div>
 				<div className="bar-info">
 					<h4>Bars:</h4>

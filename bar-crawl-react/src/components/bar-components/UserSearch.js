@@ -62,7 +62,7 @@ class UserSearch extends Component {
     populateList() {
         if (this.state.userOptions.length>0) {
         return this.state.userOptions.map((user, i) => {
-          return <div><img src={user.image} key={i} /><button className='autocomplete' onClick={  (e) => {
+          return <div><img src={user.image} key={i} alt="user" /><button className='autocomplete' onClick={  (e) => {
             e.preventDefault();
             this.onClickUser(user)
           } }
@@ -77,7 +77,7 @@ class UserSearch extends Component {
     // list of users and set redirect function to go
     // back to single event view when a user is added
     render() {
-      const eventId = this.props.match.params.eventId;
+      //const eventId = this.props.match.params.eventId;
       console.log('submitted', this.state.submitted);
 
       return(

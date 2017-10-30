@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Autocomplete from './Autocomplete'
-import EventsBar from './EventsBar';
 
 class SearchForm extends Component {
   constructor(props) {
@@ -70,8 +69,9 @@ class SearchForm extends Component {
             <Autocomplete searchNearby={this.props.searchNearby} results={this.props.results} updateInput={this.updateInput} /></div></form>
         <form className='search-form' onSubmit={this.onSubmit}>
           <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange} />
+            {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
         </form>
-        {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
+
 
 
       </div>

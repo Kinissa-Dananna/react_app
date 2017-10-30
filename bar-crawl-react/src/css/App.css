@@ -448,20 +448,27 @@ button:hover{
 }
 
 /* ============================ SEARCH BAR VIEW ============================ */
-
-.bar-search{
-  margin-top: 40px;
+.bar-search,
+.bar-search div {
   display: flex;
+  width: 100%;
+  order: 2;
+
 }
 .search-form {
+    margin-right: 4%;
   flex-direction: row;
   width: 50%;
+  height: 300px;
 }
+.search-form,
 .location-search {
+      /*margin-top: 40px;*/
   height: 50px;
-  flex-direction: row;
-
+  flex-direction: column;
+  height: 300px;
 }
+.search-form input,
 .location-search input {
   margin: 0 auto;
   text-align: left;
@@ -480,21 +487,20 @@ button:hover{
 }
 .location-result,
 .bar-result {
-  margin: 0 auto;
-  width: 300px;
   flex-direction: column;
 }
-.location-result {
+.location-result,
+.bar-result a,
+.bar-result a div,
+form a div {
+  flex-direction: column;
   border: 1px solid black;
   background-color: white;
-  margin: 0 25%;
-  height: 30px;
+  margin: 0;
   height: 36px;
   width: 300px;
-}
-.bar-result {
-  padding-left: 10%;
-  padding-right: 7%;
+  padding-top: 10px;
+  padding-bottom: 5px;
 }
 
 .foursquare-logo {
