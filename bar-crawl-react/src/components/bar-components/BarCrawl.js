@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Switch, Route, Link, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import CreateEventForm from './EventForm';
 import NavBar from './NavBar.js';
 import BarSearch from './BarSearch';
 import EventBarSearch from './EventBarSearch';
-import EventCard from './EventCard';
-import EventsBar from './EventsBar';
 import SingleBarView from './SingleBarView';
 import SingleBarSearched from './SingleBarSearched'
 import SingleEventView from './SingleEventView';
@@ -87,7 +85,7 @@ class BarCrawl extends Component {
 						 	/>
 						)} />
 			</Switch>
-			<img className='foursquare-logo' src={foursquare}/>
+			<img className='foursquare-logo' src={foursquare} alt="foursquare"/>
 			</div>
 		);
 	}

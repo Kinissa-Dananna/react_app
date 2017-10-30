@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link, Redirect } from "react-router-dom";
-import UserSearch from './UserSearch.js';
+// import UserSearch from './UserSearch.js';
 import axios from 'axios';
 import moment from 'moment';
 import EventsBar from './EventsBar';
@@ -73,13 +73,13 @@ class SingleEventView extends Component {
 		const bars = this.state.bars.map((bar) => {
 
 			return (
-				<Link to={`/events/${eventId}/bars/${bar.id}`} >{bar.name}<br /></Link>
+				<Link to={`/events/${eventId}/bars/${bar.id}`} key={bar.id} >{bar.name}<br /></Link>
 			)
 		})
 		const attendees = this.state.attendees.map((user, i) => {
 			console.log(user)
 			console.log(user.image);
-			return <img src={user.image} key={i} />
+			return <img src={user.image} key={i} alt="user" />
 		})
 
 		if (this.state.deleted) {
