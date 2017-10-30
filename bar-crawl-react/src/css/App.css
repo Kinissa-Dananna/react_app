@@ -460,3 +460,7 @@ button:hover{
   right: 5px;
   width: 200px;
 }
+
+.error {
+  color:#840d00;
+}

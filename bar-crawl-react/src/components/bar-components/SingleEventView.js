@@ -46,7 +46,8 @@ class SingleEventView extends Component {
 				this.setState({
 					event: response.data,
 					bars: response.data.bars,
-					attendees: response.data.attendees
+					attendees: response.data.attendees,
+					ownerId: response.data.ownerid
 				})
 			});
 		}
