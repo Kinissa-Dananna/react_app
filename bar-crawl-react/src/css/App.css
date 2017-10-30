@@ -522,7 +522,7 @@ form a div {
   justify-content: center;
 }
 #list div {
-  max-height:100px;
+  min-height:80px;
   padding: 0.5em;
   align-content: center;
   justify-content: center;
