@@ -13,11 +13,11 @@ class EventBar extends Component {
 
   // function that gets event information from the database
   componentDidMount() {
-    axios.get(`http://barcrawlapi.herokuapp.com/events/owned?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://localhost:8080events/owned?auth_token=${this.props.user.token}`).then(response => {
       //console.log('response', response);
       this.setState({events: response.data})
     });
-    axios.get(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://localhost:8080events?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({allEvents: response.data})
     });

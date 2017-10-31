@@ -168,7 +168,7 @@ label{
 input{
   padding: 8px 0;
   border: 0px solid transparent;
-  border-bottom: 1px solid #333;
+  border-bottom: 0px solid #333;
   font-size: 1em;
   outline: 0px solid transparent;
 }
@@ -320,11 +320,15 @@ button:hover{
   width: 25%;
   min-width: 250px;
   min-height: 400px;
-  height: 100vh;
+  height: 130vh;
+  min-height: 130%;
+  overflow-y: hidden;
   order: 1;
   justify-content: flex-start;
   align-self: flex-start;
   background-color: rgb(107, 107, 107);
+  box-shadow: 1px 1px 1px 1px grey;
+  box-sizing: content-box;
 }
 .bar-crawl .sidebar li {
   list-style: none;
@@ -345,7 +349,7 @@ main div {
   order: 2;
 }
 .events-list ul {
-  width: 70%;
+  width: 80%;
   min-width: 500px;
 }
 
@@ -361,6 +365,7 @@ main div {
 }
 .single-event-container {
   order: 2;
+  margin-bottom: 1em;
 }
 
 .single-event .attendees img {
@@ -387,7 +392,8 @@ main div {
   /*display: flex;*/
   flex-direction: row;
   padding: 0.8em;
-  margin-right: 0.4em;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
   border: 4px solid #464646;
   border-radius: 8px;
   list-style: none;
@@ -399,6 +405,7 @@ main div {
   text-align: left;
   background-color: #450700;
   color: white;
+  box-shadow: 1px 1px 1px 1px grey;
 
 }
 .events-card li.events-item h4 {
@@ -474,6 +481,9 @@ main div {
   order: 2;
 
 }
+.bar-search {
+  margin-top: 20px;
+}
 .search-form {
     margin-right: 4%;
   flex-direction: row;
@@ -494,8 +504,7 @@ main div {
   text-align: left;
   width: 300px;
     flex-direction: column;
-
-    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .search-results {
   height: 500px;
@@ -547,6 +556,13 @@ form a div {
   padding: 1em 2em 1em 2em;
   background-color: #D11400;
 }
+.search-form input[type="submit"] {
+  width: 50px;
+  padding-left: 0.75em;
+  margin-left: 1em;
+  text-align: center;
+  margin-bottom: 0.8em;
+}
 /* ============================ DELETE USER ============================ */
 #list {
   margin: 0 auto;
@@ -584,13 +600,19 @@ form a div {
   main {
     width: 100vw;
   }
-  h1, h2, h3, h4 {
+  main div {
+    order: 1;
+  }
+  h1 {
+    font-size: 16px;
+  }
+  h2, h3, h4 {
     font-size: 14px;
   }
   .bar-crawl .sidebar {
     width: 100%;
     flex-direction: column;
-    height: 100%;
+    height: auto;
     min-height: 250px;
     align-self: flex-end;
     justify-content: flex-end;
@@ -619,6 +641,7 @@ form a div {
     flex-direction: column;
     margin-top: 0px;
     padding-top: 0.5em;
+    font-size: 18px;
   }
   .bar-crawl,
   .bar-crawl main {
@@ -641,8 +664,8 @@ form a div {
     font-size: 1.5em;
   }
   .events-card li.events-item {
-    font-size: 12px;
-    width: 80%;
+    font-size: 14px;
+    width: 90%;
     min-width: 100px;
     min-height: 100px;
     margin-bottom: 1em;
@@ -672,13 +695,16 @@ form a div {
   main {
     width: 100vw;
   }
+  main div {
+    order: 1;
+  }
   h1, h2, h3, h4 {
     font-size: 14px;
   }
   .bar-crawl .sidebar {
     width: 100%;
     flex-direction: column;
-    height: 26%;
+    height: auto;
     min-height: 250px;
     align-self: flex-end;
     justify-content: flex-end;
@@ -687,7 +713,7 @@ form a div {
   }
   header {
     margin: 0 auto;
-    padding: 0px;
+    padding-top: 5%;
     display: block;
     width: 100%;
     flex-direction: column;
@@ -696,6 +722,8 @@ form a div {
     height: 26%;
   }
   header nav {
+    padding-right: 0;
+    padding-left: 0;
     width: 100%;
     flex-direction: column;
   }
@@ -710,8 +738,9 @@ form a div {
     flex-direction: column;
     margin-top: 0px;
     padding-top: 0.5em;
-    font-size: 0.8em;
+    font-size: 1em;
   }
+
   .bar-crawl,
   .bar-crawl main {
     margin: 0 auto;
@@ -728,6 +757,21 @@ form a div {
     width: 100%;
     flex-direction: column;
     min-width: 150px;
+  }
+  .search-results,
+  .search-form,
+  .location-search {
+    height: auto;
+    min-height: 100px;
+  }
+  .events-list {
+    padding: 0;
+  }
+  .event-form {
+    width: 100%;
+  }
+  .events-card {
+    width: 80%;
   }
   .events-list ul h1 {
     font-size: 1em;

@@ -20,7 +20,7 @@ class UserSearch extends Component {
     componentDidMount() {
 		const eventId = this.props.match.params.eventId;
 		axios
-			.get(`http://barcrawlapi.herokuapp.com/events/${eventId}?auth_token=${this.props.user.token}`)
+			.get(`http://localhost:8080events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
         console.log(response.data);
 				this.setState({
@@ -34,7 +34,7 @@ class UserSearch extends Component {
 		const eventId = this.props.match.params.id;
 		if (eventId !== prevProps.match.params.id) {
 		axios
-			.get(`http://barcrawlapi.herokuapp.com/events/${eventId}?auth_token=${this.props.user.token}`)
+			.get(`http://localhost:8080events/${eventId}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
 					attendees: response.data.attendees
@@ -49,7 +49,7 @@ class UserSearch extends Component {
       const userId = user.id;
 
         axios
-        	.delete(`http://barcrawlapi.herokuapp.com/events/${eventId}/user/${userId}?auth_token=${this.props.user.token}`)
+        	.delete(`http://localhost:8080events/${eventId}/user/${userId}?auth_token=${this.props.user.token}`)
             .then(response => {
               this.setState({ submitted: true })
             })

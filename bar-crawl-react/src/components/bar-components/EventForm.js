@@ -37,6 +37,7 @@ class EventForm extends Component {
 	// of the time of the event
 	changeTime(event) {
 		event.preventDefault();
+		console.log('value', event.target.value)
 		this.setState({ time: event.target.value })
 	};
 
@@ -46,7 +47,7 @@ class EventForm extends Component {
 		console.log('submit clicked');
 		event.preventDefault();
 		const { name, description, time } = this.state;
-		axios.post(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`,
+		axios.post(`http://localhost:8080events?auth_token=${this.props.user.token}`,
 			{ name, description, time})
 			.then(response => {
 				console.log(response);
@@ -66,7 +67,7 @@ class EventForm extends Component {
 
 				<div className="event-form">
 					<h3>New Event</h3>
-					<form onSubmit={this.onSubmit}>
+					<form onSubmit={this.onSubmit} >
 						<label>
 							Name of Event:
           <input
