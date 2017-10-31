@@ -37,7 +37,7 @@ class BarSearch extends Component {
 				locationResults: []
 			});
 		} else {
-			axios.get(`http://barcrawlapi.herokuapp.com/search/${input}?auth_token=${this.props.user.token}`).then(response => {
+			axios.get(`http://localhost:8080search/${input}?auth_token=${this.props.user.token}`).then(response => {
 				this.setState({
 					locationResults: response.data.results
 				});
@@ -50,7 +50,7 @@ class BarSearch extends Component {
 	searchLocations(input) {
 		console.log(input.length);
 			axios
-				.get(`http://barcrawlapi.herokuapp.com/search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
+				.get(`http://localhost:8080search/nearby/${input}?auth_token=${this.props.user.token}`).then(response => {
 				console.log(response.data.searchLocation.description);
 				this.setState({
 					currentLocation: response.data.searchLocation.description,
@@ -69,7 +69,7 @@ class BarSearch extends Component {
 			});
 		} else {
 			axios
-				.get(`http://barcrawlapi.herokuapp.com/search/${input}?auth_token=${this.props.user.token}`)
+				.get(`http://localhost:8080search/${input}?auth_token=${this.props.user.token}`)
 				.then(response => {
 					this.setState({
 						barResults: response.data.results
@@ -83,7 +83,7 @@ class BarSearch extends Component {
 	  	console.log('searching');
 		this.setState({currentLocation: name});
 		axios
-			.get(`http://barcrawlapi.herokuapp.com/search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
+			.get(`http://localhost:8080search/autocomplete/${placeId}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({ barResults: response.data.results, locationResults: []}, () => console.log(this.state.barResults));
 			});
@@ -92,7 +92,7 @@ class BarSearch extends Component {
 	// search for and save a location by text entry
 	searchWithInput(bar) {
 		axios
-			.get(`http://barcrawlapi.herokuapp.com/search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
+			.get(`http://localhost:8080search/${this.state.currentLocation}/${bar}?auth_token=${this.props.user.token}`)
 			.then(response => {
 				this.setState({
 					barResults: response.data.results,

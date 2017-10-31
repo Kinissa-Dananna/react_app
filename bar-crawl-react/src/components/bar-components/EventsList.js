@@ -19,11 +19,11 @@ class EventsList extends Component {
 	// user's owned events from the database
   componentDidMount() {
     console.log(this.props.user.token);
-    axios.get(`http://barcrawlapi.herokuapp.com/events/owned?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://localhost:8080events/owned?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({ ownedEvents: response.data })
     });
-    axios.get(`http://barcrawlapi.herokuapp.com/events?auth_token=${this.props.user.token}`).then(response => {
+    axios.get(`http://localhost:8080events?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({ allEvents: response.data })
     });

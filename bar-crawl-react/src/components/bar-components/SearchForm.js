@@ -71,6 +71,7 @@ class SearchForm extends Component {
         <form className='search-form' onSubmit={this.onSubmit}>
           <label>Search For A Bar</label><br/>
           <input className='bar-bar' type='text' placeholder='search for a bar' value={this.state.queryValue} onChange={this.handleQueryChange} />
+          <input type="submit" value='OK' />
             {this.props.barResults.map((bar, i) => <Link to={`${this.props.url}${bar.barId}`} key={i}><div data-barid={bar.barId}>{bar.name}</div></Link>)}
         </form>
 

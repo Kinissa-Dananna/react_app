@@ -50,7 +50,7 @@ class EventEdit extends Component {
 		const { name, description, time } = this.state;
 		console.log({name, description, time, id})
 		axios
-			.put(`http://barcrawlapi.herokuapp.com/events/${id}?auth_token=${this.props.user.token}`,
+			.put(`http://localhost:8080events/${id}?auth_token=${this.props.user.token}`,
 			{ name, description, time })
 			.then(response => {
 				console.log(response)
